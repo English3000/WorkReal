@@ -56,54 +56,54 @@ and can send the role's holder a secret message to inquire for further details.
 
 ## Schema
 `users`
-id       | integer
----      | ---
-email    | email
----      | ---
-password | string
+| id       | integer |
+---        | ---
+| email    | email |
+---        | ---
+| password | string |
 
 `roles` _(location datatype?)_
-id       | integer
----      | ---
-user_id  | integer
----      | ---
-title    | string
----      | ---
-industry | string
----      | ---
-state    | string
----      | ---
-county   | string
----      | ---
-city     | string
----      | ---
-start    | date?
----      | ---
-end      | date?
----      | ---
-review   | text
+| id       | integer |
+---        | ---
+| user_id  | integer |
+---        | ---
+| title    | string |
+---        | ---
+| industry | string |
+---        | ---
+| state    | string |
+---        | ---
+| county   | string |
+---        | ---
+| city     | string |
+---        | ---
+| start    | date? |
+---        | ---
+| end      | date? |
+---        | ---
+| review   | text |
 
 `projects`
-id      | integer
----     | ---
-role_id | integer
----     | ---
-name    | string
+| id      | integer |
+---       | ---
+| role_id | integer |
+---       | ---
+| name    | string |
 
 `reals`
-id         | integer
----        | ---
-role_id    | integer
----        | ---
-project_id | integer
----        | ---
-updated_at | timestamp
----        | ---
-body       | text
+| id         | integer |
+---          | ---
+| role_id    | integer |
+---          | ---
+| project_id | integer |
+---          | ---
+| updated_at | timestamp |
+---          | ---
+| body       | text |
 
 `likes`
-id         | integer
+| id       | integer |
 ---        | ---
-user_id    | integer
+| user_id  | integer |
 ---        | ---
-real_id    | integer
+| real_id  | integer |
