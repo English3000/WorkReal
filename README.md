@@ -57,12 +57,14 @@ and can send the role's holder a secret message to inquire for further details.
 ## Schema
 `users`
 
+| --- | --- |
 | id       | integer |
 | email    | email |
 | password | string |
 
 `roles` _(location datatype?)_
 
+| --- | --- |
 | id       | integer |
 | user_id  | integer |
 | title    | string |
@@ -76,12 +78,14 @@ and can send the role's holder a secret message to inquire for further details.
 
 `projects`
 
+| --- | --- |
 | id      | integer |
 | role_id | integer |
 | name    | string |
 
 `reals`
 
+| --- | --- |
 | id         | integer |
 | role_id    | integer |
 | project_id | integer |
@@ -90,6 +94,7 @@ and can send the role's holder a secret message to inquire for further details.
 
 `likes`
 
+| --- | --- |
 | id       | integer |
 | user_id  | integer |
 | real_id  | integer |
