@@ -127,7 +127,8 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 | `start`    | date |
 | `end`      | date |
 | `review`   | text |
-`user_id` references `users`
+
+`user_id` references `users`.
 
 `projects`
 
@@ -136,7 +137,8 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 | `id`      | integer |
 | `role_id` | integer |
 | `name`    | string |
-`role_id` references `roles`
+
+`role_id` references `roles`.
 
 `reals`
 
@@ -147,9 +149,10 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 | `project_id` | integer |
 | `updated_at` | timestamp |
 | `body`       | text |
-`role_id` references `roles`
-`project_id` references `projects`
-joins table that joins `roles` and `projects`
+
+`role_id` references `roles`.
+`project_id` references `projects`.
+joins table that joins `roles` and `projects`.
 
 `truths`
 
@@ -158,6 +161,7 @@ joins table that joins `roles` and `projects`
 | `id`       | integer |
 | `user_id`  | integer |
 | `real_id`  | integer |
-`user_id` references `users`
-`real_id` references `reals`
-Joins table that joins `users` and `reals`
+
+`user_id` references `users`.
+`real_id` references `reals`.
+Joins table that joins `users` and `reals`.
