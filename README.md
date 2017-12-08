@@ -18,16 +18,22 @@ and can send the role's holder a secret message to inquire for further details.
 * Application Mailer
 * Google Maps API
 * PhoneGap
+* _D3?_ (for stats)
 
 ## Implementation
 
-_Rule of Thumb:_ First skeleton & build out everything we know. Build upon that with the new stuff.
+_Rules of Thumb:_ First skeleton & build out everything we know. Build upon that with the new stuff.
+
+For AJAX requests, consolidate what we can in the views via associations, arrays of ids, etc. On the frontend, generally make AJAX requests at the page-level (as lower-level components may all use that same store data).
 
 ## Resources
 
 * [ReactNative](https://facebook.github.io/react-native/docs/getting-started.html)
+
 * [ReactNativeExpress](http://www.reactnativeexpress.com/) - additional recommended guide
+
 * [App Store](https://www.joshmorony.com/the-step-by-step-guide-to-publishing-a-html5-mobile-application-on-app-stores/)
+
 * [PhoneGap](https://stackoverflow.com/questions/5843063/what-are-the-steps-to-convert-a-ruby-on-rails-app-into-an-phonegap-ios-app) for wrapping our app in a native container
 
 ## MVPs
@@ -62,12 +68,14 @@ _Rule of Thumb:_ First skeleton & build out everything we know. Build upon that 
 6. Reviews
 * review a role as you leave it (including time-lags, culture points, & name of company)
 
-7. Map of _reals_ by location (D3, Google Maps API) __JACK__
+7. Following a Role (just a joins table; followed roles' reals will appear before other roles' reals that have occurred w/in 24 hours)
 
-8. Stats
+8. Map of _reals_ by location (D3, Google Maps API) __JACK__
+
+9. Stats
   * post the time-breakdown of your workday by categories (including solo vs. team, arrival & departure)
 
-9. Forgotten Password
+10. Forgotten Password
   * fill out role details to sign in instead
 
 ## UX = dead-simple
