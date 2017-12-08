@@ -26,7 +26,9 @@ _Rule of Thumb:_ First skeleton & build out everything we know. Build upon that 
 ## Resources
 
 * [ReactNative](https://facebook.github.io/react-native/docs/getting-started.html)
-* [App Store](https://www.joshmorony.com/the-step-by-step-guide-to-publishing-a-html5-mobile-application-on-app-stores/) (using PhoneGap)
+* [ReactNativeExpress](http://www.reactnativeexpress.com/) - additional recommended guide
+* [App Store](https://www.joshmorony.com/the-step-by-step-guide-to-publishing-a-html5-mobile-application-on-app-stores/)
+* [PhoneGap](https://stackoverflow.com/questions/5843063/what-are-the-steps-to-convert-a-ruby-on-rails-app-into-an-phonegap-ios-app) for wrapping our app in a native container
 
 ## MVPs
 1. User Auth
