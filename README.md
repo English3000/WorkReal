@@ -36,6 +36,23 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 
 * [PhoneGap](https://stackoverflow.com/questions/5843063/what-are-the-steps-to-convert-a-ruby-on-rails-app-into-an-phonegap-ios-app) for wrapping our app in a native container
 
+## UI
+
+### Sign In/Up
+![gateway](https://github.com/English3000/WorkReal/blob/master/gateway.png)
+
+#### For New User _or if changing role_
+![role-form](https://github.com/English3000/WorkReal/blob/master/role-form.png)
+* also `Terminate` button (which prompts Review Form--no wireframe provided at present)
+
+![project-form](https://github.com/English3000/WorkReal/blob/master/project-form.png)
+
+### The Real
+![the-real](https://github.com/English3000/WorkReal/blob/master/the-real.png)
+
+### Role Page
+![role-page](https://github.com/English3000/WorkReal/blob/master/role-page.png)
+
 ## MVPs
 1. User Auth
   * email validation __Application Mailer__
