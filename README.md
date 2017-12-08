@@ -151,3 +151,5 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 | id       | integer |
 | user_id  | integer |
 | real_id  | integer |
+
+#### Competitor: [Blind](https://us.teamblind.com/)
