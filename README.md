@@ -45,6 +45,7 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 * [App Store](https://www.joshmorony.com/the-step-by-step-guide-to-publishing-a-html5-mobile-application-on-app-stores/)
 
 * [PhoneGap](https://stackoverflow.com/questions/5843063/what-are-the-steps-to-convert-a-ruby-on-rails-app-into-an-phonegap-ios-app) for wrapping our app in a native container
+* [PhoneGap installation](https://phonegap.com/getstarted/)
 
 ## UI
 
@@ -117,49 +118,60 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 
 | Column | Datatype |
 | --- | --- |
-| id       | integer |
-| email    | email |
-| password | string |
+| `id`       | integer |
+| `email`    | email |
+| `password_digest` | string |
+| `session_token` | string |
 
 `roles` _(location datatype?)_
 
 | Column | Datatype |
 | --- | --- |
-| id       | integer |
-| user_id  | integer |
-| title    | string |
-| industry | string |
-| state    | string |
-| county   | string |
-| city     | string |
-| start    | date? |
-| end      | date? |
-| review   | text |
+| `id`       | integer |
+| `user_id`  | integer |
+| `title`    | string |
+| `industry` | string |
+| `state`    | string |
+| `zip_code` | string |
+| `city`     | string |
+| `start`    | date |
+| `end`      | date |
+| `review`   | text |
+
+`user_id` references `users`.
 
 `projects`
 
 | Column | Datatype |
 | --- | --- |
-| id      | integer |
-| role_id | integer |
-| name    | string |
+| `id`      | integer |
+| `role_id` | integer |
+| `name`    | string |
+
+`role_id` references `roles`.
 
 `reals`
 
 | Column | Datatype |
 | --- | --- |
-| id         | integer |
-| role_id    | integer |
-| project_id | integer |
-| updated_at | timestamp |
-| body       | text |
+| `id`         | integer |
+| `role_id`    | integer |
+| `project_id` | integer |
+| `updated_at` | timestamp |
+| `body`       | text |
 
-`likes`
+`role_id` references `roles`.
+`project_id` references `projects`.
+joins table that joins `roles` and `projects`.
+
+`truths`
 
 | Column | Datatype |
 | --- | --- |
-| id       | integer |
-| user_id  | integer |
-| real_id  | integer |
+| `id`       | integer |
+| `user_id`  | integer |
+| `real_id`  | integer |
 
-#### Competitor: [Blind](https://us.teamblind.com/)
+`user_id` references `users`.
+`real_id` references `reals`.
+Joins table that joins `users` and `reals`.
