@@ -56,6 +56,7 @@ and can send the role's holder a secret message to inquire for further details.
 
 ## Schema
 `users`
+| Column | Datatype |
 | --- | --- |
 | id       | integer |
 ---        | ---
@@ -64,6 +65,7 @@ and can send the role's holder a secret message to inquire for further details.
 | password | string |
 
 `roles` _(location datatype?)_
+| Column | Datatype |
 | --- | --- |
 | id       | integer |
 ---        | ---
@@ -86,6 +88,7 @@ and can send the role's holder a secret message to inquire for further details.
 | review   | text |
 
 `projects`
+| Column | Datatype |
 | --- | --- |
 | id      | integer |
 ---       | ---
@@ -94,6 +97,7 @@ and can send the role's holder a secret message to inquire for further details.
 | name    | string |
 
 `reals`
+| Column | Datatype |
 | --- | --- |
 | id         | integer |
 ---          | ---
@@ -106,6 +110,7 @@ and can send the role's holder a secret message to inquire for further details.
 | body       | text |
 
 `likes`
+| Column | Datatype |
 | --- | --- |
 | id       | integer |
 ---        | ---
