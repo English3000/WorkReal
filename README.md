@@ -26,6 +26,16 @@ _Rules of Thumb:_ First skeleton & build out everything we know. Build upon that
 
 For AJAX requests, consolidate what we can in the views via associations, arrays of ids, etc. On the frontend, generally make AJAX requests at the page-level (as lower-level components may all use that same store data).
 
+### Weekend 0
+
+* __ALL:__ Learn ReactNative; __skeleton/build__ a component of your choice
+  > as you start, let teammates know which component you're working on; try to choose differently structured ones, so if one person is working on the Role Form, the Project Form would be relatively similar...
+
+* __ALL:__ Look into other technologies you're interested in and share concrete/actionable findings (feel free to list ones you're planning to look at)
+  > Alexander: Application Mailer
+
+* __ALL:__ Start building out what we know and have learned--if possible, in same place (better to build with overlaps than not to build; communicate as start building)
+
 ## Resources
 
 * [ReactNative](https://facebook.github.io/react-native/docs/getting-started.html)
