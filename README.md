@@ -11,6 +11,11 @@ WorkReal is a way to get a feel for how your work compares with others in simila
 about roles that turned out differently than advertised. You will find both positive and negative _workreals_,
 and can send the role's holder a secret message to inquire for further details.
 
+## Resources
+
+* [ReactNative](https://facebook.github.io/react-native/docs/getting-started.html)
+* [App Store](https://www.joshmorony.com/the-step-by-step-guide-to-publishing-a-html5-mobile-application-on-app-stores/)
+
 ## MVPs
 1. User Auth
   * email validation
