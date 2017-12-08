@@ -11,25 +11,38 @@ WorkReal is a way to get a feel for how your work compares with others in simila
 about roles that turned out differently than advertised. You will find both positive and negative _workreals_,
 and can send the role's holder a secret message to inquire for further details.
 
+## Technologies
+
+* ReactNative
+* Ruby on Rails
+* Application Mailer
+* Google Maps API
+* PhoneGap
+
+## Implementation
+
+_Rule of Thumb:_ First skeleton & build out everything we know. Build upon that with the new stuff.
+
 ## Resources
 
 * [ReactNative](https://facebook.github.io/react-native/docs/getting-started.html)
-* [App Store](https://www.joshmorony.com/the-step-by-step-guide-to-publishing-a-html5-mobile-application-on-app-stores/)
+* [App Store](https://www.joshmorony.com/the-step-by-step-guide-to-publishing-a-html5-mobile-application-on-app-stores/) (using PhoneGap)
 
 ## MVPs
 1. User Auth
-  * email validation
+  * email validation __Application Mailer__
 
 2. Role
   * title
   * industry/sector
-  * location (as specific as possible while remaining anonymous)
+  * location (as specific as possible while remaining anonymous) __Google Maps API?__
   * approx. start date (select from a season)
   * approx. end date (select from a season to terminate role; upon submit, a new role form)
   * current project(s)
   * can update email & password
 
 3. _Reals_ (posting)
+  * click on title to see single user's _reals_ reverse-chronologically for that role
   * _for-real_ (form: _Describe your day's work, by project_)
   * _truthing_ (liking)
   * deleting (only if still in that role & on that project)
@@ -37,19 +50,22 @@ and can send the role's holder a secret message to inquire for further details.
 
 4. Search (in nav; serves _reals_ index below)
   * see _reals_ by title, location, current project (defaults to _reals_ closest to current user's role)
-  * click on title to see single user's _reals_ reverse-chronologically for that role
+  * map button => dropdown live map search __Google Maps API__
 
 5. Secret Messages
   * send an email to a user by selecting their role & writing a message
 
 ## Bonus
-6. Stats
+
+6. Reviews
+* review a role as you leave it (including time-lags, culture points, & name of company)
+
+7. Map of _reals_ by location (D3, Google Maps API) __JACK__
+
+8. Stats
   * post the time-breakdown of your workday by categories (including solo vs. team, arrival & departure)
 
-7. Last Words
-  * review a role as you leave it (including time-lags, culture points, & name of company)
-
-8. Forgotten Password
+9. Forgotten Password
   * fill out role details to sign in instead
 
 ## UX = dead-simple
