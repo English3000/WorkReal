@@ -51,7 +51,7 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 ## UI
 
 ### Sign In/Up
-![dark-gateway](https://github.com/English3000/WorkReal/blob/master/dark-gateway.png)
+![dark-gateway](https://github.com/English3000/WorkReal/blob/master/dark-gateway-small.png)
 
 #### For New User _or if changing role_
 ![role-form](https://github.com/English3000/WorkReal/blob/master/role-form.png)
