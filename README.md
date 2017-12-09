@@ -11,6 +11,8 @@ WorkReal is a way to get a feel for how your work compares with others in simila
 about roles that turned out differently than advertised. You will find both positive and negative _workreals_,
 and can send the role's holder a secret message to inquire for further details.
 
+### Developers: Jack Wu, Mike Salisbury, Alexander Marks-Katz
+
 ## Technologies
 
 * ReactNative
