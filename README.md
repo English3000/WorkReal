@@ -40,8 +40,8 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 ## Resources
 
 * [ReactNative](https://facebook.github.io/react-native/docs/getting-started.html)
-
-* [ReactNativeExpress](http://www.reactnativeexpress.com/) - additional recommended guide
+  * [Importing Custom Fonts](https://docs.expo.io/versions/latest/guides/using-custom-fonts.html)
+  * [ReactNativeExpress](http://www.reactnativeexpress.com/) - additional recommended guide
 
 * [App Store](https://www.joshmorony.com/the-step-by-step-guide-to-publishing-a-html5-mobile-application-on-app-stores/)
 
