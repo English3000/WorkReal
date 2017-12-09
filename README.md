@@ -175,3 +175,5 @@ joins table that joins `roles` and `projects`.
 `user_id` references `users`.
 `real_id` references `reals`.
 Joins table that joins `users` and `reals`.
+
+#### Competitor: [Blind](https://us.teamblind.com/)
