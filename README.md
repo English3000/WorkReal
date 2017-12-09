@@ -19,7 +19,6 @@ and can send the role's holder a secret message to inquire for further details.
 * Ruby on Rails
 * Application Mailer
 * Google Maps API
-* PhoneGap
 * _D3?_ (for stats)
 
 ## Implementation
@@ -52,7 +51,7 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 ## UI
 
 ### Sign In/Up
-![gateway](https://github.com/English3000/WorkReal/blob/master/gateway.png)
+![dark-gateway](https://github.com/English3000/WorkReal/blob/master/dark-gateway.png)
 
 #### For New User _or if changing role_
 ![role-form](https://github.com/English3000/WorkReal/blob/master/role-form.png)
