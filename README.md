@@ -177,3 +177,7 @@ joins table that joins `roles` and `projects`.
 Joins table that joins `users` and `reals`.
 
 #### Competitor: [Blind](https://us.teamblind.com/)
+
+## User Plan
+
+App Academy alums can use WorkReal to post about our new jobs. Once the app is polished and sufficiently functional, our networks could be beta users. Once we refine the UX, we should expect some degree of regular usage. If people like their experience on the app, it would spread by word of mouth. Likewise, we'd probably spread it that way and setup analytics to guide future plans.
