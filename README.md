@@ -47,6 +47,7 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
   * [Accessing Local Images](https://facebook.github.io/react-native/docs/images.html)
 
   * [ReactNativeExpress](http://www.reactnativeexpress.com/) - additional recommended guide
+  * [Creating Custom Components](https://medium.com/pvtl/react-native-custom-components-6cd0f6461f67)
 
 * [App Store](https://www.joshmorony.com/the-step-by-step-guide-to-publishing-a-html5-mobile-application-on-app-stores/)
 
