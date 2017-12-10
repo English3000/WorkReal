@@ -7,7 +7,7 @@ import configureStore from './store';
 export default class App extends React.Component {
 
   render() {
-    let store = configureStore()
+    let store = configureStore();
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 

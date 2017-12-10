@@ -1,23 +1,10 @@
-export const signup = user => (
-  $.ajax({
-    url: '/api/users',
-    method: 'POST',
-    data: user
-  })
+import axios from 'axios';
 
-)
-export const login = user => (
-  $.ajax({
-    url: '/api/session',
-    method: 'POST',
-    data: user
+export const signup = user => fetch('http://192.168.3.166:19000/api/users', {
+  method: 'POST',
+  body: JSON.stringify({user})
+}).then(response => response.json());
 
-  })
-)
+export const login = user => axios.post('http://192.168.3.166:19000/api/session', user);
 
-export const logout = () => (
-  $.ajax({
-    url: '/api/session',
-    method: 'DELETE'
-  })
-)
+export const logout = () => axios.delete('http://192.168.3.166:19000/api/session');
