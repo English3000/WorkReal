@@ -1,5 +1,5 @@
 import React from 'react';
-import EntryFormContainer from './entryFormContainer';
+import EntryFormContainer from './components/entryFormContainer';
 import { Provider } from 'react-redux';
 import configureStore from './store';
 
