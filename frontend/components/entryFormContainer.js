@@ -1,14 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import entryForm from './entryForm';
 
-const mapStateToProps = (state) => ({
-  session: state.session
-
+const mapStateToProps = ({ session }) => ({
+  session
 });
 
 // const mapDispatchToProps = dispatch => ({
 //
 // });
 
-export default connect(mapStateToProps,null)(entryForm);
+export default connect(mapStateToProps)(entryForm);
