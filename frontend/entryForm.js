@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, Image, TextInput, Button, Alert } from 'react-native';
 import { Font } from 'expo';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
 
@@ -16,20 +16,14 @@ class CircleButton extends React.Component {
 }
 
 export default class EntryForm extends React.Component {
-  constructor(props) {
-
-    super(props);
+  constructor() {
+    super();
     this.state = {
       fontLoaded: false,
       email: '',
       password: ''
     };
-    console.log(this.props);
-    console.log(this.state);
-
   }
-
-
 
   async componentDidMount() {
     await Font.loadAsync({
@@ -41,7 +35,6 @@ export default class EntryForm extends React.Component {
   }
 
   render() {
-    //  console.log(this.props);
     return (
       <View style={styles.view}>
         {this.state.fontLoaded ? <View style={styles.upper}>
@@ -63,7 +56,6 @@ export default class EntryForm extends React.Component {
             <CircleButton title='SIGN IN'
                           style={{position: 'relative', left: 3}}
                           _onPress={() => Alert.alert(`${this.state.email} signed in.`)}></CircleButton>
-
           </View>
         </View> : null}
       </View>
