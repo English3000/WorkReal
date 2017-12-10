@@ -1,17 +1,20 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, Image, TextInput, Button, Alert,
+         ActivityIndicator, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
+import { TabNavigator } from 'react-navigation';
 
 class CircleButton extends React.Component {
   render() {
     const {title, style, _onPress} = this.props;
 
-    return (<Text style={[{ height: 85, width: 85, fontWeight: 'bold',
-                           padding: 25, textAlign: 'center',
-                           backgroundColor: 'white',
-                           borderRadius: 100}, style]}
-            onPress={_onPress}>{title}</Text>);
+    return (<TouchableOpacity style={style} onPress={_onPress}>
+              <Text style={{ height: 85, width: 85, fontWeight: 'bold',
+                              padding: 25, textAlign: 'center',
+                              backgroundColor: 'white',
+                              borderRadius: 100}}>{title}</Text>
+            </TouchableOpacity>);
   }
 }
 
@@ -30,30 +33,34 @@ export default class EntryForm extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      'Amaranth': require('./assets/fonts/Amaranth-Regular.ttf'),
-      'FontAwesome': require('./assets/fonts/FontAwesome.otf'),
+      'Amaranth': require('../assets/fonts/Amaranth-Regular.ttf'),
+      'FontAwesome': require('../assets/fonts/FontAwesome.otf'),
     });
 
     this.setState({ fontLoaded: true });
   }
 
   render() {
+    //if not signed in
     return (
       <View style={styles.view}>
         {this.state.fontLoaded ? <View style={styles.upper}>
           <Text style={[styles.text, styles.header]}>
-            <Image source={require('./assets/images/logo.png')} style={{width: 187.5, height: 93.75}}/>
+            <Image source={require('../assets/images/logo.png')} style={{width: 187.5, height: 93.75}}/>
           &nbsp;WorkReal</Text>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <CircleButton title='SIGN UP'
                           style={{position: 'relative', right: 3}}
                           _onPress={() => Alert.alert(`${this.state.email} signed up.`)}></CircleButton>
             <View>
-              <TextInput style={[styles.text, styles.input]} placeholder='email'
-                         underlineColorAndroid='transparent'
+              <TextInput style={[styles.text, styles.input]}
+                         placeholder='email'
+                         value={this.state.email}
+                         underlineColorAndroid='transparent' type={'email-address'}
                          onChangeText={ email => this.setState({ email }) }/>
-              <TextInput style={[styles.text, styles.input, styles.lastInput]} placeholder='password'
-                         underlineColorAndroid='transparent' secureTextEntry={true}
+              <TextInput style={[styles.text, styles.input, styles.lastInput]}
+                         placeholder='password' secureTextEntry={true}
+                         underlineColorAndroid='transparent'
                          onChangeText={ password => this.setState({ password }) }/>
             </View>
             <CircleButton title='SIGN IN'
@@ -63,6 +70,18 @@ export default class EntryForm extends React.Component {
         </View> : null}
       </View>
     );
+    //else
+    /* return (
+      TabNavigator({
+        Home: {
+          screen: EntryFormContainer,
+          // navigationOptions: { headerTitle: 'Home' }
+        },
+        Details: {
+          screen: EntryFormContainer
+        }
+      });
+    ) */
   }
 }
 
@@ -80,8 +99,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    color: 'white',
-    // fontSize: 20,
+    color: 'white'
   },
   upper: {
     position: 'relative',
