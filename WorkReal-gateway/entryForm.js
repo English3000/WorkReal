@@ -44,7 +44,7 @@ export default class EntryForm extends React.Component {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <CircleButton title='SIGN UP'
                           style={{position: 'relative', right: 3}}
-                          _onPress={() => Alert.alert('Signed up.')}></CircleButton>
+                          _onPress={() => Alert.alert(`${this.state.email} signed up.`)}></CircleButton>
             <View>
               <TextInput style={[styles.text, styles.input]} placeholder='email'
                          underlineColorAndroid='transparent'
@@ -55,7 +55,7 @@ export default class EntryForm extends React.Component {
             </View>
             <CircleButton title='SIGN IN'
                           style={{position: 'relative', left: 3}}
-                          _onPress={() => Alert.alert('Signed in.')}></CircleButton>
+                          _onPress={() => Alert.alert(`${this.state.email} signed in.`)}></CircleButton>
           </View>
         </View> : null}
       </View>
