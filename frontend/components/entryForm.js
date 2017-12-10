@@ -24,14 +24,15 @@ export default class EntryForm extends React.Component {
       password: ''
     };
 
-    console.log(this.props);
-    console.log(this.state);
+    // console.log(this.props);
+    // console.log(this.state);
+    
   }
 
   async componentDidMount() {
     await Font.loadAsync({
-      'Amaranth': require('./assets/fonts/Amaranth-Regular.ttf'),
-      'FontAwesome': require('./assets/fonts/FontAwesome.otf'),
+      'Amaranth': require('../assets/fonts/Amaranth-Regular.ttf'),
+      'FontAwesome': require('../assets/fonts/FontAwesome.otf'),
     });
 
     this.setState({ fontLoaded: true });
@@ -42,7 +43,7 @@ export default class EntryForm extends React.Component {
       <View style={styles.view}>
         {this.state.fontLoaded ? <View style={styles.upper}>
           <Text style={[styles.text, styles.header]}>
-            <Image source={require('./assets/images/logo.png')} style={{width: 187.5, height: 93.75}}/>
+            <Image source={require('../assets/images/logo.png')} style={{width: 187.5, height: 93.75}}/>
           &nbsp;WorkReal</Text>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <CircleButton title='SIGN UP'
