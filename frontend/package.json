@@ -23,6 +23,7 @@
     "lodash": "^4.17.4",
     "react": "16.0.0",
     "react-native": "0.50.3",
+    "react-native-datepicker": "^1.6.0",
     "react-native-fontawesome": "^5.7.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
