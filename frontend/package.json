@@ -21,10 +21,15 @@
   "dependencies": {
     "axios": "^0.17.1",
     "expo": "^23.0.4",
+<<<<<<< HEAD
     "jquery": "^3.2.1",
+=======
+    "jquery-ujs": "^1.2.2",
+>>>>>>> 225a0cf6cf205b8b48c2f022de80a2cd9e1bce8d
     "lodash": "^4.17.4",
     "react": "16.0.0",
     "react-native": "0.50.3",
+    "react-native-datepicker": "^1.6.0",
     "react-native-fontawesome": "^5.7.0",
     "react-navigation": "^1.0.0-beta.21",
     "redux-logger": "^3.0.6",
