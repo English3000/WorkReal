@@ -36,7 +36,7 @@ export default class EntryForm extends React.Component {
 
     this.setState({ fontLoaded: true });
     // let user = {email: 'jacksss', password:'password'};
-    // this.props.signin(user);
+    // this.props.signIn(user);
   }
 
   render() {
@@ -50,9 +50,9 @@ export default class EntryForm extends React.Component {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <CircleButton title='SIGN UP'
                           style={{position: 'relative', right: 3}}
-                          _onPress={() => this.props.signup({
+                          _onPress={() => this.props.signUp({
                             email: this.state.email, password: this.state.password
-                          }))}></CircleButton>
+                          })}></CircleButton>
             <View>
               <TextInput style={[styles.text, styles.input]}
                          placeholder='email'
@@ -66,7 +66,9 @@ export default class EntryForm extends React.Component {
             </View>
             <CircleButton title='SIGN IN'
                           style={{position: 'relative', left: 3}}
-                          _onPress={() => Alert.alert(`${this.state.email} signed in.`)}></CircleButton>
+                          _onPress={() => this.props.signIn({
+                            email: this.state.email, password: this.state.password
+                          })}></CircleButton>
           </View>
         </View> : null}
       </View>

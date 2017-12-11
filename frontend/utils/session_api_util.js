@@ -2,13 +2,13 @@ import axios from 'axios';
 
 export const DEV_IP = /* '192.168.3.43' */ '192.168.3.166';
 
-export const signin = (user) => axios.post(`http://${DEV_IP}:3000/api/session`, {user});
-export const signup = (user) => axios.post(`http://${DEV_IP}:3000/api/users`, {user});
-export const signout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
+export const signIn = (user) => axios.post(`http://${DEV_IP}:3000/api/session`, {user});
+export const signUp = (user) => axios.post(`http://${DEV_IP}:3000/api/users`, {user});
+export const signOut = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
 
 
 
-// export const signup = user => (
+// export const signUp = user => (
 //   $.ajax({
 //     url: '/api/users',
 //     method: 'POST',
@@ -17,7 +17,7 @@ export const signout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
 //
 // )
 
-// export const signup = user => (
+// export const signUp = user => (
 //   fetch('http://localhost:3000/api/users', {
 //     method: 'POST',
 //     body: ({user})
@@ -38,7 +38,7 @@ export const signout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
 //     secondParam: 'yourOtherValue',
 //   }),
 // });
-// export const signin = user => (
+// export const signIn = user => (
 //   $.ajax({
 //     url: '/api/session',
 //     method: 'POST',
@@ -47,7 +47,7 @@ export const signout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
 //   })
 // )
 //
-// export const signout = () => (
+// export const signOut = () => (
 //   $.ajax({
 //     url: '/api/session',
 //     method: 'DELETE'
@@ -55,11 +55,11 @@ export const signout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
 // )
 
 //
-// export const signup = user => fetch('http://192.168.3.166:19000/api/users', {
+// export const signUp = user => fetch('http://192.168.3.166:19000/api/users', {
 //   method: 'POST',
 //   body: JSON.stringify({user})
 // }).then(response => response.json());
 //
-// export const signin = user => axios.post('http://192.168.3.166:19000/api/session', user);
+// export const signIn = user => axios.post('http://192.168.3.166:19000/api/session', user);
 //
-// export const signout = () => axios.delete('http://192.168.3.166:19000/api/session');
+// export const signOut = () => axios.delete('http://192.168.3.166:19000/api/session');

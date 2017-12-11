@@ -159,7 +159,7 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
   * if new user, fill out your current role
   * _Real_ page w/ most relevant _reals_ plus _for-real_
   * update role/credentials icon, search bar, & sign out icon in nav
-  * signing out auto-closes the app
+  * signIng out auto-closes the app
 
 ## Schema
 `users`

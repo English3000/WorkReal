@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signup, signout, signin } from '../actions/session_actions';
+import { signUp, signOut, signIn } from '../actions/session_actions';
 import EntryForm from './entryForm';
 
 const mapStateToProps = ({ session }) => ({
@@ -8,9 +8,9 @@ const mapStateToProps = ({ session }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signup: (credentials) => dispatch(signup(credentials)),
-  // signout: () => dispatch(signout()),
-  signin: (credentials) => dispatch(signin(credentials))
+  signUp: (credentials) => dispatch(signUp(credentials)),
+  // signOut: () => dispatch(signOut()),
+  signIn: (credentials) => dispatch(signIn(credentials))
 
 });
 

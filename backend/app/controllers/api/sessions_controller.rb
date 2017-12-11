@@ -3,7 +3,7 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
 
     if @user
-      signin(@user)
+      signIn(@user)
       render "api/users/show"
     else
       render json: ["Invalid username/password combo"], status: 401
@@ -16,7 +16,7 @@ class Api::SessionsController < ApplicationController
     @user = current_user
 
     if @user
-      signout
+      signOut
       render "api/users/show"
     else
       render json: ["Nobody signed in"], status: 404
