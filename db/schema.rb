@@ -11,9 +11,23 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20171211005741) do
+>>>>>>> 0792dee10a23de14a63f4cefcc6d8e06b57cd3f9
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "roles", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title", null: false
+    t.string "industry", null: false
+    t.string "location", null: false
+    t.text "review"
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_roles_on_user_id"
+  end
 
   create_table "reals", force: :cascade do |t|
     t.integer "role_id", null: false
