@@ -1,6 +1,6 @@
 import { RECEIVE_ROLE, RECEIVE_ROLE_ERRORS } from '../actions/role_actions';
 
-const roleReducer = (state = {}, action) => {
+export default (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case(RECEIVE_ROLE):
@@ -9,5 +9,3 @@ const roleReducer = (state = {}, action) => {
       return state;
   }
 };
-
-export default roleReducer;
