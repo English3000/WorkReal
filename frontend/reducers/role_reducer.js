@@ -3,7 +3,7 @@ import { RECEIVE_ROLE, RECEIVE_ROLE_ERRORS } from '../actions/role_actions';
 const roleReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
-    case(RECEIVE_ROLE):
+    case RECEIVE_ROLE:
       return action.role;
     default:
       return state;

@@ -9,7 +9,7 @@ class Api::RolesController < ApplicationController
     if @role.save
       render json: @role
     else
-      render json: @role.errors.full_messages
+      render json: @role.errors.full_messages, status: 404
   end
 
   def update

@@ -3,7 +3,7 @@ import EntryFormContainer from './components/entryFormContainer';
 import {signup,login,logout} from './actions/session_actions';
 import { Provider } from 'react-redux';
 import configureStore from './store';
-import {createRole} from './utils/role_api_util';
+import {createRole, fetchRoles} from './actions/role_actions';
 
 export default class App extends React.Component {
 
@@ -17,6 +17,7 @@ export default class App extends React.Component {
     window.logout = logout;
     window.store = store;
     window.createRole = createRole;
+    window.fetchRoles = fetchRoles;
 
     debugger;
 

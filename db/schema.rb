@@ -10,16 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20171210222857) do
-=======
 ActiveRecord::Schema.define(version: 20171211004129) do
->>>>>>> bea2c9b7a3c2d9c93f2657378a9270ff11e2e2f0
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
+  create_table "reals", force: :cascade do |t|
+    t.integer "role_id", null: false
+    t.integer "project_id", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_reals_on_project_id"
+    t.index ["role_id"], name: "index_reals_on_role_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.integer "user_id"
     t.string "title", null: false
@@ -31,16 +36,6 @@ ActiveRecord::Schema.define(version: 20171211004129) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_roles_on_user_id"
-=======
-  create_table "reals", force: :cascade do |t|
-    t.integer "role_id", null: false
-    t.integer "project_id", null: false
-    t.text "body", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_reals_on_project_id"
-    t.index ["role_id"], name: "index_reals_on_role_id"
->>>>>>> bea2c9b7a3c2d9c93f2657378a9270ff11e2e2f0
   end
 
   create_table "users", force: :cascade do |t|
