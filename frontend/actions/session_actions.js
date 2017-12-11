@@ -24,13 +24,13 @@ export const signup = credentials => dispatch => (
   )
 );
 
-export const login = credentials => dispatch => (
-  APIUtil.login(credentials).then(user => dispatch(receiveCurrentUser(user)),
+export const signin = credentials => dispatch => (
+  APIUtil.signin(credentials).then(user => dispatch(receiveCurrentUser(user)),
                                   err => dispatch(receiveErrors(err.responseJSON))
   )
 );
 
-export const logout = () => dispatch => (
-  APIUtil.logout().then(response => dispatch(receiveCurrentUser(null))
+export const signout = () => dispatch => (
+  APIUtil.signout().then(response => dispatch(receiveCurrentUser(null))
   )
 );

@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export const DEV_IP = /* '192.168.3.43' */ '192.168.3.166';
 
-export const login = (user) => axios.post(`http://${DEV_IP}:3000/api/session`, {user});
+export const signin = (user) => axios.post(`http://${DEV_IP}:3000/api/session`, {user});
 export const signup = (user) => axios.post(`http://${DEV_IP}:3000/api/users`, {user});
-export const logout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
+export const signout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
 
 
 
@@ -38,7 +38,7 @@ export const logout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
 //     secondParam: 'yourOtherValue',
 //   }),
 // });
-// export const login = user => (
+// export const signin = user => (
 //   $.ajax({
 //     url: '/api/session',
 //     method: 'POST',
@@ -47,7 +47,7 @@ export const logout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
 //   })
 // )
 //
-// export const logout = () => (
+// export const signout = () => (
 //   $.ajax({
 //     url: '/api/session',
 //     method: 'DELETE'
@@ -60,6 +60,6 @@ export const logout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
 //   body: JSON.stringify({user})
 // }).then(response => response.json());
 //
-// export const login = user => axios.post('http://192.168.3.166:19000/api/session', user);
+// export const signin = user => axios.post('http://192.168.3.166:19000/api/session', user);
 //
-// export const logout = () => axios.delete('http://192.168.3.166:19000/api/session');
+// export const signout = () => axios.delete('http://192.168.3.166:19000/api/session');
