@@ -22,7 +22,7 @@ export const receiveRoleErrors = (errors) => ({
 export const fetchRoles = () => dispatch => (
   APIUtil.fetchRoles().then(roles => dispatch(receiveRoles(roles)),
 err => dispatch(receiveRoleErrors(err.response.JSON)))
-)
+);
 
 export const createRole = (role) => dispatch => (
   APIUtil.createRole(role).then( newRole => dispatch(receiveRole(newRole)),
