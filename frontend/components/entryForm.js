@@ -27,9 +27,8 @@ export default class EntryForm extends React.Component {
       password: ''
     };
 
-    // console.log(this.props);
-    // console.log(this.state);
-    
+
+
   }
 
   async componentDidMount() {
@@ -39,6 +38,9 @@ export default class EntryForm extends React.Component {
     });
 
     this.setState({ fontLoaded: true });
+
+    let user = {email: 'jacksss', password:'password'};
+    this.props.login(user);
   }
 
   render() {
