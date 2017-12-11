@@ -6,17 +6,16 @@ class RoleForm extends Component {
   constructor(props) {
     super(props);
     this.state = { title: '', industry: '', location: '',
-       start_date: '', current_project: '' };
+       start_date: ''};
+    this.handlesubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    console.log(this.state);
-    this.props.createrole(this.state);
+    this.props.createRole(this.state);
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return(
       <View style={styles.viewLayout}>
         <Text style={styles.headerText}>Your Role:</Text>
@@ -42,10 +41,11 @@ class RoleForm extends Component {
                 showIcon={false}
                 customStyles={{dateInput:{borderWidth: 0}}}
                 style={styles.formInputs}
+                placeholder={this.state.start_date}
                 onDateChange={(start_date) => this.setState({start_date})} />
         <TouchableOpacity
           style={styles.button}
-          onPress={this.handleSubmit}>
+          onPress={() => this.props.createRole(this.state)}>
             <Text style={{fontSize: 20, color: 'white'}}>Confirm</Text>
         </TouchableOpacity>
       </View>
@@ -75,7 +75,8 @@ class RoleForm extends Component {
       width: '80%',
       borderWidth: 1,
       borderColor: 'blue',
-      borderRadius: 5
+      borderRadius: 5,
+      color: 'white'
     },
     button: {
       margin: 10,
