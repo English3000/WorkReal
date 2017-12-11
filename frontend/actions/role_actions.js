@@ -14,7 +14,7 @@ export const receiveRoleErrors = (errors) => ({
 });
 
 export const createRole = (role) => dispatch => (
-  APIUtil.createRole(event)
+  APIUtil.createRole(role)
     .then( newRole => {
       dispatch(receiveRole(newRole));
   },
