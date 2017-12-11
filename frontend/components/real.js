@@ -12,7 +12,6 @@ export default class Real extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      'Amaranth': require('../assets/fonts/Amaranth-Regular.ttf'),
       'FontAwesome': require('../assets/fonts/FontAwesome.otf'),
     });
 
@@ -20,7 +19,7 @@ export default class Real extends React.Component {
   }
 
   render() {
-    const {role, real, project} = this.props;
+    const {role, real, project, createTruth, deleteTruth} = this.props;
 
     return ({this.state.fontLoaded ? <View>
       <View>
@@ -31,7 +30,9 @@ export default class Real extends React.Component {
       </View>
 
       <Text>{real.body}</Text>
-      <FontAwesome onPress={() => Alert.alert('liked')}>{Icons.star}</FontAwesome>
+      {/* user state should include liked_reals--an array of real_ids;
+          element to render based on whether currentUser has truthed this real*/}
+      <FontAwesome onPress={() => createTruth(real)}>{Icons.star}</FontAwesome>
     </View> : null});
   }
 }
