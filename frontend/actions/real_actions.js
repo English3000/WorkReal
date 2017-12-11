@@ -8,33 +8,33 @@ export const TRUTH = 'TRUTH';
 export const UNTRUTH = 'UNTRUTH';
 export const REAL_ERRORS = 'REAL_ERRORS';
 
-const receiveReals = reals => ({
+export const receiveReals = reals => ({
   type: RECEIVE_REALS,
   reals
 });
-const receiveReal = real => ({
+export const receiveReal = real => ({
   type: RECEIVE_REAL,
   real
 });
-const patchReal = real => ({
+export const patchReal = real => ({
   type: UPDATE_REAL,
   real
 });
-const removeReal = real => ({
+export const removeReal = real => ({
   type: REMOVE_REAL,
   realId: real.id
 });
 
-const receiveRealErrors = errors => ({
+export const receiveRealErrors = errors => ({
   type: REAL_ERRORS,
   errors
 });
 
-const receiveTruth = details => ({
+export const receiveTruth = details => ({
   type: TRUTH,
   details
 });
-const removeTruth = details => ({
+export const removeTruth = details => ({
   type: UNTRUTH,
   details
 });
