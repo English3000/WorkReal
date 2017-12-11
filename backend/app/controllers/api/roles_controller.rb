@@ -10,6 +10,7 @@ class Api::RolesController < ApplicationController
       render json: @role
     else
       render json: @role.errors.full_messages, status: 404
+    end
   end
 
   def update

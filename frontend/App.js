@@ -4,6 +4,7 @@ import {signUp,signIn,signOut} from './actions/session_actions';
 import { Provider } from 'react-redux';
 import configureStore from './store';
 import {createRole, fetchRoles} from './actions/role_actions';
+import NewRoleContainer from './components/role_component/newRoleContainer';
 
 export default class App extends React.Component {
 
