@@ -12,6 +12,7 @@ class RoleForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state);
+    this.props.createrole(this.state);
   }
 
   render() {
