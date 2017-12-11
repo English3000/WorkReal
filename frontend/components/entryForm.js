@@ -26,6 +26,7 @@ export default class EntryForm extends React.Component {
       email: '',
       password: ''
     };
+    console.log("hi");
   }
 
   async componentDidMount() {
