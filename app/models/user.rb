@@ -1,31 +1,14 @@
 class User < ApplicationRecord
-
   validates :email, :password_digest, :session_token, presence: true
   validates :email, uniqueness: true
   validates :password, length: {minimum: 3}, allow_nil: true
 
-
   after_initialize :ensure_session_token
-
   attr_reader :password
 
-  # has_many :restaurants,
-  #   primary_key: :id,
-  #   foreign_key: :owner_id,
-  #   class_name: 'Restaurant'
-  #
-  # has_many :reservations,
-  #   primary_key: :id,
-  #   foreign_key: :user_id,
-  #   class_name: 'Reservation'
-  #
-  #   has_many :favorite_restaurants,
-  #   primary_key: :id,
-  #   foreign_key: :user_id,
-  #   class_name: 'Favorite'
-
-
-
+  has_many :roles
+  has_many :projects
+  has_many :truths
 
   def self.find_by_credentials(email,password)
     user = User.find_by(email: email)
