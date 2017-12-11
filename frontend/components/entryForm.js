@@ -89,17 +89,17 @@ export default class EntryForm extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    fontSize: 50,
-    fontFamily: 'Amaranth',
-    marginBottom: 20,
-    textAlign: 'center'
-  },
   view: {
     flex: 1,
     backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  header: {
+    fontSize: 50,
+    fontFamily: 'Amaranth',
+    marginBottom: 20,
+    textAlign: 'center'
   },
   text: {
     color: 'white'
