@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import entryForm from './entryForm';
+import EntryForm from './entryForm';
 
 const mapStateToProps = ({ session }) => ({
   session
@@ -10,4 +10,4 @@ const mapStateToProps = ({ session }) => ({
 //
 // });
 
-export default connect(mapStateToProps)(entryForm);
+export default connect(mapStateToProps)(EntryForm);
