@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
-class RoleForm extends Component {
+export default class RoleForm extends Component {
   constructor(props) {
     super(props);
     this.state = { title: '', industry: '', location: '', start_date: '' };
   }
-  
+
   render() {
     // console.log(this.state);
     return(
@@ -86,5 +86,3 @@ class RoleForm extends Component {
       borderColor: 'white'
     }
   });
-
-export default RoleForm;
