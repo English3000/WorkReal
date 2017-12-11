@@ -5,16 +5,9 @@ import DatePicker from 'react-native-datepicker';
 class RoleForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: '', industry: '', location: '',
-       start_date: '', current_project: '' };
+    this.state = { title: '', industry: '', location: '', start_date: '' };
   }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    // console.log(this.state);
-    this.props.createrole(this.state);
-  }
-
+  
   render() {
     // console.log(this.state);
     return(
@@ -47,7 +40,7 @@ class RoleForm extends Component {
                   onDateChange={(start_date) => this.setState({start_date})} />
           <TouchableOpacity
             style={styles.button}
-            onPress={this.handleSubmit}>
+            onPress={() => this.props.createRole(this.state)}>
               <Text style={{fontSize: 20}}>Confirm</Text>
           </TouchableOpacity>
         </View>
