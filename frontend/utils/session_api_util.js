@@ -2,18 +2,9 @@ import axios from 'axios';
 
 export const DEV_IP = /* '192.168.3.43' */ '192.168.3.166';
 
-export const login = (user) => (
-  axios.post(`http://${DEV_IP}:3000/api/session`, {user})
-);
-
-export const signup = (user) => (
-  axios.post(`http://${DEV_IP}:3000/api/users`, {user})
-);
-
-
-export const logout = () => (
-  axios.delete(`http://${DEV_IP}:3000/api/session`)
-);
+export const login = (user) => axios.post(`http://${DEV_IP}:3000/api/session`, {user});
+export const signup = (user) => axios.post(`http://${DEV_IP}:3000/api/users`, {user});
+export const logout = () => axios.delete(`http://${DEV_IP}:3000/api/session`);
 
 
 
