@@ -39,26 +39,26 @@ const removeTruth = details => ({
   details
 });
 
-const getAllReals = () => async (dispatch) => {
+export const getAllReals = () => async (dispatch) => {
   // dispatch(pageLoading());
   return dispatch(receiveReals(await APIUtil.getAllReals()));
 };
 // Search query also launches filtered GET request
-const createReal = real => dispatch => (
+export const createReal = real => dispatch => (
   APIUtil.createReal(real)
     .then(newReal => dispatch(receiveReal(newReal)),
           err => dispatch(receiveRealErrors(err.responseJSON)))
 );
-const updateReal = real => dispatch => (
+export const updateReal = real => dispatch => (
   APIUtil.updateReal(real).then(newReal => dispatch(patchReal(newReal)))
 );
-const deleteReal = id => async (dispatch) => (
+export const deleteReal = id => async (dispatch) => (
   dispatch(removeReal(await APIUtil.deleteReal(id)))
 );
 
-const createTruth = real => async (dispatch) => (
+export const createTruth = real => async (dispatch) => (
   dispatch(receiveTruth(await APIUtil.createTruth(real)))
 );
-const deleteTruth = real => async (dispatch) => (
+export const deleteTruth = real => async (dispatch) => (
   dispatch(removeTruth(await APIUtil.deleteTruth(real)))
 );
