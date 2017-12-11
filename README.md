@@ -15,9 +15,9 @@ and can send the role's holder a secret message to inquire for further details.
 
 ## Technologies
 
-* ReactNative
+* React Native
 * Ruby on Rails
-* Application Mailer
+* Action Mailer
 * Google Maps API
 * _D3?_ (for stats)
 
@@ -27,15 +27,54 @@ _Rules of Thumb:_ First skeleton & build out everything we know. Build upon that
 
 For AJAX requests, consolidate what we can in the views via associations, arrays of ids, etc. On the frontend, generally make AJAX requests at the page-level (as lower-level components may all use that same store data).
 
-### Weekend 0
+### WKD 0
 
-* __ALL:__ Learn ReactNative; __skeleton/build__ a component of your choice
-  > as you start, let teammates know which component you're working on; try to choose differently structured ones, so if one person is working on the Role Form, the Project Form would be relatively similar...
+* learned React Native fundamentals;
+* built EntryPage, RoleForm;
+* skeletoned Reals components & backend;
 
-* __ALL:__ Look into other technologies you're interested in and share concrete/actionable findings (feel free to list ones you're planning to look at)
-  > Alexander: Application Mailer
+### M
 
-* __ALL:__ Start building out what we know and have learned--if possible, in same place (better to build with overlaps than not to build; communicate as start building)
+1. __ALL:__ get API requests working
+2. continue build-out _[tentative]_
+  * ___Mike:___ Role Show Page
+  * ___Jack:___ Reals components
+  * ___Alexander:___ Heroku setup, styling consistency, ActionMailer, navigation, Project components
+
+### TU
+
+3. ___BY COMMITTEE:___ first four Views (EntryForm, RoleForm, ProjectForm, RealsIndex) complete
+4. continue w/ MVPs _[tentative]_
+  * ___Jack:___ finish Reals components, begin Search
+  * ___Mike:___ continue Role & Project components
+  * ___Alexander:___ Reviews components
+
+### W
+
+5. ___BY COMMITTE:___ polish RealsIndex & RoleShow pages
+  * ___Mike:___ styling consistency
+6. complete w/ yesterday's assignments
+7. continue w/ MVPs _[tentative]_
+  * ___Mike:___ Secret Messages feature
+  * ___Jack:___ Google Maps API
+  * ___Alexander:___ Following feature, begin Stats
+
+### TH
+
+8. 6 views complete (+ RealsIndexPage, RoleShowPage), Reals CRUD & MVP complete
+9. continue w/ yesterday's work
+
+### F
+
+10. Search complete (minus dropdown map)
+11. continue w/ MVPs _-- at this point, we might be nearly done w/ what's below & can brainstorm additional features; otherwise, we'll work through the bugs
+  * ___Jack:___ styling consistency
+
+### WKD 1 _[TBD]_
+
+  * select someone to write production README on Sat. (other 2 can make revisions)
+  * polishing & user testing
+  * adding additional features _(that are material improvements)_
 
 ## Resources
 
@@ -74,10 +113,10 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 ![role-page](https://github.com/English3000/WorkReal/blob/master/role-page.png)
 
 ## MVPs
-1. User Auth
+1. User Auth __[COMPLETED minus email validation]__
   * email validation __Application Mailer__
 
-2. Role
+2. Role ___[partially COMPLETED]___
   * title
   * industry/sector
   * location (as specific as possible while remaining anonymous) __Google Maps API?__
@@ -86,10 +125,10 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
   * current project(s)
   * can update email & password
 
-3. _Reals_ (posting)
+3. _Reals_ (posting) ___[in progress]___
   * click on title to see single user's _reals_ reverse-chronologically for that role
   * _for-real_ (form: _Describe your day's work, by project_)
-  * _truthing_ (liking)
+  * _truthing_ (liking) __[COMPLETED]__
   * deleting (only if still in that role & on that project)
   * editing (only if still in that role & on that project)
 
