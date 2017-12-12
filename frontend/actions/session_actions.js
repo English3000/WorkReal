@@ -11,23 +11,21 @@ export const receiveCurrentUser = currentUser => ({
 
 });
 
-export const receiveErrors = errors => {
-  console.log(errors);
-  return(
+export const receiveErrors = errors => ({
     type: RECEIVE_ERRORS,
     errors
-  );
-};
+
+});
 
 
 export const signUp = credentials => dispatch => (
   APIUtil.signUp(credentials)
     .then(user => dispatch(receiveCurrentUser(user)),
-          err => dispatch(receiveErrors(err.responseJSON))
+          err => dispatch(receiveErrors(err.response.data))
   )
 );
 
- // dispatch(receiveErrors(err.responseJSON)
+ // dispatch(receiveErrors(err.response.data)
 export const signIn = credentials => dispatch => (
   APIUtil.signIn(credentials).then(user => dispatch(receiveCurrentUser(user)),
                                   err =>  dispatch(receiveErrors(err.response.data))

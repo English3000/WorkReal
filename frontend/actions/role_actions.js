@@ -16,12 +16,12 @@ export const receiveRole = (role) => ({
 
 export const fetchRoles = () => dispatch => (
   Api.fetchRoles().then(roles => dispatch(receiveRoles(roles)),
-                        err => dispatch(receiveErrors(err.responseJSON)))
+                        err => dispatch(receiveErrors(err.response.data)))
 );
 
 export const createRole = (role) => dispatch => (
   Api.createRole(role).then( newRole => dispatch(receiveRole(newRole)),
-                             err => dispatch(receiveErrors(err.responseJSON)))
+                             err => dispatch(receiveErrors(err.response.data)))
 );
 
 
@@ -34,5 +34,5 @@ export const receiveProject = (project) => ({
 
 export const createProject = (project) => dispatch => (
   Api.createProject(project).then( newProject => dispatch(receiveProject(newProject)),
-                                   err => dispatch(receiveErrors(err.responseJSON)))
+                                   err => dispatch(receiveErrors(err.response.data)))
 );

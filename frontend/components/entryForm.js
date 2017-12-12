@@ -63,20 +63,20 @@ export default class EntryForm extends React.Component {
 
   }
 
-  renderErrors(){
-    if (this.props.errors) {
-     return (
-       <Text
-         style={{
-         textAlign: 'center',
-         fontSize: 20,
-         color: '#cc3333'
-       }}
-       >Authentication failed! Try again!</Text>
-     );
-   }
-   return null;
- }
+ //  renderErrors(){
+ //    if (this.props.errors.length > 0) {
+ //     return (
+ //       <Text
+ //         style={{
+ //         textAlign: 'center',
+ //         fontSize: 20,
+ //         color: '#cc3333'
+ //       }}
+ //       >Authentication failed! Try again!</Text>
+ //     );
+ //   }
+ //   return null;
+ // }
 
 
   storeToken(token){
@@ -89,7 +89,7 @@ export default class EntryForm extends React.Component {
     if (newProps.session.currentUser !== this.props.session.currentUser) {
        this.storeToken(newProps.session.currentUser.data.session_token);
     } else{
-      console.log("failed");
+
       Alert.alert("Invalid credentials. Please try again");
     }
 
@@ -98,11 +98,11 @@ export default class EntryForm extends React.Component {
 
   render() {
 
-    
+
     return (
 
       <View style={styles.view}>
-          {this.renderErrors()}
+        
         {this.state.fontLoaded ? <View style={styles.upper}>
           <Text style={[styles.text, styles.header]}>
             <Image source={require('../assets/images/logo.png')} style={{width: 187.5, height: 93.75}}/>

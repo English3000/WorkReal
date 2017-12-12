@@ -42,7 +42,7 @@ export const getAllReals = () => async (dispatch) => {
 export const createReal = real => dispatch => (
   Api.createReal(real)
     .then(newReal => dispatch(receiveReal(newReal)),
-          err => dispatch(receiveErrors(err.responseJSON)))
+          err => dispatch(receiveErrors(err.response.data)))
 );
 export const updateReal = real => dispatch => (
   Api.updateReal(real).then(newReal => dispatch(patchReal(newReal)))
