@@ -19,7 +19,7 @@ and can send the role's holder a secret message to inquire for further details.
 * Ruby on Rails
 * Action Mailer
 * Google Maps API
-* _D3?_ (for stats)
+* _React Native STATS library?_
 
 ## Implementation
 
