@@ -37,7 +37,7 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 
 1. __ALL:__ get API requests working
 2. continue build-out
-  * ___Mike:___ Role Show Page
+  * ___Mike:___ Roles redux cycle
   * ___Jack:___ Bootstrapping user
   * ___Alexander:___ Heroku setup, styling consistency
 
