@@ -1,9 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TextInput, Button, Alert,
-         ActivityIndicator, TouchableOpacity } from 'react-native';
+         ActivityIndicator, TouchableOpacity,AsyncStorage } from 'react-native';
 import { Font } from 'expo';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
 import { TabNavigator } from 'react-navigation';
+
+
+
+
 
 class CircleButton extends React.Component {
   constructor(props){
@@ -12,24 +16,17 @@ class CircleButton extends React.Component {
 
   }
 
+
+
   handlePress(){
     const{session,processForm,credentials} = this.props;
 
     //sign in/sign up the user and then access the state/store for updated currentUser and session_token
     processForm({email: credentials.email,password: credentials.password})
-    // console.log("newProps",this.props);
-  }
-
-  componentWillReceiveProps(newProps){
-    //if currentUser changed
-    if (newProps.session.currentUser !== this.props.session.currentUser) {
-      //Write Async function here
-
-
-
-    }
 
   }
+
+
 
 
 
@@ -65,6 +62,26 @@ export default class EntryForm extends React.Component {
     // let user = {email: 'jacksss', password:'password'};
     // this.props.signIn(user);
   }
+
+  renderErrors(){
+
+  }
+
+  storeToken(token){
+    //Write Async storage here
+    AsyncStorage.setItem('currentUser', token)
+  }
+
+  componentWillReceiveProps(newProps){
+    //if currentUser changed
+    if (newProps.session.currentUser !== this.props.session.currentUser) {
+       this.storeToken(newProps.session.currentUser.data.session_token);
+    } else{
+      Alert.alert("Invalid credentials. Please try again");
+    }
+
+  }
+
 
   render() {
     //if not signed in
