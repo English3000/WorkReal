@@ -1,40 +1,31 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
-export default class RoleForm extends Component {
+//for adding new project while in same role
+// separate form for updating project???
+export default class ProjectForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { /* user_id: this.props.currentUserId,*/ title: '', industry: '', location: '', 
-                   start_date: '', project: '' };
+    this.state = { location: '', start_date: '', project: '' };
   }
 
   render() {
     // console.log(this.state);
-    return(
+    return (
       <View style={styles.viewLayout}>
         <View style={[styles.viewLayout, {width: '100%', alignItems: 'center'}]}>
-          <Text style={styles.headerText}>What's your job?</Text>
+          <Text style={styles.headerText}>What are you working on?</Text>
           <TextInput
-            placeholder='Title'
+            placeholder='Name'
             style={styles.formInputs}
             underlineColorAndroid={'transparent'}
-            onChangeText={(title) => this.setState({title})}/>
-          <TextInput
-            placeholder='Industry'
-            style={styles.formInputs}
-            underlineColorAndroid={'transparent'}
-            onChangeText={industry => this.setState({industry})}/>
+            onChangeText={name => this.setState({name})}/>
           <TextInput
             placeholder='Location'
             underlineColorAndroid={'transparent'}
             style={styles.formInputs}
             onChangeText={location => this.setState({location})}/>
-          <TextInput
-            placeholder='Current Project'
-            underlineColorAndroid={'transparent'}
-            style={styles.formInputs}
-            onChangeText={project => this.setState({project})}/>
           <DatePicker {...this.props}
                   // placeholder='Start Date'
                   format='YYYY-MM-DD'
@@ -46,13 +37,7 @@ export default class RoleForm extends Component {
                   onDateChange={start_date => this.setState({start_date})} />
           <TouchableOpacity
             style={styles.button}
-            onPress={() => this.props.createRole({ user_id: this.props.currentUserId,
-              title: this.state.title, industry: this.state.industry,
-              location: this.state.location, start_date: this.state.start_date
-            }).then(role => this.props.createProject({
-              role_id: role.id, project: this.state.project,
-              location: this.state.location, start_date: this.state.start_date
-            }))}>
+            onPress={() => this.props.createProject(this.state)}>
               <Text style={{fontSize: 20}}>Confirm</Text>
           </TouchableOpacity>
         </View>
