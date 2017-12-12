@@ -171,7 +171,7 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 | `password_digest` | string |
 | `session_token` | string |
 
-`roles` _(location datatype?)_
+`roles`
 
 | Column | Datatype |
 | --- | --- |
@@ -179,9 +179,7 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 | `user_id`  | integer |
 | `title`    | string |
 | `industry` | string |
-| `state`    | string |
 | `zip_code` | string |
-| `city`     | string |
 | `start`    | date |
 | `end`      | date |
 | `review`   | text |
@@ -195,6 +193,9 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 | `id`      | integer |
 | `role_id` | integer |
 | `name`    | string |
+| `start`    | date |
+| `end`      | date |
+| `zip_code` | string |
 
 `role_id` references `roles`.
 
@@ -212,6 +213,18 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 `project_id` references `projects`.
 joins table that joins `roles` and `projects`.
 
+`reviews`
+
+| Column | Datatype |
+| --- | --- |
+| `id`         | integer |
+| `role_id`    | integer |
+| `project_id` | integer |
+| `review`     | text |
+| `rating`     | integer |
+
+`rating` out of 5.
+
 `truths`
 
 | Column | Datatype |
@@ -223,6 +236,18 @@ joins table that joins `roles` and `projects`.
 `user_id` references `users`.
 `real_id` references `reals`.
 Joins table that joins `users` and `reals`.
+
+`follows`
+
+| Column | Datatype |
+| --- | --- |
+| `id`       | integer |
+| `user_id`  | integer |
+| `role_id`  | integer |
+
+`user_id` references `users`.
+`role_id` references `roles`.
+Joins table that joins `users` and `roles`.
 
 #### Competitor: [Blind](https://us.teamblind.com/)
 
