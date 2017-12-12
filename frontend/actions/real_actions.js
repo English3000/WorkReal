@@ -18,7 +18,7 @@ export const removeTruth = details => {type: UNTRUTH, details};
 
 export const getAllReals = () => async (dispatch) => {
   // dispatch(pageLoading());
-  return dispatch(receiveReals(await APIUtil.getAllReals()));
+  return dispatch( receiveReals(await APIUtil.getAllReals()) );
 };
 // Search query also launches filtered GET request
 export const createReal = real => dispatch => Api.createReal(real).then(

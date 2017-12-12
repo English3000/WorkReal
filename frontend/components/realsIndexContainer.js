@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import RealsIndex from './realsIndex';
 import { getAllReals } from '../actions/real_actions';
 
-const mapStateToProps = ({ reals }) => ({
-  reals
+const mapStateToProps = ({ reals, roles, projects }) => ({
+  reals, roles, projects
 });
 
 const mapDispatchToProps = dispatch => ({
