@@ -35,6 +35,6 @@ export const deleteReal = id => async (dispatch) => dispatch(
 export const createTruth = realId => async (dispatch) => dispatch(
   receiveTruth(await Api.createTruth(realId))
 );
-export const deleteTruth = (id, realId) => async (dispatch) => dispatch(
+export const destroyTruth = (id, realId) => async (dispatch) => dispatch(
   removeTruth(await Api.destroyTruth(id, realId))
 );

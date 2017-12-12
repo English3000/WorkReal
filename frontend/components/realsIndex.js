@@ -14,7 +14,7 @@ export default class RealsIndex extends React.Component {
   }
 
   render() {
-    const {reals, roles, projects, createTruth, deleteTruth} = this.props;
+    const {reals, roles, projects, createTruth, destroyTruth} = this.props;
 
     return (<View>
       <RealFormContainer/> {/* refactor to RealsIndexPage */}

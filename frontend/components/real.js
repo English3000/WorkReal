@@ -19,7 +19,7 @@ export default class Real extends React.Component {
   }
 
   render() {
-    const {role, real, project, createTruth, deleteTruth} = this.props;
+    const {role, real, project, createTruth, destroyTruth} = this.props;
 
     return ({this.state.fontLoaded ? <View>
       <View>
