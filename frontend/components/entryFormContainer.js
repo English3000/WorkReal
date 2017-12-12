@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { signUp, signOut, signIn } from '../actions/session_actions';
 import EntryForm from './entryForm';
 
-const mapStateToProps = ({ session }) => ({
-  session: session
+const mapStateToProps = (state) => ({
+  session: state.session,
+  errors: state.errors.session
 });
 
 const mapDispatchToProps = dispatch => ({

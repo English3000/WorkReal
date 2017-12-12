@@ -1,15 +1,39 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TextInput, Button, Alert,
-         ActivityIndicator, TouchableOpacity } from 'react-native';
+         ActivityIndicator, TouchableOpacity,AsyncStorage } from 'react-native';
 import { Font } from 'expo';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
 import { TabNavigator } from 'react-navigation';
 
+
+
+
+
 class CircleButton extends React.Component {
+  constructor(props){
+    super(props);
+    this.handlePress = this.handlePress.bind(this);
+
+  }
+
+
+
+  handlePress(){
+    const{session,processForm,credentials} = this.props;
+
+    //sign in/sign up the user and then access the state/store for updated currentUser and session_token
+    processForm({email: credentials.email,password: credentials.password})
+
+  }
+
+
+
+
+
   render() {
     const {title, style, _onPress} = this.props;
 
-    return (<TouchableOpacity style={style} onPress={_onPress}>
+    return (<TouchableOpacity style={style} onPress={this.handlePress}>
               <Text style={{ height: 85, width: 85, fontWeight: 'bold',
                               padding: 25, textAlign: 'center',
                               backgroundColor: 'white',
@@ -39,6 +63,26 @@ export default class EntryForm extends React.Component {
     // this.props.signIn(user);
   }
 
+  renderErrors(){
+
+  }
+
+  storeToken(token){
+    //Write Async storage here
+    AsyncStorage.setItem('currentUser', token)
+  }
+
+  componentWillReceiveProps(newProps){
+    //if currentUser changed
+    if (newProps.session.currentUser !== this.props.session.currentUser) {
+       this.storeToken(newProps.session.currentUser.data.session_token);
+    } else{
+      Alert.alert("Invalid credentials. Please try again");
+    }
+
+  }
+
+
   render() {
     //if not signed in
     return (
@@ -50,6 +94,9 @@ export default class EntryForm extends React.Component {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <CircleButton title='SIGN UP'
                           style={{position: 'relative', right: 3}}
+                          session={this.props.session}
+                          processForm={this.props.signUp}
+                          credentials={ this.state }
                           _onPress={() => this.props.signUp({
                             email: this.state.email, password: this.state.password
                           })}></CircleButton>
@@ -66,6 +113,9 @@ export default class EntryForm extends React.Component {
             </View>
             <CircleButton title='SIGN IN'
                           style={{position: 'relative', left: 3}}
+                          session={this.props.session}
+                          processForm={this.props.signIn}
+                          credentials={this.state}
                           _onPress={() => this.props.signIn({
                             email: this.state.email, password: this.state.password
                           })}></CircleButton>
