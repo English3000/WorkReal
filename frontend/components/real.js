@@ -6,8 +6,6 @@ export default class Real extends React.Component {
   constructor(props) {
     super(props);
     this.state = { fontLoaded: false };
-    // console.log(this.props);
-    // console.log(this.state);
   }
 
   async componentDidMount() {
@@ -19,8 +17,8 @@ export default class Real extends React.Component {
   }
 
   render() {
-    const {role, real, project, createTruth, deleteTruth} = this.props;
-
+    const {role, real, project, createTruth, destroyTruth} = this.props;
+    //should be able to edit & delete own reals IF currentRole matches
     return ({this.state.fontLoaded ? <View>
       <View>
         <Text>

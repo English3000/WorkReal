@@ -5,7 +5,7 @@ import DatePicker from 'react-native-datepicker';
 export default class RoleForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { /* user_id: this.props.currentUserId,*/ title: '', industry: '', location: '', 
+    this.state = { /* user_id: this.props.currentUserId,*/ title: '', industry: '', location: '',
                    start_date: '', project: '' };
   }
 
@@ -36,7 +36,7 @@ export default class RoleForm extends Component {
             style={styles.formInputs}
             onChangeText={project => this.setState({project})}/>
           <DatePicker {...this.props}
-                  // placeholder='Start Date'
+                  placeholder={this.state.start_date}
                   format='YYYY-MM-DD'
                   confirmBtnText="Confirm"
                   cancelBtnText="Cancel"
