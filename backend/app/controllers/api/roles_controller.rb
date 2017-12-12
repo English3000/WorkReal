@@ -6,7 +6,8 @@ class Api::RolesController < ApplicationController
   def show
     @role = Role.find(params[:id])
     if @role
-      render json: @role
+      @projects = @role.projects
+      render :show
     else
       render json: ['could not find that role']
     end
