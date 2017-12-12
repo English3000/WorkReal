@@ -39,6 +39,11 @@ export const createRole = (role) => dispatch => (
                              err => dispatch(receiveErrors(err.responseJSON)))
 );
 
+export const fetchRole = (roleId) => dispatch => (
+  Api.fetchRole(roleId).then(role => dispatch(receiveRole(role)),
+                          err => dispatch(receiveErrors(err.responseJSON)))
+);
+
 export const createProject = (project) => dispatch => (
   Api.createProject(project).then( newProject => dispatch(receiveProject(newProject)),
                                    err => dispatch(receiveErrors(err.responseJSON)))
@@ -47,6 +52,7 @@ export const createProject = (project) => dispatch => (
 export const createFollow = role => async (dispatch) => (
   dispatch(receiveFollow(await Api.createFollow(role)))
 );
+
 export const deleteFollow = role => async (dispatch) => (
   dispatch(removeFollow(await Api.deleteFollow(role)))
 );
