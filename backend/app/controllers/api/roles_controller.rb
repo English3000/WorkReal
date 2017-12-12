@@ -3,13 +3,27 @@ class Api::RolesController < ApplicationController
   def index
   end
 
+  def show
+    @role = Role.find(params[:id])
+    if @role
+      render json: @role
+    else
+      render json: ['could not find that role']
+    end
+  end
+
   def create
     @role = Role.new(role_params)
     @role.user_id = current_user.id
-    if @role.save
-      render json: @role
+    current_role = current_user.roles.select {|role| role.end_date = ''}
+    if !current_role
+      if @role.save
+        render json: @role
+      else
+        render json: @role.errors.full_messages, status: 404
+      end
     else
-      render json: @role.errors.full_messages, status: 404
+      render json: ['you can only have 1 active role']
     end
   end
 
