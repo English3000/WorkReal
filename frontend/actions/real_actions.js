@@ -8,9 +8,9 @@ export const REMOVE_REAL = 'REMOVE_REAL';
 export const TRUTH = 'TRUTH';
 export const UNTRUTH = 'UNTRUTH';
 
-export const receiveReals = reals => {type: RECEIVE_REALS, reals};
-export const receiveReal = real => {type: RECEIVE_REAL, real};
-export const patchReal = real => {type: UPDATE_REAL, real};
+export const receiveReals = reals => ({type: RECEIVE_REALS, reals});
+export const receiveReal = real => ({type: RECEIVE_REAL, real});
+export const patchReal = real => ({type: UPDATE_REAL, real});
 export const removeReal = real => ({type: REMOVE_REAL, realId: real.id});
 
 export const receiveTruth = details => {type: TRUTH, details};
@@ -23,7 +23,7 @@ export const getAllReals = () => async (dispatch) => {
 // Search query also launches filtered GET request
 export const createReal = real => dispatch => Api.createReal(real).then(
   newReal => dispatch(receiveReal(newReal)),
-  err => dispatch(receiveErrors(err.responseJSON))
+  err => dispatch(receiveErrors(err.response.data))
 );
 export const updateReal = real => async (dispatch) => dispatch(
   patchReal(await Api.updateReal(real))

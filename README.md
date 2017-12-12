@@ -37,26 +37,26 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 
 1. __ALL:__ get API requests working
 2. continue build-out
-  * ___Mike:___ Role Show Page
-  * ___Jack:___ Bootstrapping user, Reals components
+  * ___Mike:___ Roles redux cycle
+  * ___Jack:___ Bootstrapping user
   * ___Alexander:___ Heroku setup, styling consistency
 
 ### TU
 
-3. ___BY COMMITTEE:___ navigation, first four Views (EntryForm, RoleForm, ProjectForm, RealsIndex) complete
+3. ___BY COMMITTEE:___ first three Views (EntryForm, RoleForm, RealsIndex) complete
 4. continue w/ MVPs _[tentative]_
-  * ___Jack:___ finish Reals components
-  * ___Mike:___ continue Role components, User Show Page (of diff. roles & their projects, w/ reals dropdown when click on a project)
-  * ___Alexander:___ ProjectForm & redux cycle, ActionMailer
+  * ___Jack:___ User Auth debugging & email validation
+  * ___Mike:___ navigation
+  * ___Alexander:___ Projects redux cycle, Follows redux cycle, Truths redux cycle, Reals redux cycle (components not done yet)
 
 ### W
 
 5. ___BY COMMITTEE:___ polish RealsIndex & RoleShow pages
 6. complete w/ yesterday's assignments
 7. continue w/ MVPs _[tentative]_
-  * ___Mike:___ Secret Messages feature
-  * ___Jack:___ begin Search
-  * ___Alexander:___ Following feature, Reviews components, begin Stats
+  * ___Mike:___ form components, Secret Messages feature
+  * ___Jack:___ ActionMailer, begin Search
+  * ___Alexander:___ RoleShow page, begin Stats
 
 ### TH
 

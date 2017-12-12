@@ -50,6 +50,7 @@ export default class EntryForm extends React.Component {
       email: '',
       password: ''
     };
+
   }
 
   async componentDidMount() {
@@ -59,13 +60,24 @@ export default class EntryForm extends React.Component {
     });
 
     this.setState({ fontLoaded: true });
-    // let user = {email: 'jacksss', password:'password'};
-    // this.props.signIn(user);
-  }
-
-  renderErrors(){
 
   }
+
+ //  renderErrors(){
+ //    if (this.props.errors.length > 0) {
+ //     return (
+ //       <Text
+ //         style={{
+ //         textAlign: 'center',
+ //         fontSize: 20,
+ //         color: '#cc3333'
+ //       }}
+ //       >Authentication failed! Try again!</Text>
+ //     );
+ //   }
+ //   return null;
+ // }
+
 
   storeToken(token){
     //Write Async storage here
@@ -77,6 +89,7 @@ export default class EntryForm extends React.Component {
     if (newProps.session.currentUser !== this.props.session.currentUser) {
        this.storeToken(newProps.session.currentUser.data.session_token);
     } else{
+
       Alert.alert("Invalid credentials. Please try again");
     }
 
@@ -84,9 +97,12 @@ export default class EntryForm extends React.Component {
 
   //should institute 2-factor authentication
   render() {
-    //if not signed in
+
+
     return (
+
       <View style={styles.view}>
+        
         {this.state.fontLoaded ? <View style={styles.upper}>
           <Text style={[styles.text, styles.header]}>
             <Image source={require('../assets/images/logo.png')} style={{width: 187.5, height: 93.75}}/>
