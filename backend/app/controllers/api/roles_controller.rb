@@ -1,10 +1,10 @@
 class Api::RolesController < ApplicationController
 
-  def index
+  # def index
     # get current_user's roles
     # get roles w/in X of current_user's current role's location
       # .json.jbuilder will return roles w/ project_ids & projects assoc's w/ each role
-  end
+  # end
 
   def create
     @role = Role.new(role_params)
@@ -16,8 +16,8 @@ class Api::RolesController < ApplicationController
     end
   end
 
-  def update
-  end
+  # def update
+  # end
 
   private
   def role_params
