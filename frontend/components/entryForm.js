@@ -82,7 +82,7 @@ export default class EntryForm extends React.Component {
 
   }
 
-
+  //should institute 2-factor authentication
   render() {
     //if not signed in
     return (
