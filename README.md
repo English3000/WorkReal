@@ -180,9 +180,9 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 | `title`    | string |
 | `industry` | string |
 | `zip_code` | string |
-| `start`    | date |
-| `end`      | date |
-| `review`   | text |
+| `start_date` | date |
+| `end_date`   | date |
+| `review`     | text |
 
 `user_id` references `users`.
 
@@ -190,13 +190,16 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 
 | Column | Datatype |
 | --- | --- |
-| `id`      | integer |
-| `role_id` | integer |
-| `name`    | string |
-| `start`    | date |
-| `end`      | date |
+| `id`       | integer |
+| `role_id`  | integer |
+| `project`  | string |
 | `zip_code` | string |
+| `start_date` | date |
+| `end_date`   | date |
+| `review`     | text |
+| `rating`     | integer |
 
+`rating` out of 5. Either review OR rate (not both, as would be redundant).
 `role_id` references `roles`.
 
 `reals`
@@ -212,18 +215,6 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 `role_id` references `roles`.
 `project_id` references `projects`.
 joins table that joins `roles` and `projects`.
-
-`reviews`
-
-| Column | Datatype |
-| --- | --- |
-| `id`         | integer |
-| `role_id`    | integer |
-| `project_id` | integer |
-| `review`     | text |
-| `rating`     | integer |
-
-`rating` out of 5.
 
 `truths`
 
