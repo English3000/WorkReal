@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RealsIndex from './realsIndex';
-import { getAllReals, createTruth, deleteTruth } from '../actions/real_actions';
+import { getAllReals } from '../actions/real_actions';
 
 const mapStateToProps = ({ reals }) => ({
   reals
@@ -9,8 +9,6 @@ const mapStateToProps = ({ reals }) => ({
 
 const mapDispatchToProps = dispatch => ({
   getAllReals: () => dispatch(getAllReals()),
-  createTruth: real => dispatch(createTruth(real)),
-  deleteTruth: real => dispatch(deleteTruth(real)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RealsIndex);
