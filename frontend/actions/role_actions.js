@@ -20,8 +20,8 @@ export const fetchRoles = () => dispatch => (
 );
 
 export const fetchRole = (roleId) => dispatch => (
-  APIUtil.fetchRole(roleId).then(role => dispatch(receiveRole(role)),
-err => dispatch(receiveRoleErrors(err.response.JSON)))
+  Api.fetchRole(roleId).then(role => dispatch(receiveRole(role)),
+err => dispatch(receiveErrors(err.response.JSON)))
 );
 
 export const createRole = (role) => dispatch => (

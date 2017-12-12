@@ -9,10 +9,11 @@ class roleShowPage extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchRole(this.props.navigation.state.params.roleId);
+    // this.props.fetchRole(this.props.navigation.state.params.roleId);
   }
 
   render() {
+    console.log('DEBUG');
     console.log(this.props.navigation);
     debugger;
 
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  
+
   currentRoleView: {
 
   }

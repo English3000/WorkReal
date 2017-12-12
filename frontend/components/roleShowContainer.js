@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import RoleShow from './roleShow';
-import { fetchRole } from '../../actions/role_actions';
+import { fetchRole } from '../actions/role_actions';
 
 const mapStateToProps = (state, props) => ({
   role: state.role
