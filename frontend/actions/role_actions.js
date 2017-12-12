@@ -24,6 +24,11 @@ export const fetchRoles = () => dispatch => (
 err => dispatch(receiveRoleErrors(err.response.JSON)))
 );
 
+export const fetchRole = (roleId) => dispatch => (
+  APIUtil.fetchRole(roleId).then(role => dispatch(receiveRole(role)),
+err => dispatch(receiveRoleErrors(err.response.JSON)))
+);
+
 export const createRole = (role) => dispatch => (
   APIUtil.createRole(role).then( newRole => dispatch(receiveRole(newRole)),
     err => dispatch(receiveRoleErrors(err.responseJSON)))

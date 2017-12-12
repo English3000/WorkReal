@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import NewRoleForm from './newRoleForm';
+import NewRoleForm from './roleForm';
 import { createRole } from '../../actions/role_actions';
 
 const mapStateToProps = state => ({

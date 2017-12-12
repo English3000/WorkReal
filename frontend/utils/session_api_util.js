@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// Jack, Alexander, Mike
 export const DEV_IP = /* '192.168.3.43' */ /* '192.168.3.166' */ '192.168.3.205';
 
 export const signIn = (user) => axios.post(`http://${DEV_IP}:3000/api/session`, {user});
