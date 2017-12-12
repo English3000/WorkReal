@@ -6,6 +6,11 @@ class Api::RolesController < ApplicationController
       # .json.jbuilder will return roles w/ project_ids & projects assoc's w/ each role
   # end
 
+  def show
+    @role = Role.find(params[:id])
+    render :show
+  end
+
   def create
     @role = Role.new(role_params)
     @role.user_id = current_user.id
