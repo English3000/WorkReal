@@ -36,33 +36,33 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 ### M
 
 1. __ALL:__ get API requests working
-2. continue build-out _[tentative]_
+2. continue build-out
   * ___Mike:___ Role Show Page
-  * ___Jack:___ Reals components
-  * ___Alexander:___ Heroku setup, styling consistency, ActionMailer, navigation, Project components
+  * ___Jack:___ Bootstrapping user, Reals components
+  * ___Alexander:___ Heroku setup, styling consistency
 
 ### TU
 
-3. ___BY COMMITTEE:___ first four Views (EntryForm, RoleForm, ProjectForm, RealsIndex) complete
+3. ___BY COMMITTEE:___ navigation, first four Views (EntryForm, RoleForm, ProjectForm, RealsIndex) complete
 4. continue w/ MVPs _[tentative]_
-  * ___Jack:___ finish Reals components, begin Search
-  * ___Mike:___ continue Role & Project components
-  * ___Alexander:___ Reviews components
+  * ___Jack:___ finish Reals components
+  * ___Mike:___ continue Role components, User Show Page (of diff. roles & their projects, w/ reals dropdown when click on a project)
+  * ___Alexander:___ ProjectForm & redux cycle, ActionMailer
 
 ### W
 
-5. ___BY COMMITTE:___ polish RealsIndex & RoleShow pages
-  * ___Mike:___ styling consistency
+5. ___BY COMMITTEE:___ polish RealsIndex & RoleShow pages
 6. complete w/ yesterday's assignments
 7. continue w/ MVPs _[tentative]_
   * ___Mike:___ Secret Messages feature
-  * ___Jack:___ Google Maps API
-  * ___Alexander:___ Following feature, begin Stats
+  * ___Jack:___ begin Search
+  * ___Alexander:___ Following feature, Reviews components, begin Stats
 
 ### TH
 
-8. 6 views complete (+ RealsIndexPage, RoleShowPage), Reals CRUD & MVP complete
+8. 6 views complete (+ RealsIndexPage [incl's RealForm], RoleShowPage), Reals CRUD & MVP complete
 9. continue w/ yesterday's work
+ * ___Jack:___ Google Maps API
 
 ### F
 
