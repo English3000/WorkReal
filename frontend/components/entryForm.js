@@ -6,10 +6,37 @@ import FontAwesome, { Icons } from 'react-native-fontawesome';
 import { TabNavigator } from 'react-navigation';
 
 class CircleButton extends React.Component {
+  constructor(props){
+    super(props);
+    this.handlePress = this.handlePress.bind(this);
+
+  }
+
+  handlePress(){
+    const{session,processForm,credentials} = this.props;
+
+    //sign in/sign up the user and then access the state/store for updated currentUser and session_token
+    processForm({email: credentials.email,password: credentials.password})
+    // console.log("newProps",this.props);
+  }
+
+  componentWillReceiveProps(newProps){
+    //if currentUser changed
+    if (newProps.session.currentUser !== this.props.session.currentUser) {
+      //Write Async function here
+
+
+
+    }
+
+  }
+
+
+
   render() {
     const {title, style, _onPress} = this.props;
 
-    return (<TouchableOpacity style={style} onPress={_onPress}>
+    return (<TouchableOpacity style={style} onPress={this.handlePress}>
               <Text style={{ height: 85, width: 85, fontWeight: 'bold',
                               padding: 25, textAlign: 'center',
                               backgroundColor: 'white',
@@ -50,6 +77,9 @@ export default class EntryForm extends React.Component {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <CircleButton title='SIGN UP'
                           style={{position: 'relative', right: 3}}
+                          session={this.props.session}
+                          processForm={this.props.signUp}
+                          credentials={ this.state }
                           _onPress={() => this.props.signUp({
                             email: this.state.email, password: this.state.password
                           })}></CircleButton>
@@ -66,6 +96,9 @@ export default class EntryForm extends React.Component {
             </View>
             <CircleButton title='SIGN IN'
                           style={{position: 'relative', left: 3}}
+                          session={this.props.session}
+                          processForm={this.props.signIn}
+                          credentials={this.state}
                           _onPress={() => this.props.signIn({
                             email: this.state.email, password: this.state.password
                           })}></CircleButton>
