@@ -1,5 +1,5 @@
 import React from 'react';
-import EntryFormContainer from './components/entryFormContainer';
+import RoleFormContainer from './components/roleFormContainer';
 import {signUp,signIn,signOut} from './actions/session_actions';
 import { Provider } from 'react-redux';
 import configureStore from './store';
