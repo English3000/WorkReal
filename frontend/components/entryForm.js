@@ -71,11 +71,7 @@ export default class EntryForm extends React.Component {
 
     //Async storage now has an item called 'currentUser' with a value of token.
     //token === currentUser.session_token
-
-
-
-
-     await AsyncStorage.setItem(SESSION_TOKEN, token).then( () => {
+    await AsyncStorage.setItem(SESSION_TOKEN, token).then( () => {
        return AsyncStorage.getItem(SESSION_TOKEN).then((res) => (
          console.log(res)
        ))
@@ -106,11 +102,13 @@ export default class EntryForm extends React.Component {
     //if currentUser changed
 
     if (newProps.session.currentUser !== this.props.session.currentUser) {
-
+      //When user first logs in store their session_token in AsyncStorage
+      // And then redirect them to roleForm
             this.storeToken(newProps.session.currentUser.data.session_token);
             this.props.navigation.navigate(`roleForm`);
 
     }
+
     //currentUser is null
     else{
 
@@ -125,7 +123,7 @@ export default class EntryForm extends React.Component {
 
   //should institute 2-factor authentication
   render() {
-    //if not signed in
+    
     const { navigate } = this.props.navigation;
     return (
 
