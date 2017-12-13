@@ -140,25 +140,27 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 
 4. Search (in nav; serves _reals_ index below)
   * see _reals_ by title, location, current project (defaults to _reals_ closest to current user's role)
-  * map button => dropdown live map search __Google Maps API__
+  * __BONUS:__ _map button => dropdown live map search_ __(Google Maps API)__
 
-5. Secret Messages
+5. Secret Messages _(pressing mail icon on RoleShow => modal form to write an email)_
   * send an email to a user by selecting their role & writing a message
-
-## Bonus
 
 6. Reviews
 * review a role as you leave it (including time-lags, culture points, & name of company)
 
-7. Following a Role (just a joins table; followed roles' reals will appear before other roles' reals that have occurred w/in 24 hours)
+7. Following a Role (followed roles' reals will appear before other roles' reals that have occurred w/in 24 hours)
 
-8. Map of _reals_ by location (D3, Google Maps API) __JACK__
+## Bonus
 
-9. Stats
+8. Logging out also closes app
+
+9. Stats _(could implement as a 2nd kind of RealForm--RealForm would have two tabs which would switch form body)_
   * post the time-breakdown of your workday by categories (including solo vs. team, arrival & departure)
 
-10. Forgotten Password
-  * fill out role details to sign in instead
+10. Upgraded User Auth
+  * two-factor validation (so requiring email AND phone)
+  * if forgot password, can enter email & phone to receive new one via email/text
+
 
 ## UX = dead-simple
   * Sign Up/In
