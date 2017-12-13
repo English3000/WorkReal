@@ -1,21 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Real from './real';
-import { createTruth, deleteTruth } from '../actions/real_actions';
 import { createFollow, deleteFollow } from '../actions/role_actions';
+import { createTruth, destroyTruth } from '../actions/real_actions';
 
-const mapStateToProps = ({ reals }) => ({
-  reals
-});
+// const mapStateToProps = ({ reals }) => ({
+//   reals
+// });
 
 const mapDispatchToProps = dispatch => ({
-  createTruth: real => dispatch(createTruth(real)),
-  deleteTruth: real => dispatch(deleteTruth(real)),
   createFollow: role => dispatch(createFollow(role)),
   deleteFollow: role => dispatch(deleteFollow(role)),
+  createTruth: real => dispatch(createTruth(real)),
+  destroyTruth: real => dispatch(destroyTruth(real)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Real);
-
-//Upon sign-in, across all pages; NOT FOR HERE
-//getUsers: () => dispatch(getUsers()),
+export default connect(null, mapDispatchToProps)(Real);

@@ -6,7 +6,7 @@ class Api::FollowsController < ApplicationController
   end
 
   def destroy
-    @follow = Follow.find_by(user_id: current_user.id, role_id: params[:role_id])
+    @follow = Follow.find(params[:id])
     @follow.destroy
     render :show
   end
