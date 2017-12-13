@@ -71,12 +71,13 @@ export default class EntryForm extends React.Component {
 
     //Async storage now has an item called 'currentUser' with a value of token.
     //token === currentUser.session_token
-    await AsyncStorage.setItem('session_token', token)
+    await AsyncStorage.setItem('session_token', token);
   }
 
   componentWillReceiveProps(newProps){
 
     //if currentUser changed
+
     if (newProps.session.currentUser !== this.props.session.currentUser) {
        this.storeToken(newProps.session.currentUser.data.session_token);
        this.props.navigation.navigate(`roleForm`)
