@@ -63,46 +63,38 @@ export default class EntryForm extends React.Component {
 
   }
 
- //  renderErrors(){
- //    if (this.props.errors.length > 0) {
- //     return (
- //       <Text
- //         style={{
- //         textAlign: 'center',
- //         fontSize: 20,
- //         color: '#cc3333'
- //       }}
- //       >Authentication failed! Try again!</Text>
- //     );
- //   }
- //   return null;
- // }
 
 
-  storeToken(token){
+
+  async storeToken(token){
     //Write Async storage here
-    AsyncStorage.setItem('currentUser', token)
+
+    //Async storage now has an item called 'currentUser' with a value of token.
+    //token === currentUser.session_token
+    await AsyncStorage.setItem('session_token', token);
   }
 
   componentWillReceiveProps(newProps){
+
     //if currentUser changed
+
     if (newProps.session.currentUser !== this.props.session.currentUser) {
        this.storeToken(newProps.session.currentUser.data.session_token);
+       this.props.navigation.navigate(`roleForm`)
     } else{
-
-      Alert.alert("Invalid credentials. Please try again");
+        Alert.alert("Invalid credentials. Please try again");
     }
 
   }
 
   //should institute 2-factor authentication
   render() {
-
-
+    //if not signed in
+    const { navigate } = this.props.navigation;
     return (
 
       <View style={styles.view}>
-        
+
         {this.state.fontLoaded ? <View style={styles.upper}>
           <Text style={[styles.text, styles.header]}>
             <Image source={require('../assets/images/logo.png')} style={{width: 187.5, height: 93.75}}/>
@@ -115,7 +107,7 @@ export default class EntryForm extends React.Component {
                           credentials={ this.state }
                           _onPress={() => this.props.signUp({
                             email: this.state.email, password: this.state.password
-                          })}></CircleButton>
+                          }).then(() => navigate('roleForm'))}></CircleButton>
             <View>
               <TextInput style={[styles.text, styles.input]}
                          placeholder='email'

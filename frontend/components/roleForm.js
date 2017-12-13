@@ -10,7 +10,8 @@ export default class RoleForm extends Component {
   }
 
   render() {
-    // console.log(this.state);
+    const { navigate } = this.props.navigation;
+
     return(
       <View style={styles.viewLayout}>
         <View style={[styles.viewLayout, {width: '100%', alignItems: 'center'}]}>
@@ -50,16 +51,18 @@ export default class RoleForm extends Component {
               title: this.state.title, industry: this.state.industry,
               location: this.state.location, start_date: this.state.start_date
             }).then(role => this.props.createProject({
-              role_id: role.id, project: this.state.project,
+              role_id: role.data.id, project: this.state.project,
               location: this.state.location, start_date: this.state.start_date
-            }))}>
+            })).then(project => navigate('roleShow', {roleId: project.data.role_id}))}>
               <Text style={{fontSize: 20}}>Confirm</Text>
           </TouchableOpacity>
         </View>
       </View>
     );
   }
+
 }
+
 
   const styles = StyleSheet.create({
     viewLayout: {
@@ -84,7 +87,8 @@ export default class RoleForm extends Component {
       width: '75%',
       borderWidth: 3,
       borderColor: 'white',
-      borderRadius: 5
+      borderRadius: 5,
+      color: 'white'
     },
     button: {
       margin: 10,

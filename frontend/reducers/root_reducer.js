@@ -3,11 +3,13 @@ import sessionsReducer  from './sessions_reducer';
 import errorsReducer from './errors_reducer';
 import roleReducer from './role_reducer';
 import realsReducer from './reals_reducer';
+import nav from './nav_reducer';
 
 
 export default combineReducers({
   role: roleReducer,
   reals: realsReducer,
   session: sessionsReducer,
-  errors: errorsReducer
+  errors: errorsReducer,
+  navigation: nav
 });
