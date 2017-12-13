@@ -10,7 +10,10 @@ export default class RoleForm extends Component {
   }
 
   render() {
-    // console.log(this.state);
+    console.log(this.state);
+    console.log('debugging');
+    console.log(this.props);
+    debugger;
     return(
       <View style={styles.viewLayout}>
         <View style={[styles.viewLayout, {width: '100%', alignItems: 'center'}]}>

@@ -86,8 +86,8 @@ export default class EntryForm extends React.Component {
 
 
   render() {
-
-
+    //if not signed in
+    const { navigate } = this.props.navigation;
     return (
 
       <View style={styles.view}>
@@ -104,7 +104,7 @@ export default class EntryForm extends React.Component {
                           credentials={ this.state }
                           _onPress={() => this.props.signUp({
                             email: this.state.email, password: this.state.password
-                          })}></CircleButton>
+                          }).then(() => navigate('roleForm'))}></CircleButton>
             <View>
               <TextInput style={[styles.text, styles.input]}
                          placeholder='email'
@@ -123,7 +123,7 @@ export default class EntryForm extends React.Component {
                           credentials={this.state}
                           _onPress={() => this.props.signIn({
                             email: this.state.email, password: this.state.password
-                          })}></CircleButton>
+                          }).then(() => navigate('roleForm'))}></CircleButton>
           </View>
         </View> : null}
       </View>
