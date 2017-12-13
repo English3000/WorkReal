@@ -75,9 +75,11 @@ export default class EntryForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
+
     //if currentUser changed
     if (newProps.session.currentUser !== this.props.session.currentUser) {
        this.storeToken(newProps.session.currentUser.data.session_token);
+       this.props.navigation.navigate(`roleForm`)
     } else{
         Alert.alert("Invalid credentials. Please try again");
     }
@@ -123,7 +125,7 @@ export default class EntryForm extends React.Component {
                           credentials={this.state}
                           _onPress={() => this.props.signIn({
                             email: this.state.email, password: this.state.password
-                          }).then(() => navigate('roleForm'))}></CircleButton>
+                          })}></CircleButton>
           </View>
         </View> : null}
       </View>
