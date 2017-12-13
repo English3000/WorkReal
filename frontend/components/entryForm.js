@@ -69,7 +69,7 @@ export default class EntryForm extends React.Component {
                           style={{position: 'relative', left: 3}}
                           _onPress={() => this.props.signIn({
                             email: this.state.email, password: this.state.password
-                          })}></CircleButton>
+                          }).then(() => navigate('roleForm'))}></CircleButton>
           </View>
         </View> : null}
       </View>
