@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text } from 'react-native';
 
 
-class roleShowPage extends Component {
-
+export default class roleShowPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -47,5 +46,3 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 });
-
-export default roleShowPage;
