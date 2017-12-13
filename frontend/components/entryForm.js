@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TextInput, Button, Alert,
-         ActivityIndicator, TouchableOpacity,AsyncStorage } from 'react-native';
+         ActivityIndicator, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Font } from 'expo';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
 import { TabNavigator } from 'react-navigation';
@@ -82,9 +82,8 @@ export default class EntryForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-
     //if currentUser changed
-
+    console.log(AsyncStorage.getItem('session_token'))
     if (newProps.session.currentUser !== this.props.session.currentUser) {
 
       //if AsyncStorage session_token exists
@@ -92,17 +91,19 @@ export default class EntryForm extends React.Component {
       .then((token) => {
         if (token) {
           //if AsyncStorage session_token exists, then navigate to roleForm
-          this.props.navigation.navigate(`roleForm`);
+          debugger;
+          newProps.navigation.navigate(`roleForm`);
 
         }
         else{
             // if AsyncStorage session_token doesn't exist, but the user is logged in. Then create a
             // AsyncStorage session_token
-            this.storeToken(newProps.session.currentUser.data.session_token);
-            this.props.navigation.navigate(`roleForm`);
+            this.storeToken(newProps.session.currentUser.data.session_token).then(() => console.log(newProps));
+            debugger;
+            newProps.navigation.navigate(`roleForm`);
         }});
 
-
+      newProps.navigation.navigate(`roleForm`);
 
 
     }
