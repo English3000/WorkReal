@@ -10,7 +10,6 @@ export default class RoleForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { navigate } = this.props.navigation;
 
     return(
@@ -54,7 +53,7 @@ export default class RoleForm extends Component {
             }).then(role => this.props.createProject({
               role_id: role.data.id, project: this.state.project,
               location: this.state.location, start_date: this.state.start_date
-            })).then(project => navigate(`roleShow/${project.data.role_id}`))}>
+            })).then(project => navigate('roleShow', {roleId: project.data.role_id}))}>
               <Text style={{fontSize: 20}}>Confirm</Text>
           </TouchableOpacity>
         </View>
