@@ -109,8 +109,14 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 ### The Real
 ![the-real](https://github.com/English3000/WorkReal/blob/master/the-real.png)
 
+### Navbar
+![nav](https://github.com/English3000/WorkReal/blob/master/nav.png)
+
 ### Role Page
 ![role-page](https://github.com/English3000/WorkReal/blob/master/role-page.png)
+
+### User's Page
+![user-show](https://github.com/English3000/WorkReal/blob/master/user-show.png)
 
 ## MVPs
 1. User Auth __[COMPLETED minus email validation]__
