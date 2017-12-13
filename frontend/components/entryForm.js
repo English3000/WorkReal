@@ -71,22 +71,31 @@ export default class EntryForm extends React.Component {
 
     //Async storage now has an item called 'currentUser' with a value of token.
     //token === currentUser.session_token
-    await AsyncStorage.setItem('session_token', token);
+    try {
+     await AsyncStorage.setItem('session_token', token);
+   } catch (error) {
+     console.error('AsyncStorage error: ' + error.message);
+   }
+ 
+
+
   }
 
   componentWillReceiveProps(newProps){
     //if currentUser changed
-    
+
     if (newProps.session.currentUser !== this.props.session.currentUser) {
-      console.log(this.props);
-      console.log(newProps);
-      //if theres already a AsyncStorage session_token then return.
-      if(AsyncStorage.getItem('session_token') !== undefined){
-        return;
-      }
-      else{
-        this.storeToken(newProps.session.currentUser.data.session_token);
-      }
+
+      // need to test this method tmmrw
+      AsyncStorage.getItem('session_token')
+      .then((token) => {
+        if (token) {
+          return;
+        }
+        else{
+            this.storeToken(newProps.session.currentUser.data.session_token);
+        }});
+
 
     }
 
