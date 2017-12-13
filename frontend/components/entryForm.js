@@ -76,8 +76,10 @@ export default class EntryForm extends React.Component {
 
   componentWillReceiveProps(newProps){
     //if currentUser changed
+    
     if (newProps.session.currentUser !== this.props.session.currentUser) {
-
+      console.log(this.props);
+      console.log(newProps);
       //if theres already a AsyncStorage session_token then return.
       if(AsyncStorage.getItem('session_token') !== undefined){
         return;
