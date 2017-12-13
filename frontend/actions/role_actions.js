@@ -24,10 +24,16 @@ export const fetchRole = (roleId) => dispatch => Api.fetchRole(roleId).then(
   role => dispatch(receiveRole(role)),
   err => dispatch(receiveErrors(err.response.data))
 );
-export const createRole = (role) => dispatch => Api.createRole(role).then(
-  newRole => dispatch(receiveRole(newRole)),
-  err => dispatch(receiveErrors(err.response.data))
+
+export const createRole = (role) => dispatch => (
+  Api.createRole(role)
+  .then(newRole => {
+    dispatch(receiveRole(newRole));
+  return newRole;
+  },
+   err => dispatch(receiveErrors(err.response.data)))
 );
+
 //needs to update role w/o overwriting assoc'd data (past projects & reals)
 //risk of currentRole's location falling out of sync w/ currentProject's
 export const updateRole = role => dispatch => Api.updateRole(role).then(
@@ -42,7 +48,11 @@ export const deleteFollow = (id, roleId) => async (dispatch) => dispatch(
   removeFollow(await Api.deleteFollow(id, roleId))
 );
 
-export const createProject = (project) => dispatch => Api.createProject(project).then(
-  newProject => dispatch(receiveProject(newProject)),
-  err => dispatch(receiveErrors(err.response.data))
+export const createProject = (project) => dispatch => (
+  Api.createProject(project)
+  .then(newProject => {
+    dispatch(receiveProject(newProject));
+    return newProject;
+  },
+  err => dispatch(receiveErrors(err.response.data)))
 );

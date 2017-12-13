@@ -76,36 +76,44 @@ export default class EntryForm extends React.Component {
    } catch (error) {
      console.error('AsyncStorage error: ' + error.message);
    }
- 
+
 
 
   }
 
   componentWillReceiveProps(newProps){
+
     //if currentUser changed
 
     if (newProps.session.currentUser !== this.props.session.currentUser) {
 
-      // need to test this method tmmrw
+      //if AsyncStorage session_token exists
       AsyncStorage.getItem('session_token')
       .then((token) => {
         if (token) {
-          return;
+          //if AsyncStorage session_token exists, then navigate to roleForm
+          this.props.navigation.navigate(`roleForm`);
+
         }
         else{
+            // if AsyncStorage session_token doesn't exist, but the user is logged in. Then create a
+            // AsyncStorage session_token
             this.storeToken(newProps.session.currentUser.data.session_token);
+            this.props.navigation.navigate(`roleForm`);
         }});
 
 
-    }
 
+
+    }
+    //currentUser is null
     else{
         Alert.alert("Invalid credentials. Please try again");
     }
 
   }
 
-
+  //should institute 2-factor authentication
   render() {
     //if not signed in
     const { navigate } = this.props.navigation;
@@ -144,7 +152,7 @@ export default class EntryForm extends React.Component {
                           credentials={this.state}
                           _onPress={() => this.props.signIn({
                             email: this.state.email, password: this.state.password
-                          }).then(() => navigate('roleForm'))}></CircleButton>
+                          })}></CircleButton>
           </View>
         </View> : null}
       </View>

@@ -1,35 +1,33 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet, Text } from 'react-native';
 
 
-class roleShowPage extends Component {
-
+export default class roleShowPage extends Component {
   constructor(props) {
     super(props);
   }
 
   componentWillMount() {
-    // this.props.fetchRole(this.props.navigation.state.params.roleId);
+    this.props.fetchRole(this.props.navigation.state.params.roleId);
   }
 
   render() {
-    console.log('DEBUG');
-    console.log(this.props.navigation);
-    debugger;
-
+    console.log(this.props.role.undefined.data);
     let currentRole = (
       <View>
-        {this.props.role.title}
-        {this.props.role.location}
-        {this.props.role.start_date}
+        <Text>{this.props.role.title}</Text>
+        <Text>{this.props.role.location}</Text>
+        <Text>{this.props.role.start_date}</Text>
       </View>
     );
-
+// NEED TO FIX ROLE STATE - this.props.role.undefined.data.role to access role attributes.
     return(
       <View style={styles.showPageContainer}>
-        <ScrollView>
-          {currentRole}
-        </ScrollView>
+          <View>
+            <Text style={styles.currentRoleView}>{this.props.role.undefined.data.role.title}</Text>
+            <Text style={styles.currentRoleView}>{this.props.role.undefined.data.role.location}</Text>
+            <Text style={styles.currentRoleView}>{this.props.role.undefined.data.role.start_date}</Text>
+          </View>
       </View>
     );
   }
@@ -40,11 +38,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
+    height: '100%',
+    width: '100%'
   },
 
   currentRoleView: {
-
+    color: 'white'
   }
 });
-
-export default roleShowPage;
