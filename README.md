@@ -102,7 +102,6 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 
 #### For New User _or if changing role_
 ![role-form](https://github.com/English3000/WorkReal/blob/master/role-form.png)
-* also `Terminate` button (which prompts Review Form--no wireframe provided at present)
 
 ![project-form](https://github.com/English3000/WorkReal/blob/master/project-form.png)
 
@@ -117,6 +116,7 @@ For AJAX requests, consolidate what we can in the views via associations, arrays
 
 ### User's Page
 ![user-show](https://github.com/English3000/WorkReal/blob/master/user-show.png)
+* `Terminate` button (for role) prompts Review Form (which updates role w/ end date & review, then redirects to new RoleForm
 
 ## MVPs
 1. User Auth __[COMPLETED minus email validation]__
