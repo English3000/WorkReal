@@ -109,7 +109,12 @@ export default class EntryForm extends React.Component {
     }
     //currentUser is null
     else{
-        Alert.alert("Invalid credentials. Please try again");
+
+        newProps.errors.map( (e) => (
+          Alert.alert(e)
+        ));
+
+
     }
 
   }
