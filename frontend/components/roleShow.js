@@ -16,9 +16,9 @@ class roleShowPage extends Component {
     console.log(this.props.role.undefined.data);
     let currentRole = (
       <View>
-        <Text>{this.props.role.title}</Text>
-        <Text>{this.props.role.location}</Text>
-        <Text>{this.props.role.start_date}</Text>
+        <Text>{this.props.role.undefined.data.role.title}</Text>
+        <Text>{this.props.role.undefined.data.role.location}</Text>
+        <Text>{this.props.role.undefined.data.role.start_date}</Text>
       </View>
     );
 // NEED TO FIX ROLE STATE - this.props.role.undefined.data.role to access role attributes.
