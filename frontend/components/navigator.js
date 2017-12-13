@@ -5,7 +5,7 @@ import entryFormContainer from './entryFormContainer';
 import roleFormContainer from './roleFormContainer';
 import roleShowContainer from './roleShowContainer';
 
-const MyStackNavigator = StackNavigator({
+export default StackNavigator({
     home: {screen: entryFormContainer},
     roleForm: {screen: roleFormContainer},
     roleShow: {
@@ -14,5 +14,3 @@ const MyStackNavigator = StackNavigator({
     },
 
 });
-
-export default MyStackNavigator;
