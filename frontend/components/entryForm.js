@@ -5,7 +5,7 @@ import { Font } from 'expo';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
 import { TabNavigator } from 'react-navigation';
 
-
+const SESSION_TOKEN = 'SESSION_TOKEN';
 
 
 
@@ -71,15 +71,35 @@ export default class EntryForm extends React.Component {
 
     //Async storage now has an item called 'currentUser' with a value of token.
     //token === currentUser.session_token
-    try {
-     await AsyncStorage.setItem('session_token', token);
-   } catch (error) {
-     console.error('AsyncStorage error: ' + error.message);
-   }
 
 
+
+
+     await AsyncStorage.setItem(SESSION_TOKEN, token).then( () => {
+       return AsyncStorage.getItem(SESSION_TOKEN).then((res) => (
+         console.log(res)
+       ))
+
+    })
 
   }
+
+  // async getToken(){
+  //   debugger;
+  //   try {
+  //     let value = await AsyncStorage.getItem(SESSION_TOKEN);
+  //
+  //     if (value){
+  //
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //
+  // }
 
   componentWillReceiveProps(newProps){
 
@@ -87,23 +107,8 @@ export default class EntryForm extends React.Component {
 
     if (newProps.session.currentUser !== this.props.session.currentUser) {
 
-      //if AsyncStorage session_token exists
-      AsyncStorage.getItem('session_token')
-      .then((token) => {
-        if (token) {
-          //if AsyncStorage session_token exists, then navigate to roleForm
-          this.props.navigation.navigate(`roleForm`);
-
-        }
-        else{
-            // if AsyncStorage session_token doesn't exist, but the user is logged in. Then create a
-            // AsyncStorage session_token
             this.storeToken(newProps.session.currentUser.data.session_token);
             this.props.navigation.navigate(`roleForm`);
-        }});
-
-
-
 
     }
     //currentUser is null

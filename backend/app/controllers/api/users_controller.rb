@@ -6,6 +6,8 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       signIn(@user)
+      msg = UserMailer.welcome_email(@user)
+      msg.deliver_now
       render "api/users/show"
     else
       render json: @user.errors.full_messages, status: 422
