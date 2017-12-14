@@ -153,11 +153,28 @@ export default class EntryForm extends React.Component {
 
   render(){
     return(
-      <View>
-        <Text> Hello World </Text>
+       <View style={styles.view}>
+          <MapView style={styles.map}
+         initialRegion={{
+           latitude: 37.78825,
+           longitude: -122.4324,
+           latitudeDelta: 0.0922,
+           longitudeDelta: 0.0421,
+         }}>
 
-      </View>
+            <MapView.Marker
+              title="Here"
+              coordinate={{
+                latitude: 37.78825,
+                longitude: -122.4324
+              }} />
 
+
+         </MapView>
+
+
+
+       </View>
     )
 
   }
@@ -165,12 +182,23 @@ export default class EntryForm extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  // view: {
+  //   flex: 1,
+  //   backgroundColor: 'black',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   flexDirection: 'row'
+  // },
+
   view: {
     flex: 1,
     backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row'
   },
+
+
   header: {
     fontSize: 50,
     fontFamily: 'Amaranth',
@@ -202,5 +230,21 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
     borderRadius: 100
+  },
+  map: {
+    flex: 1,
+    width: '100%',
+    height: '100%'
+
   }
+
 });
+
+
+// <MapView
+// initialRegion={{
+//  latitude: 37.78825,
+//  longitude: -122.4324,
+//  latitudeDelta: 0.0922,
+//  longitudeDelta: 0.0421,
+// }}/>
