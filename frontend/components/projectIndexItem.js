@@ -20,8 +20,7 @@ class ProjectIndexItem extends Component {
 
 const styles = StyleSheet.create({
   projectContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     borderRadius: 5,
     borderStyle: 'solid',
     borderWidth: 1,
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
     margin: 10
   },
   projectView: {
-    color: 'green'
+    color: 'white'
   }
 });
 
