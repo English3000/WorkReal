@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text } from 'react-native';
-
+import ProjectIndexItem from './projectIndexItem';
 
 export default class roleShowPage extends Component {
   constructor(props) {
@@ -12,37 +12,73 @@ export default class roleShowPage extends Component {
   }
 
   render() {
-    console.log(this.props.role.undefined.data);
+
+// NEED TO FIX ROLE STATE - this.props.role.undefined.data.role to access role attributes.
+  if (this.props.role.undefined.data.role) {
     let currentRole = (
-      <View>
-        <Text>{this.props.role.undefined.data.role.title}</Text>
-        <Text>{this.props.role.undefined.data.role.location}</Text>
-        <Text>{this.props.role.undefined.data.role.start_date}</Text>
+      <View style={styles.roleContainer}>
+        <Text style={styles.currentRoleView}>Title: {this.props.role.undefined.data.role.title}</Text>
+        <Text style={styles.currentRoleView}>Location: {this.props.role.undefined.data.role.location}</Text>
+        <Text style={styles.currentRoleView}>Started: {this.props.role.undefined.data.role.start_date}</Text>
       </View>
     );
-// NEED TO FIX ROLE STATE - this.props.role.undefined.data.role to access role attributes.
+
+
     return(
       <View style={styles.showPageContainer}>
-          <View>
-            <Text style={styles.currentRoleView}>{this.props.role.undefined.data.role.title}</Text>
-            <Text style={styles.currentRoleView}>{this.props.role.undefined.data.role.location}</Text>
-            <Text style={styles.currentRoleView}>{this.props.role.undefined.data.role.start_date}</Text>
-          </View>
+        <Text style={styles.sectionHeader}>Current Role:</Text>
+        {currentRole}
+        <Text style={styles.sectionHeader}>Projects:</Text>
+        {this.props.role.undefined.data.projects.map(project => <ProjectIndexItem
+          key={`project-${project.id}`}
+          project={project} />
+        )}
       </View>
     );
+  } else {
+    return null;
+  }
   }
 }
 
 const styles = StyleSheet.create({
   showPageContainer: {
     backgroundColor: 'black',
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    alignItems: 'flex-start',
     height: '100%',
     width: '100%'
   },
-
+  sectionHeader: {
+    color: 'white',
+    fontSize: 30
+  },
+  roleContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: 'white',
+    padding: 10,
+    width: '80%',
+    margin: 10
+  },
   currentRoleView: {
     color: 'white'
+  },
+  projectContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: 'white',
+    padding: 10,
+    width: '80%',
+    margin: 10
+  },
+  projectView: {
+    color: 'green'
   }
 });

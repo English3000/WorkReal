@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TextInput, Button, Alert,
-         ActivityIndicator, TouchableOpacity,AsyncStorage } from 'react-native';
+         ActivityIndicator, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Font } from 'expo';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
 import { TabNavigator } from 'react-navigation';
@@ -110,9 +110,8 @@ export default class EntryForm extends React.Component {
 
 
   componentWillReceiveProps(newProps){
-
     //if currentUser changed
-
+    console.log(AsyncStorage.getItem('session_token'))
     if (newProps.session.currentUser !== this.props.session.currentUser) {
       //When user first logs in store their session_token in AsyncStorage
       // And then redirect them to roleForm
