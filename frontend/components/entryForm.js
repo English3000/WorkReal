@@ -52,7 +52,11 @@ export default class EntryForm extends React.Component {
     // (this.getToken() === true) ? this.props.navigation.navigate(`roleForm`): null;
     if(this.props.session.currentUser !== null){
       console.log("Hopefully not here");
+<<<<<<< HEAD
+      AsyncStorage.getItem(SESSION_TOKEN).then((res) => console.log(res));
+=======
       AsyncStorage.getItem(SESSION_TOKEN).then((res) => console.log("HERE",res));
+>>>>>>> c4e5c77db2a5a920932d98a4ecb5e14b3101ded3
     }
   }
 
@@ -84,7 +88,7 @@ export default class EntryForm extends React.Component {
     await AsyncStorage.setItem(SESSION_TOKEN, token).then( () => {
 
        return AsyncStorage.getItem(SESSION_TOKEN).then((res) => (
-         Alert.alert(res)
+         Alert.alert("HERE",res)
        ))
 
     })

@@ -42,7 +42,11 @@ export default class RoleForm extends Component {
                   confirmBtnText="Confirm"
                   cancelBtnText="Cancel"
                   showIcon={false}
-                  customStyles={{dateInput:{borderWidth: 0}}}
+                  customStyles={{
+                    dateInput:{borderWidth: 0},
+                    placeholderText: {color: 'white'},
+                    dateText: {color: 'lightgray'}
+                  }}
                   style={[styles.formInputs, {width: '50%'}]}
                   onDateChange={start_date => this.setState({start_date})} />
           <TouchableOpacity
