@@ -103,27 +103,17 @@ export default class EntryForm extends React.Component {
 
 
   componentWillReceiveProps(newProps){
-    //if currentUser changed
     // console.log(AsyncStorage.getItem('session_token'))
-
+    //if currentUser changed
     if (newProps.session.currentUser !== this.props.session.currentUser) {
       //When user first logs in store their session_token in AsyncStorage
       // And then redirect them to roleForm
             this.storeToken(newProps.session.currentUser.session_token);
             this.props.navigation.navigate(`roleForm`);
 
+    } else { //currentUser is null
+      Alert.alert(newProps.errors.join('\n'));
     }
-
-    //currentUser is null
-    else{
-
-        newProps.errors.map( (e) => (
-          Alert.alert(e)
-        ));
-
-
-    }
-
   }
 
   //should institute 2-factor authentication
