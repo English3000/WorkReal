@@ -6,8 +6,15 @@ export default class SearchMap extends Component{
   constructor(props){
     super(props);
     this.state = {
-      mapLoaded: false
+      mapLoaded: false,
+      region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+      }
     }
+
   }
 
   componentWillMount(){
@@ -17,7 +24,19 @@ export default class SearchMap extends Component{
   render(){
     return(
     <View style={styles.view}>
-      <Text> Inside SearchMap </Text>
+    <MapView style={styles.map}
+          region={this.state.region}>
+
+            <MapView.Marker
+              title="Here"
+              coordinate={{
+                latitude: 37.78825,
+                longitude: -122.4324
+              }} />
+
+
+         </MapView>
+
     </View>
     );
   }
