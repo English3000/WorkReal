@@ -12,14 +12,15 @@ export default class roleShowPage extends Component {
   }
 
   render() {
+    const {roles, currentUser} = this.props;
     console.log(this.props);
 // NEED TO FIX ROLE STATE - this.props.role.undefined.data.role to access role attributes.
-  if (Object.keys(this.props.roles).length > 0) {
+  if (Object.keys(roles).length > 0) {
     let currentRole = (
       <View style={styles.roleContainer}>
-        <Text style={styles.currentRoleView}>Title: {this.props.roles[this.props.currentUser.role_ids[0]].title}</Text>
-        <Text style={styles.currentRoleView}>Location: {this.props.roles[this.props.currentUser.role_ids[0]].location}</Text>
-        <Text style={styles.currentRoleView}>Started: {this.props.roles[this.props.currentUser.role_ids[0]].start_date}</Text>
+        <Text style={styles.currentRoleView}>Title: {roles[currentUser.role_ids[0]].title}</Text>
+        <Text style={styles.currentRoleView}>Location: {roles[currentUser.role_ids[0]].location}</Text>
+        <Text style={styles.currentRoleView}>Started: {roles[currentUser.role_ids[0]].start_date}</Text>
       </View>
     );
 
@@ -31,10 +32,10 @@ export default class roleShowPage extends Component {
         </View>
         <Text style={styles.sectionHeader}>Projects:</Text>
         <View style={styles.componentContainer}>
-          {this.props.roles.project_ids.map(projectId => <ProjectIndexItem
+          {/* {roles[currentUser.role_ids[0]].project_ids.map(projectId => <ProjectIndexItem
             key={`project-${projectId}`}
-            project={this.props.roles.projects[projectId]} />
-          )}
+            project={roles.projects[projectId]} />
+          )} */}
         </View>
       </View>
     );

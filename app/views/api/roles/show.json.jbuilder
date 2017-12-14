@@ -28,7 +28,7 @@ json.set! :projects do
       json.extract! project, :role_id, :project, :location, :start_date,
                              :end_date, :review, :rating
       json.real_ids do
-        json.array! project.real_ids
+        json.array! project.reals.pluck(:id)
       end
     end
   end
