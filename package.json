@@ -28,7 +28,6 @@
     "react-native": "0.50.3",
     "react-native-datepicker": "^1.6.0",
     "react-native-fontawesome": "^5.7.0",
-    "react-native-keyboard-aware-scroll-view": "^0.4.1",
     "react-navigation": "^1.0.0-beta.21",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"

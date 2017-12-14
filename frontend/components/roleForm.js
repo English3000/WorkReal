@@ -1,45 +1,12 @@
 import React, {Component} from 'react';
-import { KeyboardAvoidingView, View, ScrollView, Text, TextInput, TouchableOpacity, StyleSheet, Button, Animated, Keyboard } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
 export default class RoleForm extends Component {
   constructor(props) {
     super(props);
     this.state = { /* user_id: this.props.currentUserId,*/ title: '', industry: '', location: '',
-                   start_date: '', project: '', keyboardPadding: 0 };
-    this.keyboardWillShow = this.keyboardWillShow.bind(this);
-    this.keyboardDidShow = this.keyboardDidShow.bind(this);
-    this.keyboardWillHide = this.keyboardWillHide.bind(this);
-    this.keyboardDidHide = this.keyboardDidHide.bind(this);
-  }
-
-  //keyboard mount/unmount design from https://medium.freecodecamp.org/how-to-make-your-react-native-app-respond-gracefully-when-the-keyboard-pops-up-7442c1535580
-  componentWillMount() {
-    this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow);
-    this.keyboardWillHideSub = Keyboard.addListener('keyboardWillHide', this.keyboardWillHide);
-    this.keyboardDidShowSub = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow);
-    this.keyboardDidHideSub = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide);
-  }
-
-  componentWillUnmount() {
-    this.keyboardWillShowSub.remove();
-    this.keyboardDidShowSub.remove();
-  }
-
-  keyboardWillShow(event) {
-    this.setState({ keyboardPadding: '25%' });
-  }
-
-  keyboardDidShow(event) {
-    this.setState({ keyboardPadding: '30%' });
-  }
-
-  keyboardWillHide(event) {
-    this.setState({ keyboardPadding: 0 });
-  }
-
-  keyboardDidHide(event) {
-    this.setState({ keyboardPadding: 0 });
+                   start_date: '', project: '' };
   }
 
   render() {
@@ -88,13 +55,12 @@ export default class RoleForm extends Component {
               title: this.state.title, industry: this.state.industry,
               location: this.state.location, start_date: this.state.start_date
             }).then(role => this.props.createProject({
-              role_id: role.id, project: this.state.project,
+              role_id: role.data.id, project: this.state.project,
               location: this.state.location, start_date: this.state.start_date
-            })).then(project => navigate('roleShow', {roleId: project.role_id}))}>
+            })).then(project => navigate('roleShow', {roleId: project.data.role_id}))}>
               <Text style={{fontSize: 20}}>Confirm</Text>
           </TouchableOpacity>
         </View>
-        <View style={{height: this.state.keyboardPadding}}></View>
       </View>
     );
   }

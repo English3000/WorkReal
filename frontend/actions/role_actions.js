@@ -27,9 +27,8 @@ export const fetchRole = roleId => dispatch => Api.fetchRole(roleId).then(
 
 export const createRole = role => dispatch => Api.createRole(role).then(
   newRole => {
-    console.log(newRole);
-    dispatch(receiveRole(newRole.data));
-    return newRole.data;
+    dispatch(receiveRole(newRole));
+    return newRole;
   }, err => dispatch(receiveErrors(err.response.data))
 );
 
@@ -49,7 +48,7 @@ export const deleteFollow = (id, roleId) => async (dispatch) => dispatch(
 
 export const createProject = project => dispatch => Api.createProject(project).then(
   newProject => {
-    dispatch(receiveProject(newProject.data));
+    dispatch(receiveProject(newProject));
     return newProject;
   }, err => dispatch(receiveErrors(err.response.data))
 );
