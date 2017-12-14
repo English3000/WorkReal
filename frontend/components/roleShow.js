@@ -15,7 +15,7 @@ export default class roleShowPage extends Component {
   render() {
 
 // NEED TO FIX ROLE STATE - this.props.role.undefined.data.role to access role attributes.
-  if (this.props.roles.undefined.data.roles) {
+  if (this.props.roles.undefined.data.role) {
     let currentRole = (
 
       <View style={styles.roleContainer}>
