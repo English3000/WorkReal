@@ -27,12 +27,16 @@ export default class roleShowPage extends Component {
     return(
       <View style={styles.showPageContainer}>
         <Text style={styles.sectionHeader}>Current Role:</Text>
-        {currentRole}
+        <View style={styles.componentContainer}>
+          {currentRole}
+        </View>
         <Text style={styles.sectionHeader}>Projects:</Text>
-        {this.props.role.undefined.data.projects.map(project => <ProjectIndexItem
-          key={`project-${project.id}`}
-          project={project} />
-        )}
+        <View style={styles.componentContainer}>
+          {this.props.role.undefined.data.projects.map(project => <ProjectIndexItem
+            key={`project-${project.id}`}
+            project={project} />
+          )}
+        </View>
       </View>
     );
   } else {
@@ -45,8 +49,13 @@ const styles = StyleSheet.create({
   showPageContainer: {
     backgroundColor: 'black',
     // justifyContent: 'center',
-    alignItems: 'flex-start',
+    // alignItems: 'flex-start',
     height: '100%',
+    width: '100%'
+  },
+  componentContainer: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     width: '100%'
   },
   sectionHeader: {
@@ -54,8 +63,7 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   roleContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     borderRadius: 5,
     borderStyle: 'solid',
     borderWidth: 1,
@@ -65,20 +73,7 @@ const styles = StyleSheet.create({
     margin: 10
   },
   currentRoleView: {
-    color: 'white'
+    color: 'white',
+    justifyContent: 'flex-start',
   },
-  projectContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: 'white',
-    padding: 10,
-    width: '80%',
-    margin: 10
-  },
-  projectView: {
-    color: 'green'
-  }
 });
