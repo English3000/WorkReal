@@ -3,7 +3,7 @@ import RoleShow from './roleShow';
 import { fetchRole } from '../actions/role_actions';
 
 const mapStateToProps = (state, props) => ({
-  role: state.role
+  roles: state.roles
 });
 
 const mapDispatchToProps = dispatch => ({
