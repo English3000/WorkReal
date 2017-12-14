@@ -14,9 +14,15 @@
 json.set! :role do
   json.extract! @role, :id, :title, :location, :start_date, :end_date, :industry, :review, :user_id
 end
+
 json.set! :projects do
   json.array! @role.projects do |project|
-    json.extract! project, :role_id, :project, :location,
+    json.extract! project, :id, :role_id, :project, :location,
                                     :start_date, :end_date, :review, :rating
+    json.set! :reals do
+      json.array! project.reals do |real|
+        json.extract! real, :id, :role_id, :project_id, :body
+      end
+    end
   end
 end

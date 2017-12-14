@@ -7,13 +7,29 @@ export default class roleShowPage extends Component {
     super(props);
   }
 
-  componentWillMount() {
-    debugger;
+  componentWillMount(nextProps) {
     this.props.fetchRole(this.props.navigation.state.params.roleId);
   }
 
-  render() {
+  componentWillReceiveProps(nextProps) {
+    nextProps.fetchRole(nextProps.navigation.state.params.roleId);
+    for(let i = 0; i < nextProps.roles.undefined.data.projects.length; i++){
+      if (this.props.roles.undefined.data.projects !== undefined) {
+        if (this.props.roles.undefined.data.projects[i]) {
+          if ((this.props.roles.undefined.data.projects[i].id === nextProps.roles.undefined.data.projects[i].id)
+          && (this.props.roles.undefined.data.projects[i].reals.length !== nextProps.roles.undefined.data.projects[i].reals.length)) {
+            nextProps.fetchRole(nextProps.navigation.state.params.roleId);
+          }
+        }
+      } else {
+        nextProps.fetchRole(nextProps.navigation.state.params.roleId);
+      }
+    }
+  }
 
+
+  render() {
+    const { navigate } = this.props.navigation;
 // NEED TO FIX ROLE STATE - this.props.role.undefined.data.role to access role attributes.
   if (this.props.roles.undefined.data.role) {
     let currentRole = (
@@ -35,7 +51,11 @@ export default class roleShowPage extends Component {
         <View style={styles.componentContainer}>
           {this.props.roles.undefined.data.projects.map(project => <ProjectIndexItem
             key={`project-${project.id}`}
-            project={project} />
+            project={project}
+            reals={project.reals}
+            navigate={navigate}
+            fetchRole={this.props.fetchRole}
+            createReal={this.props.createReal} />
           )}
         </View>
       </View>
