@@ -53,7 +53,7 @@ export default class EntryForm extends React.Component {
 
   }
 
-  async componentDidMount() {
+  async componentWillMount() {
     await Font.loadAsync({
       'Amaranth': require('../assets/fonts/Amaranth-Regular.ttf'),
       'FontAwesome': require('../assets/fonts/FontAwesome.otf'),
@@ -61,30 +61,22 @@ export default class EntryForm extends React.Component {
 
     this.setState({ fontLoaded: true });
 
-  }
+    // (this.getToken() === true) ? this.props.navigation.navigate(`roleForm`): null;
+    if(this.props.session.currentUser !== null){
+      conole.log("Hopefully not here");
+      AsyncStorage.getItem(SESSION_TOKEN).then((res) => console.log("HERE",res));
+    }
 
 
 
-
-  async storeToken(token){
-    //Write Async storage here
-
-    //Async storage now has an item called 'currentUser' with a value of token.
-    //token === currentUser.session_token
-    await AsyncStorage.setItem(SESSION_TOKEN, token).then( () => {
-       return AsyncStorage.getItem(SESSION_TOKEN).then((res) => (
-         console.log(res)
-       ))
-
-    })
-
+    //  console.log(result);
   }
 
   // async getToken(){
-  //   debugger;
-  //   try {
-  //     let value = await AsyncStorage.getItem(SESSION_TOKEN);
   //
+  //   try {
+  //     let value = await AsyncStorage.getItem(SESSION_TOKEN)
+  //     console.log(value);
   //     if (value){
   //
   //       return true;
@@ -96,6 +88,26 @@ export default class EntryForm extends React.Component {
   //   }
   //
   // }
+
+
+
+  async storeToken(token){
+    //Write Async storage here
+
+    //Async storage now has an item called 'currentUser' with a value of token.
+    //token === currentUser.session_token
+
+    await AsyncStorage.setItem(SESSION_TOKEN, token).then( () => {
+        debugger;
+       return AsyncStorage.getItem(SESSION_TOKEN).then((res) => (
+         Alert.alert(res)
+       ))
+
+    })
+
+  }
+
+
 
   componentWillReceiveProps(newProps){
 
@@ -123,7 +135,7 @@ export default class EntryForm extends React.Component {
 
   //should institute 2-factor authentication
   render() {
-    
+
     const { navigate } = this.props.navigation;
     return (
 
