@@ -7,7 +7,7 @@ import nav from './nav_reducer';
 
 
 export default combineReducers({
-  role: roleReducer,
+  roles: roleReducer,
   reals: realsReducer,
   session: sessionsReducer,
   errors: errorsReducer,
