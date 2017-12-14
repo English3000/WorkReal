@@ -12,11 +12,24 @@
 # end
 
 json.set! :role do
-  json.extract! @role, :id, :title, :location, :start_date, :end_date, :industry, :review, :user_id
+  json.extract! @role, :id, :user_id, :title, :location, :start_date,
+                       :end_date, :industry, :review
+  json.project_ids do
+    json.array! @role.project_ids
+  end
+  json.real_ids do
+    json.array! @role.real_ids
+  end
 end
+
 json.set! :projects do
-  json.array! @role.projects do |project|
-    json.extract! project, :role_id, :project, :location,
-                                    :start_date, :end_date, :review, :rating
+  @role.projects.each do |project|
+    json.set! project.id do
+      json.extract! project, :role_id, :project, :location, :start_date,
+                             :end_date, :review, :rating
+      json.real_ids do
+        json.array! project.real_ids
+      end
+    end
   end
 end
