@@ -6,10 +6,13 @@ import roleFormContainer from './roleFormContainer';
 import roleShowContainer from './roleShowContainer';
 import realContainer from './realContainer';
 import realFormContainer from './realFormContainer';
+import SearchMapContainer from './searchMapContainer';
+
 
 
 export default StackNavigator({
-    home: {screen: entryFormContainer},
+    // home: {screen: entryFormContainer},
+    home: {screen: SearchMapContainer},
     roleForm: {screen: roleFormContainer},
     roleShow: {
       path: 'role/roleId',
