@@ -7,7 +7,12 @@ export default class roleShowPage extends Component {
     super(props);
   }
 
+<<<<<<< HEAD
   componentWillMount(nextProps) {
+=======
+  componentWillMount() {
+    // debugger;
+>>>>>>> afee45f05e41d8d99d1e8eefea2504184eaf1a32
     this.props.fetchRole(this.props.navigation.state.params.roleId);
   }
 
@@ -49,6 +54,7 @@ export default class roleShowPage extends Component {
         </View>
         <Text style={styles.sectionHeader}>Projects:</Text>
         <View style={styles.componentContainer}>
+<<<<<<< HEAD
           {this.props.roles.undefined.data.projects.map(project => <ProjectIndexItem
             key={`project-${project.id}`}
             project={project}
@@ -56,6 +62,11 @@ export default class roleShowPage extends Component {
             navigate={navigate}
             fetchRole={this.props.fetchRole}
             createReal={this.props.createReal} />
+=======
+          {this.props.roles.undefined.data.role.project_ids.map(projectId => <ProjectIndexItem
+            key={`project-${projectId}`}
+            project={this.props.roles.undefined.data.projects[projectId]} />
+>>>>>>> afee45f05e41d8d99d1e8eefea2504184eaf1a32
           )}
         </View>
       </View>

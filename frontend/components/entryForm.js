@@ -7,13 +7,10 @@ import { TabNavigator } from 'react-navigation';
 
 const SESSION_TOKEN = 'SESSION_TOKEN';
 
-
-
 class CircleButton extends React.Component {
   constructor(props){
     super(props);
     this.handlePress = this.handlePress.bind(this);
-
   }
 
   handlePress(){
@@ -21,10 +18,6 @@ class CircleButton extends React.Component {
     //sign in/sign up the user and then access the state/store for updated currentUser and session_token
     processForm({email: credentials.email,password: credentials.password})
   }
-
-
-
-
 
   render() {
     const {title, style, _onPress} = this.props;
@@ -46,7 +39,6 @@ export default class EntryForm extends React.Component {
       email: '',
       password: ''
     };
-
   }
 
   async componentDidMount() {
@@ -62,7 +54,6 @@ export default class EntryForm extends React.Component {
       console.log("Hopefully not here");
       AsyncStorage.getItem(SESSION_TOKEN).then((res) => console.log("HERE",res));
     }
-
   }
 
   // async getToken(){
@@ -93,7 +84,7 @@ export default class EntryForm extends React.Component {
     await AsyncStorage.setItem(SESSION_TOKEN, token).then( () => {
 
        return AsyncStorage.getItem(SESSION_TOKEN).then((res) => (
-         Alert.alert(res)
+         Alert.alert("HERE",res)
        ))
 
     })
