@@ -53,7 +53,7 @@ export default class EntryForm extends React.Component {
 
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     await Font.loadAsync({
       'Amaranth': require('../assets/fonts/Amaranth-Regular.ttf'),
       'FontAwesome': require('../assets/fonts/FontAwesome.otf'),
@@ -67,9 +67,6 @@ export default class EntryForm extends React.Component {
       AsyncStorage.getItem(SESSION_TOKEN).then((res) => console.log("HERE",res));
     }
 
-
-
-    //  console.log(result);
   }
 
   // async getToken(){
@@ -98,7 +95,7 @@ export default class EntryForm extends React.Component {
     //token === currentUser.session_token
 
     await AsyncStorage.setItem(SESSION_TOKEN, token).then( () => {
-        debugger;
+
        return AsyncStorage.getItem(SESSION_TOKEN).then((res) => (
          Alert.alert(res)
        ))
@@ -111,7 +108,8 @@ export default class EntryForm extends React.Component {
 
   componentWillReceiveProps(newProps){
     //if currentUser changed
-    console.log(AsyncStorage.getItem('session_token'))
+    // console.log(AsyncStorage.getItem('session_token'))
+
     if (newProps.session.currentUser !== this.props.session.currentUser) {
       //When user first logs in store their session_token in AsyncStorage
       // And then redirect them to roleForm
