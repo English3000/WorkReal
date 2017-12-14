@@ -8,7 +8,7 @@ export default class roleShowPage extends Component {
   }
 
   componentWillMount() {
-    debugger;
+    // debugger;
     this.props.fetchRole(this.props.navigation.state.params.roleId);
   }
 
