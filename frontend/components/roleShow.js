@@ -33,9 +33,9 @@ export default class roleShowPage extends Component {
         </View>
         <Text style={styles.sectionHeader}>Projects:</Text>
         <View style={styles.componentContainer}>
-          {this.props.roles.undefined.data.projects.map(project => <ProjectIndexItem
-            key={`project-${project.id}`}
-            project={project} />
+          {this.props.roles.undefined.data.role.project_ids.map(projectId => <ProjectIndexItem
+            key={`project-${projectId}`}
+            project={this.props.roles.undefined.data.projects[projectId]} />
           )}
         </View>
       </View>
