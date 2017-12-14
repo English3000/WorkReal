@@ -8,11 +8,11 @@ export const receiveCurrentUser = currentUser => ({type: RECEIVE_CURRENT_USER, c
 export const receiveErrors = errors => ({type: RECEIVE_ERRORS, errors});
 
 export const signUp = credentials => dispatch => Api.signUp(credentials).then(
-  user => dispatch(receiveCurrentUser(user)),
+  user => dispatch(receiveCurrentUser(user.data)),
   err => dispatch(receiveErrors(err.response.data))
 );
 export const signIn = credentials => dispatch => Api.signIn(credentials).then(
-  user => dispatch(receiveCurrentUser(user)),
+  user => dispatch(receiveCurrentUser(user.data)),
   err => dispatch(receiveErrors(err.response.data))
 );
 export const signOut = () => async (dispatch) => dispatch(

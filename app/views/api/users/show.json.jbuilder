@@ -1,21 +1,9 @@
 json.extract! @user, :id, :email, :session_token
 
-if @user.roles.count > 0
-  json.roles do
-    @user.roles.each do |role|
-      json.set! role.id do
-        json.extract! role, :id, :user_id, :title, :industry, :location, :review, :start_date, :end_date
-      end
-    end
-  end
-
-  else
-    json.roles Object
-
+json.role_ids do
+  json.array! @user.role_ids
 end
 
-
-# has_many :roles
-# has_many :projects
-# has_many :truths
-# has_many :follows
+json.follow_ids do
+  json.array! @user.follow_ids
+end

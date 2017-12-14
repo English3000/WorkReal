@@ -16,14 +16,10 @@ class CircleButton extends React.Component {
 
   }
 
-
-
   handlePress(){
     const{session,processForm,credentials} = this.props;
-
     //sign in/sign up the user and then access the state/store for updated currentUser and session_token
     processForm({email: credentials.email,password: credentials.password})
-
   }
 
 
@@ -64,7 +60,11 @@ export default class EntryForm extends React.Component {
     // (this.getToken() === true) ? this.props.navigation.navigate(`roleForm`): null;
     if(this.props.session.currentUser !== null){
       console.log("Hopefully not here");
+<<<<<<< HEAD
       AsyncStorage.getItem(SESSION_TOKEN).then((res) => console.log(res));
+=======
+      AsyncStorage.getItem(SESSION_TOKEN).then((res) => console.log("HERE",res));
+>>>>>>> c4e5c77db2a5a920932d98a4ecb5e14b3101ded3
     }
 
   }
@@ -107,27 +107,17 @@ export default class EntryForm extends React.Component {
 
 
   componentWillReceiveProps(newProps){
-    //if currentUser changed
     // console.log(AsyncStorage.getItem('session_token'))
-
+    //if currentUser changed
     if (newProps.session.currentUser !== this.props.session.currentUser) {
       //When user first logs in store their session_token in AsyncStorage
       // And then redirect them to roleForm
-            this.storeToken(newProps.session.currentUser.data.session_token);
+            this.storeToken(newProps.session.currentUser.session_token);
             this.props.navigation.navigate(`roleForm`);
 
+    } else { //currentUser is null
+      Alert.alert('', `${newProps.errors.join('.\n\n')}.`);
     }
-
-    //currentUser is null
-    else{
-
-        newProps.errors.map( (e) => (
-          Alert.alert(e)
-        ));
-
-
-    }
-
   }
 
   //should institute 2-factor authentication

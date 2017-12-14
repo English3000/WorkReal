@@ -7,8 +7,6 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :roles
-  has_many :projects
-  has_many :truths
   has_many :follows
 
   def self.find_by_credentials(email,password)
