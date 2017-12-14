@@ -15,10 +15,10 @@ export default StackNavigator({
       path: 'role/roleId',
       screen: roleShowContainer
     },
-    realForm: {
-      path: 'real/projectId',
-      screen: realFormContainer
-    },
+    // realForm: {
+    //   path: 'real/projectId',
+    //   screen: realFormContainer
+    // },
     projectReals: {
       path: 'projectReals/projectId',
       screen: realContainer

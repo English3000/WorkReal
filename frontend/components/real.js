@@ -19,7 +19,7 @@ export default class Real extends React.Component {
   render() {
     const {role, real, project, createTruth, destroyTruth} = this.props;
     //should be able to edit & delete own reals IF currentRole matches
-    return ({this.state.fontLoaded ? <View>
+    return (this.state.fontLoaded ? <View>
       <View>
         <Text>
           <Text style={{fontWeight: 'bold'}}>{role.title}</Text> in {role.location}
@@ -31,6 +31,6 @@ export default class Real extends React.Component {
       {/* user state should include liked_reals--an array of real_ids;
           element to render based on whether currentUser has truthed this real*/}
       <FontAwesome onPress={() => createTruth(real)}>{Icons.star}</FontAwesome>
-    </View> : null});
+    </View> : null);
   }
 }
