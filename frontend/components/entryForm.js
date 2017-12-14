@@ -112,7 +112,7 @@ export default class EntryForm extends React.Component {
             this.props.navigation.navigate(`roleForm`);
 
     } else { //currentUser is null
-      Alert.alert(newProps.errors.join('\n'));
+      Alert.alert('', `${newProps.errors.join('.\n\n')}.`);
     }
   }
 
