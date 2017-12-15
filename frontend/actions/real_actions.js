@@ -25,9 +25,11 @@ export const createReal = real => dispatch => Api.createReal(real).then(
   newReal => dispatch(receiveReal(newReal.data)),
   err => dispatch(receiveErrors(err.response.data))
 );
+
 export const updateReal = real => async (dispatch) => dispatch(
   patchReal(await Api.updateReal(real).data)
 );
+
 export const deleteReal = id => async (dispatch) => dispatch(
   removeReal(await Api.deleteReal(id).data)
 );

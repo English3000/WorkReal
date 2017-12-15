@@ -1,1 +1,1 @@
-json.partial! 'api/reals/real', real: real
+json.partial! 'api/reals/real', real: @real

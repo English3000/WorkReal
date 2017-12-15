@@ -20,3 +20,9 @@ json.projects do
     end
   end
 end
+# @role.projects.each do |project|
+#   json.set! project.id do
+#     json.extract! project, :role_id, :project, :location, :start_date,
+#                            :end_date, :review, :rating
+#     json.real_ids do
+#       json.array! project.real_ids
