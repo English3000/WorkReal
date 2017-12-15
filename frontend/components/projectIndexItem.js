@@ -11,9 +11,11 @@ export default class ProjectIndexItem extends Component {
   render() {
     const { project } = this.props;
     return(<View style={styles.projectContainer}>
-      <Text style={styles.projectView}>Project: {project.project}</Text>
-      <Text style={styles.projectView}>Location: {project.location}</Text>
-      <Text style={styles.projectView}>Started: {project.start_date}</Text>
+      <Text>
+        <Text style={styles.projectView}>Project: {project.project}</Text>
+        <Text style={styles.projectView}>Location: {project.location}</Text>
+        <Text style={styles.projectView}>Started: {project.start_date}</Text>
+      </Text>
     </View>);
 
   }
@@ -30,7 +32,7 @@ const styles = StyleSheet.create({
     width: '100%',
     margin: 10
   },
-  projectText: {
+  projectView: {
     color: 'white'
   },
   realContainer: {
