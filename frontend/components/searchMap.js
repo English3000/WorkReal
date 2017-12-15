@@ -41,7 +41,7 @@ export default class SearchMap extends Component{
 
     }
 
-    // region={this.state.region}
+    
   render(){
     return(
     <View style={styles.view}>
@@ -55,8 +55,22 @@ export default class SearchMap extends Component{
               coordinate={{
                 latitude: this.state.region.latitude,
                 longitude: this.state.region.longitude
-              }} />
+              }}
+              onMarkerPress={() => (
+
+                this.setState({
+                  region: {
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                  }
+                })
+
+
+              )} />
           }
+
 
 
 
