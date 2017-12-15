@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text } from 'react-native';
 import ProjectIndexItem from './projectIndexItem';
-import Real from './real';
+import RealContainer from './realContainer';
 
 export default class roleShowPage extends Component {
   constructor(props) {
@@ -32,7 +32,8 @@ export default class roleShowPage extends Component {
                               project={work.projects[projectId]} />
 
             {work.projects[projectId].real_ids.map(realId =>
-              <Real key={`real-${realId}`} real={reals.by_id[realId]} />
+              <RealContainer key={`real-${realId}`} project={work.projects[projectId]}
+                role={currentRole} real={reals.by_id[realId]} />
             )}
           </View>)}
         </View>

@@ -8,13 +8,13 @@ const _defaultState = {
   by_id: {}
 };
 
-export default (state = {}, action) => {
+export default (state = _defaultState, action) => {
   Object.freeze(state);
   let newState = merge({}, state);
 
   switch (action.type) {
     case RECEIVE_REALS:
-      return action.reals;
+      return merge(newState, action.reals);
     case RECEIVE_REAL:
       newState.all_ids.unshift(action.real.id);
       newState.by_id[action.real.id] = action.real;

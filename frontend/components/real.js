@@ -24,7 +24,7 @@ export default class Real extends React.Component {
         <Text>
           <Text style={{fontWeight: 'bold'}}>{role.title}</Text> in {role.location}
         </Text>
-        {project.name}
+        {project.project}
       </View>
 
       <Text>{real.body}</Text>
