@@ -13,7 +13,12 @@ export default class NavBar extends Component {
 
   }
 
-  
+  handlePress(e,query){
+      e.preventDefault();
+      this.setState({query: e.target.value });
+  }
+
+
 
   render(){
     console.log(this.state.query);
@@ -36,6 +41,7 @@ export default class NavBar extends Component {
 
 }
 
+// onChangeText={(text) => this.setState({ query: text })}
 const styles = StyleSheet.create({
   view: {
     flex: 1,
