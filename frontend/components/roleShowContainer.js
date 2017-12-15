@@ -2,9 +2,10 @@ import {connect} from 'react-redux';
 import RoleShow from './roleShow';
 import { fetchRole } from '../actions/role_actions';
 
-const mapStateToProps = ({ session, roles }) => ({
-  currentUser: session.currentUser,
-  roles //will soon be work.roles
+const mapStateToProps = ({ work, reals, navigation }) => ({
+  work,
+  reals,
+  navigation
 });
 
 const mapDispatchToProps = dispatch => ({

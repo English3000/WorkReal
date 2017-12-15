@@ -15,7 +15,7 @@ class Api::RolesController < ApplicationController
     @role = Role.new(role_params)
     @role.user_id = current_user.id
     if @role.save
-      render json: @role
+      render :create
     else
       render json: @role.errors.full_messages, status: 404
     end

@@ -7,9 +7,9 @@ export const FOLLOW = 'FOLLOW';
 export const UNFOLLOW = 'UNFOLLOW';
 export const RECEIVE_PROJECT = 'RECEIVE PROJECT';
 
-export const receiveRoles = roles => ({type: RECEIVE_ROLES, roles});
+export const receiveRoles = work => ({type: RECEIVE_ROLES, work});
 export const receiveRole = role => ({type: RECEIVE_ROLE, role });
-export const patchRole = role => ({type: UPDATE_ROLE, role});
+export const patchRole = work => ({type: UPDATE_ROLE, work});
 
 export const receiveFollow = details => ({type: FOLLOW, details});
 export const removeFollow = details => ({type: UNFOLLOW, details});
@@ -17,26 +17,26 @@ export const removeFollow = details => ({type: UNFOLLOW, details});
 export const receiveProject = project => ({type: RECEIVE_PROJECT, project});
 
 export const fetchRoles = () => dispatch => Api.fetchRoles().then(
-  roles => dispatch(receiveRoles(roles)),
+  work => dispatch(receiveRoles(work.data)),
   err => dispatch(receiveErrors(err.response.data))
 );
 export const fetchRole = roleId => dispatch => Api.fetchRole(roleId).then(
-  role => dispatch(receiveRole(role)),
+  work => dispatch(receiveRole(work.data)),
   err => dispatch(receiveErrors(err.response.data))
 );
 
 export const createRole = role => dispatch => Api.createRole(role).then(
-  newRole => {
-    console.log(newRole);
-    dispatch(receiveRole(newRole.data));
-    return newRole.data;
+  role => {
+    console.log(role);
+    dispatch(receiveRole(role.data));
+    return role.data;
   }, err => dispatch(receiveErrors(err.response.data))
 );
 
 //needs to update role w/o overwriting assoc'd data (past projects & reals)
 //risk of currentRole's location falling out of sync w/ currentProject's
 export const updateRole = role => dispatch => Api.updateRole(role).then(
-  newRole => dispatch(patchRole(newRole)),
+  work => dispatch(patchRole(work.data)),
   err => dispatch(receiveErrors(err.response.data))
 );
 
@@ -50,6 +50,6 @@ export const deleteFollow = (id, roleId) => async (dispatch) => dispatch(
 export const createProject = project => dispatch => Api.createProject(project).then(
   newProject => {
     dispatch(receiveProject(newProject.data));
-    return newProject;
+    return newProject.data;
   }, err => dispatch(receiveErrors(err.response.data))
 );

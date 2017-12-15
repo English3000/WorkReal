@@ -1,47 +1,45 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text } from 'react-native';
 import ProjectIndexItem from './projectIndexItem';
+import Real from './real';
 
 export default class roleShowPage extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentWillMount() {
-    this.props.fetchRole(this.props.navigation.state.params.roleId);
-  }
-
   render() {
-    const {roles, currentUser} = this.props;
-    console.log(this.props);
-// NEED TO FIX ROLE STATE - this.props.role.undefined.data.role to access role attributes.
-  if (Object.keys(roles).length > 0) {
-    let currentRole = (
-      <View style={styles.roleContainer}>
-        <Text style={styles.currentRoleView}>Title: {roles[currentUser.role_ids[0]].title}</Text>
-        <Text style={styles.currentRoleView}>Location: {roles[currentUser.role_ids[0]].location}</Text>
-        <Text style={styles.currentRoleView}>Started: {roles[currentUser.role_ids[0]].start_date}</Text>
-      </View>
-    );
+    const { work, reals, navigation } = this.props;
 
-    return(
-      <View style={styles.showPageContainer}>
-        <Text style={styles.sectionHeader}>Current Role:</Text>
-        <View style={styles.componentContainer}>
-          {currentRole}
+    if (Object.keys(work.roles).length > 0) {
+      let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
+      let roleView = (<View style={styles.roleContainer}>
+          <Text style={styles.currentRoleView}>Title: {currentRole.title}</Text>
+          <Text style={styles.currentRoleView}>Location: {currentRole.location}</Text>
+          <Text style={styles.currentRoleView}>Started: {currentRole.start_date}</Text>
+      </View>);
+
+      return (
+        <View style={styles.showPageContainer}>
+          <Text style={styles.sectionHeader}>Current Role:</Text>
+          <View style={styles.componentContainer}>
+            {roleView}
+          </View>
+          <Text style={styles.sectionHeader}>Projects:</Text>
+          {currentRole.project_ids.map(projectId =>
+          <View style={{flex: 1, alignItems: 'center'}} key={`container-${projectId}`}>
+            <ProjectIndexItem style={styles.componentContainer} key={`project-${projectId}`}
+                              project={work.projects[projectId]} />
+
+            {work.projects[projectId].real_ids.map(realId =>
+              <Real key={`real-${realId}`} real={reals.by_id[realId]} />
+            )}
+          </View>)}
         </View>
-        <Text style={styles.sectionHeader}>Projects:</Text>
-        <View style={styles.componentContainer}>
-          {/* {roles[currentUser.role_ids[0]].project_ids.map(projectId => <ProjectIndexItem
-            key={`project-${projectId}`}
-            project={roles.projects[projectId]} />
-          )} */}
-        </View>
-      </View>
-    );
-  } else {
-    return null;
-  }
+      );
+    } else {
+      return null;
+    }
   }
 }
 
