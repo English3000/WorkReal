@@ -8,8 +8,8 @@ export default class SearchMap extends Component{
     this.state = {
       mapLoaded: false,
       region: {
-        latitude: null,
-        longitude: null,
+        latitude: 37.78825,
+        longitude: -122.4324,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421
       }
@@ -17,60 +17,47 @@ export default class SearchMap extends Component{
 
   }
 
+  onMapLayout = () => {
+    this.setState({mapLoaded: true});
+
+  }
+
+
+
   componentDidMount(){
     navigator.geolocation.getCurrentPosition( (position) => (
         // console.log(position)
         this.setState({
-          region: {latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        }
+          region: {
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          }
 
         })
 
       ));
 
-
-
-
     }
 
-
+    // region={this.state.region}
   render(){
     return(
     <View style={styles.view}>
     <MapView style={styles.map}
-          region={this.state.region}>
+          initialRegion={this.state.region}
+          onLayout={this.onMapLayout}>
 
+          {this.state.mapLoaded &&
             <MapView.Marker
-              title="Here"
+              title="Software Developer"
               coordinate={{
-                latitude: 37.78825,
-                longitude: -122.4324
+                latitude: this.state.region.latitude,
+                longitude: this.state.region.longitude
               }} />
+          }
 
-
-                          <MapView.Marker
-                            title="Here"
-                            coordinate={{
-                              latitude: 37.78815,
-                              longitude: -123.4324
-                            }} />
-
-                            <MapView.Marker
-                              title="Here"
-                              coordinate={{
-                                latitude: 37.78815,
-                                longitude: -123.4324
-                              }} />
-
-                              <MapView.Marker
-                                title="Here"
-                                coordinate={{
-                                  latitude: 37.7885,
-                                  longitude: -120.4324
-                                }} />
 
 
 
@@ -104,6 +91,28 @@ const styles = StyleSheet.create({
   }
 
 });
+
+
+// <MapView.Marker
+//   title="Here"
+//   coordinate={{
+//     latitude: 37.78815,
+//     longitude: -123.4324
+//   }} />
+//
+//   <MapView.Marker
+//     title="Here"
+//     coordinate={{
+//       latitude: 37.78815,
+//       longitude: -123.4324
+//     }} />
+//
+//     <MapView.Marker
+//       title="Here"
+//       coordinate={{
+//         latitude: 37.7885,
+//         longitude: -120.4324
+//       }} />
 
 
 
