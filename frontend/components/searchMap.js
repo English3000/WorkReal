@@ -8,8 +8,8 @@ export default class SearchMap extends Component{
     this.state = {
       mapLoaded: false,
       region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
+        latitude: null,
+        longitude: null,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421
       }
@@ -17,9 +17,25 @@ export default class SearchMap extends Component{
 
   }
 
-  componentWillMount(){
+  componentDidMount(){
+    navigator.geolocation.getCurrentPosition( (position) => (
+        // console.log(position)
+        this.setState({
+          region: {latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        }
 
-  }
+        })
+
+      ));
+
+
+
+
+    }
+
 
   render(){
     return(
@@ -33,6 +49,29 @@ export default class SearchMap extends Component{
                 latitude: 37.78825,
                 longitude: -122.4324
               }} />
+
+
+                          <MapView.Marker
+                            title="Here"
+                            coordinate={{
+                              latitude: 37.78815,
+                              longitude: -123.4324
+                            }} />
+
+                            <MapView.Marker
+                              title="Here"
+                              coordinate={{
+                                latitude: 37.78815,
+                                longitude: -123.4324
+                              }} />
+
+                              <MapView.Marker
+                                title="Here"
+                                coordinate={{
+                                  latitude: 37.7885,
+                                  longitude: -120.4324
+                                }} />
+
 
 
          </MapView>
