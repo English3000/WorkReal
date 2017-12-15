@@ -9,7 +9,6 @@ export const RECEIVE_PROJECT = 'RECEIVE PROJECT';
 
 export const receiveRoles = work => ({type: RECEIVE_ROLES, work});
 export const receiveRole = role => ({type: RECEIVE_ROLE, role });
-export const patchRole = work => ({type: UPDATE_ROLE, work});
 
 export const receiveFollow = details => ({type: FOLLOW, details});
 export const removeFollow = details => ({type: UNFOLLOW, details});
@@ -32,7 +31,7 @@ export const createRole = role => dispatch => Api.createRole(role).then(
 //needs to update role w/o overwriting assoc'd data (past projects & reals)
 //risk of currentRole's location falling out of sync w/ currentProject's
 export const updateRole = role => dispatch => Api.updateRole(role).then(
-  work => dispatch(patchRole(work.data)),
+  revRole => dispatch(receiveRole(revRole.data)),
   err => dispatch(receiveErrors(err.response.data))
 );
 
@@ -47,4 +46,8 @@ export const createProject = project => dispatch => Api.createProject(project).t
   newProject => { dispatch(receiveProject(newProject.data));
     return newProject.data;
   }, err => dispatch(receiveErrors(err.response.data))
+);
+export const updateProject = project => dispatch => Api.updateProject(project).then(
+  revProject => dispatch(receiveProject(revProject.data)),
+  err => dispatch(receiveErrors(err.response.data))
 );

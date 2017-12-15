@@ -13,8 +13,6 @@ export default (state = _defaultState, action) => {
       return merge(newState, action.work);
     case RECEIVE_ROLE:
       newState.roles[action.role.id] = action.role;
-      //for UPDATE_ROLE:
-      // newState.projects = merge(newState.projects, action.work.projects);
       return newState;
     case RECEIVE_PROJECT:
       newState.roles[action.project.role_id].project_ids.unshift(action.project.id);

@@ -19,3 +19,6 @@ export const deleteFollow = (id, roleId) => axios.delete(
 export const createProject = project => axios.post(
   `http://${DEV_IP}:3000/api/projects`, {project}
 );
+export const updateProject = project => axios.patch(
+  `http://${DEV_IP}:3000/api/projects/${project.id}`, {project}
+);

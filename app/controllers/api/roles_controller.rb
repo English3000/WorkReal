@@ -21,8 +21,14 @@ class Api::RolesController < ApplicationController
     end
   end
 
-  # def update
-  # end
+  def update
+    @role = Role.find(params[:id])
+    if @role.update_attributes(role_params)
+      render :create
+    else
+      render json: @role.errors.full_messages, status: 404
+    end
+  end
 
   private
   def role_params
