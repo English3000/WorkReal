@@ -26,7 +26,7 @@ export default class SearchMap extends Component{
 
   componentDidMount(){
     navigator.geolocation.getCurrentPosition( (position) => (
-        // console.log(position)
+
         this.setState({
           region: {
             latitudeDelta: 0.0922,
@@ -43,6 +43,7 @@ export default class SearchMap extends Component{
 
 
   render(){
+    debugger;
     return(
     <View style={styles.view}>
     <MapView style={styles.map}
@@ -67,7 +68,7 @@ export default class SearchMap extends Component{
                 //     longitude: this.state.region.longitude
                 //   }
                 // })
-                
+                console.log(this)
 
 
               )} />
