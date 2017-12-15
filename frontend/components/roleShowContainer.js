@@ -3,8 +3,9 @@ import RoleShow from './roleShow';
 import { fetchRole } from '../actions/role_actions';
 import { createReal } from '../actions/real_actions';
 
-const mapStateToProps = (state, props) => ({
-  roles: state.roles
+const mapStateToProps = ({ work, reals, navigation }) => ({
+  work, reals, navigation
+
 });
 // const mapStateToProps = ({ roles }) => ({
 //   roles //will soon be work.roles

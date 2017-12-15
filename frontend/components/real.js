@@ -17,14 +17,15 @@ export default class Real extends React.Component {
   }
 
   render() {
-    const {role, real, project, createTruth, destroyTruth} = this.props;
+    const { role, real, project, createFollow, deleteFollow,
+            createTruth, destroyTruth } = this.props;
     //should be able to edit & delete own reals IF currentRole matches
     return (this.state.fontLoaded ? <View>
       <View>
         <Text>
           <Text style={{fontWeight: 'bold'}}>{role.title}</Text> in {role.location}
         </Text>
-        {project.name}
+        {project.project}
       </View>
 
       <Text>{real.body}</Text>

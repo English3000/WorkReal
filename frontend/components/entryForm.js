@@ -102,7 +102,7 @@ export default class EntryForm extends React.Component {
             this.storeToken(newProps.session.currentUser.session_token);
             this.props.navigation.navigate(`roleForm`);
 
-    } else { //currentUser is null
+    } else if (!this.props.session.currentUser) { //currentUser is null
       Alert.alert('', `${newProps.errors.join('.\n\n')}.`);
     }
   }

@@ -16,6 +16,6 @@ export const deleteFollow = (id, roleId) => axios.delete(
   `http://${DEV_IP}:3000/api/roles/${roleId}/truths/${id}`
 );
 
-export const createProject = (project) => axios.post(
+export const createProject = project => axios.post(
   `http://${DEV_IP}:3000/api/projects`, {project}
 );

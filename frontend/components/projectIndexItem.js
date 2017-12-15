@@ -3,43 +3,21 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import RealForm from './realForm';
 import RealIndexItem from './realIndexItem';
 
-class ProjectIndexItem extends Component {
+export default class ProjectIndexItem extends Component {
   constructor(props) {
     super(props);
   }
 
-  render(){
-    console.log(this.props);
-    const { project, createReal, fetchRole, navigate } = this.props;
-      return(
-        <ScrollView>
-          <View style={styles.projectContainer}>
-            <Text style={styles.projectText}>Project: {project.project}</Text>
-            <Text style={styles.projectText}>Location: {project.location}</Text>
-            <Text style={styles.projectText}>Started: {project.start_date}</Text>
-          </View>
-          <View>
-              <Text style={{color: 'white'}}>Reals</Text>
-              {project.reals.map(real => <RealIndexItem
-                key={`real-${real.id}`}
-                real={real}
-                fetchRole={fetchRole}
-                createReal={createReal} />
-            )}
-            <RealForm roleId={project.role_id}
-              projectId={project.id}
-              createReal={createReal}
-              navigate={navigate} />
-          </View>
-        </ScrollView>
-      );
-    }
-
-    componentWillReceiveProps(nextProps) {
-
-    }
+  render() {
+    const { project } = this.props;
+    return(<View style={styles.projectContainer}>
+      <Text style={styles.projectView}>Project: {project.project}</Text>
+      <Text style={styles.projectView}>Location: {project.location}</Text>
+      <Text style={styles.projectView}>Started: {project.start_date}</Text>
+    </View>);
 
   }
+}
 
 const styles = StyleSheet.create({
   projectContainer: {
@@ -67,5 +45,3 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 });
-
-export default ProjectIndexItem;

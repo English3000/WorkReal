@@ -2,18 +2,24 @@ import { RECEIVE_ROLES, RECEIVE_ROLE,
          RECEIVE_PROJECT } from '../actions/role_actions';
 import merge from 'lodash/merge';
 
-export default (state = {}, action) => {
+const _defaultState = {roles: {}, projects: {}};
+
+export default (state = _defaultState, action) => {
   Object.freeze(state);
   let newState = merge({}, state);
 
   switch(action.type) {
     case RECEIVE_ROLES:
-      return action.roles;
+      return merge(newState, action.work);
     case RECEIVE_ROLE:
-      newState[action.role.id] = action.role;
+      newState.roles[action.role.id] = action.role;
+      //for UPDATE_ROLE:
+      // newState.projects = merge(newState.projects, action.work.projects);
       return newState;
     case RECEIVE_PROJECT:
-      // newState[action.project.role_id] ...
+      newState.roles[action.project.role_id].project_ids.unshift(action.project.id);
+      newState.projects[action.project.id] = action.project;
+      return newState;
     default:
       return state;
   }
