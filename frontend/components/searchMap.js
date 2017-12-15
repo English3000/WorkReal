@@ -10,8 +10,8 @@ export default class SearchMap extends Component{
       region: {
         latitude: 37.78825,
         longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421
+        latitudeDelta: 0.2,
+        longitudeDelta: 0.2
       }
     }
 
@@ -41,7 +41,7 @@ export default class SearchMap extends Component{
 
     }
 
-    
+
   render(){
     return(
     <View style={styles.view}>
@@ -52,20 +52,22 @@ export default class SearchMap extends Component{
           {this.state.mapLoaded &&
             <MapView.Marker
               title="Software Developer"
+              style={styles.marker_default}
               coordinate={{
                 latitude: this.state.region.latitude,
                 longitude: this.state.region.longitude
               }}
-              onMarkerPress={() => (
+              onPress={() => (
 
-                this.setState({
-                  region: {
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
-                  }
-                })
+                // this.setState({
+                //   region: {
+                //     latitudeDelta: 60,
+                //     longitudeDelta: 30,
+                //     latitude: this.state.region.latitude,
+                //     longitude: this.state.region.longitude
+                //   }
+                // })
+                
 
 
               )} />
@@ -102,7 +104,24 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%'
 
-  }
+  },
+
+  // radius_defult:{
+  //   height: 50,
+  //   width: 50,
+  //   borderRadius: 50/2,
+  //   overflow: 'hidden',
+  //   backgroundColor: 'rgba(0,122,255,0.1)',
+  //   borderWidth: 1,
+  //   borderColor: 'rgba(0,122,255,0.3)',
+  //   justifyContent: 'center'
+  // },
+  //
+  // marker_default: {
+  //   color: 'blue'
+  //
+  //
+  // }
 
 });
 
