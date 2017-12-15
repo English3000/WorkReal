@@ -12,8 +12,8 @@ export default (state = _defaultState, action) => {
     case RECEIVE_ROLES:
       return merge(newState, action.work);
     case RECEIVE_ROLE:
-      console.log(action.role);
       newState.roles[action.role.id] = action.role;
+      //for UPDATE_ROLE:
       // newState.projects = merge(newState.projects, action.work.projects);
       return newState;
     case RECEIVE_PROJECT:

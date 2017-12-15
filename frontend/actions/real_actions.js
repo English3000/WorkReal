@@ -18,23 +18,23 @@ export const removeTruth = details => {type: UNTRUTH, details};
 
 export const getAllReals = () => async (dispatch) => {
   // dispatch(pageLoading());
-  return dispatch( receiveReals(await APIUtil.getAllReals()) );
+  return dispatch( receiveReals(await Api.getAllReals().data) );
 };
 // Search query also launches filtered GET request
 export const createReal = real => dispatch => Api.createReal(real).then(
-  newReal => dispatch(receiveReal(newReal)),
+  newReal => dispatch(receiveReal(newReal.data)),
   err => dispatch(receiveErrors(err.response.data))
 );
 export const updateReal = real => async (dispatch) => dispatch(
-  patchReal(await Api.updateReal(real))
+  patchReal(await Api.updateReal(real).data)
 );
 export const deleteReal = id => async (dispatch) => dispatch(
-  removeReal(await Api.deleteReal(id))
+  removeReal(await Api.deleteReal(id).data)
 );
 
 export const createTruth = realId => async (dispatch) => dispatch(
-  receiveTruth(await Api.createTruth(realId))
+  receiveTruth(await Api.createTruth(realId).data)
 );
 export const destroyTruth = (id, realId) => async (dispatch) => dispatch(
-  removeTruth(await Api.destroyTruth(id, realId))
+  removeTruth(await Api.destroyTruth(id, realId).data)
 );
