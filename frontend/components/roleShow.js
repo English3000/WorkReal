@@ -10,7 +10,6 @@ export default class roleShowPage extends Component {
 
   render() {
     const { work, reals, navigation } = this.props;
-
     if (Object.keys(work.roles).length > 0) {
       let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
       let roleView = (<View style={styles.roleContainer}>

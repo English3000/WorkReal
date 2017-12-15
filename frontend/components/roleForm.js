@@ -11,7 +11,7 @@ export default class RoleForm extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-
+    debugger;
     return(
       <View style={styles.viewLayout}>
         <View style={[styles.viewLayout, {width: '100%', alignItems: 'center'}]}>
@@ -55,9 +55,9 @@ export default class RoleForm extends Component {
               title: this.state.title, industry: this.state.industry,
               location: this.state.location, start_date: this.state.start_date
             }).then(role => this.props.createProject({
-              role_id: role.data.id, project: this.state.project,
+              role_id: role.id, project: this.state.project,
               location: this.state.location, start_date: this.state.start_date
-            })).then(project => navigate('roleShow', {roleId: project.data.role_id}))}>
+            })).then(project => navigate('roleShow', {roleId: project.role_id}))}>
               <Text style={{fontSize: 20}}>Confirm</Text>
           </TouchableOpacity>
         </View>
