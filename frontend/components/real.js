@@ -17,7 +17,8 @@ export default class Real extends React.Component {
   }
 
   render() {
-    const {role, real, project, createTruth, destroyTruth} = this.props;
+    const { role, real, project, createFollow, deleteFollow,
+            createTruth, destroyTruth } = this.props;
     //should be able to edit & delete own reals IF currentRole matches
     return (this.state.fontLoaded ? <View>
       <View>

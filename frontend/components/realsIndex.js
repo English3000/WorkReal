@@ -10,15 +10,14 @@ export default class RealsIndex extends React.Component {
 
     //upon search query
 
-    //on Role Show Page
   }
 
   render() {
-    const {reals, roles, projects, createTruth, destroyTruth} = this.props;
+    const {reals, roles, projects} = this.props;
 
     return (<View>
       <RealFormContainer/>
-      {reals && reals.all_ids.length > 0 ? reals.all_ids.map(id => {
+      {Object.keys(reals).length > 0 && reals.all_ids.length > 0 ? reals.all_ids.map(id => {
         const real = reals.by_id[id];
 
         return <RealContainer key={id} role={roles[real.role_id]}
