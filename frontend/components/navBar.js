@@ -5,13 +5,25 @@ import { View, ScrollView, StyleSheet, Text,TextInput } from 'react-native';
 
 
 export default class NavBar extends Component {
+  constructor(props){
+    super(props);
+    this.state = ({
+      query: ''
+    });
+
+  }
+
+  
+
   render(){
+    console.log(this.state.query);
     return(
       <View style={styles.view}>
         <TextInput
         placeholder='Search by roles, reals, location... '
         style={styles.navInputs}
         underlineColorAndroid={'transparent'}
+        onChangeText={(text) => this.setState({ query: text })}
          />
 
        </View>
