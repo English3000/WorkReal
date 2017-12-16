@@ -1,12 +1,46 @@
 import React, {Component} from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button, Keyboard } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
 export default class RoleForm extends Component {
   constructor(props) {
     super(props);
     this.state = { /* user_id: this.props.currentUserId,*/ title: '', industry: '', location: '',
-                   start_date: '', project: '' };
+                   start_date: '', project: '', keyboardPadding: 0 };
+    this.keyboardWillShow = this.keyboardWillShow.bind(this);
+    this.keyboardDidShow = this.keyboardDidShow.bind(this);
+    this.keyboardWillHide = this.keyboardWillHide.bind(this);
+    this.keyboardDidHide = this.keyboardDidHide.bind(this);
+  }
+
+  componentWillMount() {
+    this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow);
+    this.keyboardWillHideSub = Keyboard.addListener('keyboardWillHide', this.keyboardWillHide);
+    this.keyboardDidShowSub = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow);
+    this.keyboardDidHideSub = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide);
+  }
+
+  componentWillUnmount() {
+    this.keyboardWillShowSub.remove();
+    this.keyboardWillHideSub.remove();
+    this.keyboardDidShowSub.remove();
+    this.keyboardDidHideSub.remove();
+  }
+
+  keyboardWillShow() {
+    this.setState({ keyboardPadding: '30%' });
+  }
+
+  keyboardDidShow() {
+    this.setState({ keyboardPadding: '30%' });
+  }
+
+  keyboardWillHide() {
+    this.setState({ keyboardPadding: 0 });
+  }
+
+  keyboardDidHide() {
+    this.setState({ keyboardPadding: 0 });
   }
 
   render() {
@@ -61,6 +95,7 @@ export default class RoleForm extends Component {
               <Text style={{fontSize: 20}}>Confirm</Text>
           </TouchableOpacity>
         </View>
+        <View style={{height: this.state.keyboardPadding}}></View>
       </View>
     );
   }

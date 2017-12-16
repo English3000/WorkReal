@@ -1,5 +1,4 @@
 class Api::RolesController < ApplicationController
-
   # def index
     # get current_user's roles
     # get roles w/in X of current_user's current role's location

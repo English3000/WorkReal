@@ -15,9 +15,9 @@ class CircleButton extends React.Component {
   }
 
   handlePress(){
-    const{session,processForm,credentials} = this.props;
+    const{session, processForm, credentials} = this.props;
     //sign in/sign up the user and then access the state/store for updated currentUser and session_token
-    processForm({email: credentials.email,password: credentials.password})
+    processForm({ email: credentials.email, password: credentials.password })
   }
 
   render() {
@@ -51,51 +51,20 @@ export default class EntryForm extends React.Component {
     this.setState({ fontLoaded: true });
 
     // (this.getToken() === true) ? this.props.navigation.navigate(`roleForm`): null;
-    if(this.props.session.currentUser !== null){
+    if(this.props.session.currentUser !== null) {
       console.log("Hopefully not here");
       AsyncStorage.getItem(SESSION_TOKEN).then((res) => console.log("HERE",res));
     }
   }
 
-  // async getToken(){
-  //
-  //   try {
-  //     let value = await AsyncStorage.getItem(SESSION_TOKEN)
-  //     console.log(value);
-  //     if (value){
-  //
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //
-  // }
-
-
-
   async storeToken(token){
-    //Write Async storage here
-
-    //Async storage now has an item called 'currentUser' with a value of token.
     //token === currentUser.session_token
-
-    await AsyncStorage.setItem(SESSION_TOKEN, token).then( () => {
-
-       return AsyncStorage.getItem(SESSION_TOKEN).then((res) => (
-         Alert.alert("HERE",res)
-       ))
-
-    })
-
+    await AsyncStorage.setItem(SESSION_TOKEN, token).then(
+      () => AsyncStorage.getItem(SESSION_TOKEN)/*.then(
+        res => Alert.alert("HERE",res))*/)
   }
 
-
-
   componentWillReceiveProps(newProps){
-    // console.log(AsyncStorage.getItem('session_token'))
     //if currentUser changed
 
     if (newProps.session.currentUser !== this.props.session.currentUser) {
@@ -104,7 +73,7 @@ export default class EntryForm extends React.Component {
 
       var created = new Date(newProps.session.currentUser.created_at);
       var current = new Date();
-      
+
             this.storeToken(newProps.session.currentUser.session_token);
 
             if (current - created < 60000) {
@@ -120,7 +89,6 @@ export default class EntryForm extends React.Component {
 
   //should institute 2-factor authentication
   render() {
-
     const { navigate } = this.props.navigation;
     return (
 
@@ -159,9 +127,17 @@ export default class EntryForm extends React.Component {
                             email: this.state.email, password: this.state.password
                           }).then(() => navigate('realsIndex'))}></CircleButton>
           </View>
-        </View> : null}
-      </View>
-    );
+          <CircleButton title='SIGN IN'
+                        style={{position: 'relative', left: 3}}
+                        session={this.props.session}
+                        processForm={this.props.signIn}
+                        credentials={this.state}
+                        _onPress={() => this.props.signIn({
+                          email: this.state.email, password: this.state.password
+                        })}></CircleButton>
+        </View>
+      </View> : null}
+    </View>);
     //else
     /* return (
       TabNavigator({

@@ -1,42 +1,110 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Text } from 'react-native';
-import ProjectIndexItem from './projectIndexItem';
+import { View, ScrollView, StyleSheet, Text, TextInput, Button } from 'react-native';
+import { Font } from 'expo';
+import FontAwesome, { Icons } from 'react-native-fontawesome';
+import ProjectContainer from './projectContainer';
 import RealContainer from './realContainer';
 
 export default class roleShowPage extends Component {
   constructor(props) {
     super(props);
+
+    this.state = { fontLoaded: false, realsDropdown: '100%' };
+    this.terminateRole = this.terminateRole.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+
+    const { work, navigation, roleId } = this.props;
+    console.log(navigation.routes[navigation.index].params);
+    console.log("logging currentRole", work.roles[navigation.routes[navigation.index].params.roleId]);
+    if (roleId) {
+      this.state = work.roles[roleId];
+    } else if (navigation.routes[navigation.index].params) {
+      let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
+      this.state = currentRole;
+    }
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      'Amaranth': require('../assets/fonts/Amaranth-Regular.ttf'),
+      'FontAwesome': require('../assets/fonts/FontAwesome.otf'),
+    });
+
+    this.setState({ fontLoaded: true });
+
+    const {navigation, roleId} = this.props;
+    if (roleId) this.setState({ realsDropdown: 0 });
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { work, navigation } = newProps;
+    console.log(navigation.routes[navigation.index].params);
+    if (navigation.routes[navigation.index].params) {
+      let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
+      this.setState(currentRole);
+    }
+  }
+
+  toggleDropdown() {
+    if (this.state.realsDropdown !== 0) {
+      this.state.realsDropdown = 0;
+    } else {
+      this.state.realsDropdown = '100%';
+    }
+  }
+
+  terminateRole() {
+    this.setState({end_date: new Date(Date.now())},
+      () => this.props.updateRole(this.state).then(() => this.props.navigation.navigate(`roleForm`))
+    );
   }
 
   render() {
-    const { work, reals, navigation } = this.props;
-    if (Object.keys(work.roles).length > 0) {
+    const { work, reals, navigation, currentUser,
+            updateRole, followRole, unfollowRole } = this.props;
+    // if (navigation.routes[navigation.index].params) {
       let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
-      let roleView = (<View style={styles.roleContainer}>
-          <Text style={styles.currentRoleView}>Title: {currentRole.title}</Text>
-          <Text style={styles.currentRoleView}>Location: {currentRole.location}</Text>
-          <Text style={styles.currentRoleView}>Started: {currentRole.start_date}</Text>
+
+    if (this.state.fontLoaded && Object.keys(work.roles).length > 0) {
+      let roleView = (currentUser.role_ids[0] === this.state.id ? <View style={styles.roleContainer}>
+        <TextInput style={styles.currentRoleView} defaultValue={`Title: ${currentRole.title}`}
+          onChangeText={title => this.setState({title})}/>
+        <TextInput style={styles.currentRoleView} defaultValue={`Location: ${currentRole.location}`}
+          onChangeText={location => this.setState({location})}/>
+        <TextInput style={styles.currentRoleView} defaultValue={`Started: ${currentRole.start_date}`}
+          onDateChange={start_date => this.setState({start_date})}/>
+        <Button onPress={() => updateRole(this.state)} title='Update'/>
+        <Button onPress={this.terminateRole} title='Terminate'/>
+      </View> : <View style={styles.roleContainer}>
+        <Text style={styles.currentRoleView}>Title: {currentRole.title}
+          {currentUser.follow_ids.include(this.state.id) ?
+            <FontAwesome onPress={() => unfollowRole(currentUser.id, this.state.id)}>
+              {Icons.star}</FontAwesome> : <FontAwesome onPress={() => followRole(this.state.id)}>
+          {Icons.star}</FontAwesome>}
+        </Text>
+        <Text style={styles.currentRoleView}>Location: {currentRole.location}</Text>
+        <Text style={styles.currentRoleView}>Started: {currentRole.start_date}</Text>
       </View>);
 
       return (
         <View style={styles.showPageContainer}>
           <Text style={styles.sectionHeader}>Current Role:</Text>
-          <View style={styles.componentContainer}>
-            {roleView}
-          </View>
-          <Text style={styles.sectionHeader}>Projects:</Text>
-          {currentRole.project_ids.map(projectId =>
-          <View style={{flex: 1, alignItems: 'center'}} key={`container-${projectId}`}>
-            <ProjectIndexItem style={styles.componentContainer} key={`project-${projectId}`}
-                              project={work.projects[projectId]} />
+          <View style={styles.componentContainer}>{roleView}</View>
 
-            {work.projects[projectId].real_ids.map(realId =>
+          <Text style={styles.sectionHeader}>Projects:</Text>
+          {this.state.project_ids.map(projectId =>
+          <View style={{flex: 1, alignItems: 'center'}} key={`container-${projectId}`}>
+            <ProjectContainer style={styles.componentContainer} key={`project-${projectId}`}
+                              role={this.state} project={work.projects[projectId]}
+                              onPress={this.toggleDropdown} />
+
+            <View style={{height: this.state.realsDropdown}}>{work.projects[projectId].real_ids.map(realId =>
               <RealContainer key={`real-${realId}`} project={work.projects[projectId]}
-                role={currentRole} real={reals.by_id[realId]} />
-            )}
+                role={this.state} real={reals.by_id[realId]} currentUser={currentUser} />
+            )}</View>
           </View>)}
         </View>
-      );
+      );//}
     } else {
       return null;
     }

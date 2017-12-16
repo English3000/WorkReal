@@ -35,10 +35,10 @@ export const updateRole = role => dispatch => Api.updateRole(role).then(
   err => dispatch(receiveErrors(err.response.data))
 );
 
-export const createFollow = roleId => async (dispatch) => dispatch(
+export const followRole = roleId => async (dispatch) => dispatch(
   receiveFollow(await Api.createFollow(roleId).data)
 );
-export const deleteFollow = (id, roleId) => async (dispatch) => dispatch(
+export const unfollowRole = (id, roleId) => async (dispatch) => dispatch(
   removeFollow(await Api.deleteFollow(id, roleId).data)
 );
 
