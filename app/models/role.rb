@@ -4,4 +4,5 @@ class Role < ApplicationRecord
   belongs_to :user
   has_many :follows
   has_many :projects
+  has_many :reals
 end

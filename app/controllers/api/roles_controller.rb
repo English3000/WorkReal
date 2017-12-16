@@ -1,5 +1,4 @@
 class Api::RolesController < ApplicationController
-
   # def index
     # get current_user's roles
     # get roles w/in X of current_user's current role's location
@@ -15,14 +14,20 @@ class Api::RolesController < ApplicationController
     @role = Role.new(role_params)
     @role.user_id = current_user.id
     if @role.save
-      render json: @role
+      render :create
     else
       render json: @role.errors.full_messages, status: 404
     end
   end
 
-  # def update
-  # end
+  def update
+    @role = Role.find(params[:id])
+    if @role.update_attributes(role_params)
+      render :create
+    else
+      render json: @role.errors.full_messages, status: 404
+    end
+  end
 
   private
   def role_params
