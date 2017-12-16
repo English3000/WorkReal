@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text, TextInput, Button } from 'react-native';
+import { Font } from 'expo';
+import FontAwesome, { Icons } from 'react-native-fontawesome';
 import ProjectContainer from './projectContainer';
 import RealContainer from './realContainer';
 
 export default class roleShowPage extends Component {
   constructor(props) {
     super(props);
+
+    this.state = { fontLoaded: false};
     this.terminateRole = this.terminateRole.bind(this);
 
     const { work, navigation } = this.props;
@@ -15,6 +19,15 @@ export default class roleShowPage extends Component {
       let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
       this.state = currentRole;
     }
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      'Amaranth': require('../assets/fonts/Amaranth-Regular.ttf'),
+      'FontAwesome': require('../assets/fonts/FontAwesome.otf'),
+    });
+
+    this.setState({ fontLoaded: true });
   }
 
   componentWillReceiveProps(newProps) {
@@ -38,7 +51,7 @@ export default class roleShowPage extends Component {
     // if (navigation.routes[navigation.index].params) {
       let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
 
-    if (Object.keys(work.roles).length > 0) {
+    if (this.state.fontLoaded && Object.keys(work.roles).length > 0) {
       let roleView = (currentUser.role_ids[0] === this.state.id ? <View style={styles.roleContainer}>
         <TextInput style={styles.currentRoleView} defaultValue={`Title: ${currentRole.title}`}
           onChangeText={title => this.setState({title})}/>
@@ -49,7 +62,12 @@ export default class roleShowPage extends Component {
         <Button onPress={() => updateRole(this.state)} title='Update'/>
         <Button onPress={this.terminateRole} title='Terminate'/>
       </View> : <View style={styles.roleContainer}>
-        <Text style={styles.currentRoleView}>Title: {currentRole.title}</Text>
+        <Text style={styles.currentRoleView}>Title: {currentRole.title}
+          {currentUser.follow_ids.include(this.state.id) ?
+            <FontAwesome onPress={() => unfollowRole(currentUser.id, this.state.id)}>
+              {Icons.star}</FontAwesome> : <FontAwesome onPress={() => followRole(this.state.id)}>
+          {Icons.star}</FontAwesome>}
+        </Text>
         <Text style={styles.currentRoleView}>Location: {currentRole.location}</Text>
         <Text style={styles.currentRoleView}>Started: {currentRole.start_date}</Text>
       </View>);

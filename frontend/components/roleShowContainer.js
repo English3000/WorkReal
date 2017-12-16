@@ -8,8 +8,8 @@ const mapStateToProps = ({ work, reals, navigation, session }) => ({
 
 const mapDispatchToProps = dispatch => ({
   updateRole: role => dispatch(updateRole(role)),
-  followRole: id => dispatch(followRole(id)),
-  unfollowRole: id => dispatch(unfollowRole(id)),
+  followRole: roleId => dispatch(followRole(roleId)),
+  unfollowRole: (id, roleId) => dispatch(unfollowRole(id, roleId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoleShow);
