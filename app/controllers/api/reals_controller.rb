@@ -1,7 +1,12 @@
 class Api::RealsController < ApplicationController
   def index # a search would trigger a new GET request
     get_reals
-    p @reals
+    @projects = [];
+    @reals.each do |real|
+      @projects += Role.find(real.role_id).projects
+    end
+    @projects
+    @roles = Role.all
     render :index
   end
 

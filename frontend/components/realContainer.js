@@ -4,9 +4,9 @@ import Real from './real';
 import { createFollow, deleteFollow } from '../actions/role_actions';
 import { createTruth, destroyTruth } from '../actions/real_actions';
 
-// const mapStateToProps = ({ reals }) => ({
-//   reals
-// });
+const mapStateToProps = ({ reals, projects, roles }) => ({
+  reals, projects, roles
+});
 
 const mapDispatchToProps = dispatch => ({
   createFollow: role => dispatch(createFollow(role)),

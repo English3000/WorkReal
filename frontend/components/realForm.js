@@ -5,11 +5,23 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button } from 'rea
 export default class RealForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {role_id: props.roleId, project_id: props.projectId, body: '' };
+    this.state = {role_id: props.project.role_id, project_id: props.project.id, body: '' };
+    this.handlePress = this.handlePress.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({role_id: nextProps.roleId, project_id: nextProps.projectId});
+  }
+
+  handlePress(e) {
+    e.preventDefault();
+    this.props.createReal(this.state);
+    this.setState({body: ''});
   }
 
   render() {
     const { navigate } = this.props;
+
     return(
       <View style={styles.viewLayout}>
         <View style={[styles.viewLayout, {width: '100%', alignItems: 'center'}]}>
@@ -24,7 +36,7 @@ export default class RealForm extends Component {
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => this.props.createReal(this.state)}>
+            onPress={this.handlePress}>
               <Text style={{fontSize: 20}}>Add Real</Text>
           </TouchableOpacity>
         </View>

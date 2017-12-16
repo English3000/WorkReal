@@ -14,7 +14,8 @@ export default (state = _defaultState, action) => {
 
   switch (action.type) {
     case RECEIVE_REALS:
-      return merge(newState, action.reals);
+      merge(newState, action.reals);
+      return merge(newState, action.projects);
     case RECEIVE_REAL:
       newState.all_ids.unshift(action.real.id);
       newState.by_id[action.real.id] = action.real;
