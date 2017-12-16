@@ -3,7 +3,7 @@ class Api::RealsController < ApplicationController
     get_reals
     @projects = [];
     @reals.each do |real|
-      @projects << Project.find(real.project_id)
+      @projects += Role.find(real.role_id).projects
     end
     @projects
     @roles = Role.all

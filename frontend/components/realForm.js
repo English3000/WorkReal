@@ -8,13 +8,19 @@ export default class RealForm extends Component {
     this.state = {role_id: props.roleId, project_id: props.projectId, body: '' };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({role_id: nextProps.roleId, project_id: nextProps.projectId, body: this.props.body});
+  }
+
   render() {
     const { navigate } = this.props;
+    console.log(this.state);
     return(
       <View style={styles.viewLayout}>
         <View style={[styles.viewLayout, {width: '100%', alignItems: 'center'}]}>
           <TextInput
             multiline = {true}
+            numberOfLines={4}
             minHeight={4}
             nmaxHeight={8}
             placeholder='body'
