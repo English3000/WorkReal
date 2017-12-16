@@ -118,15 +118,6 @@ export default class EntryForm extends React.Component {
                          underlineColorAndroid='transparent'
                          onChangeText={ password => this.setState({ password }) }/>
             </View>
-            <CircleButton title='SIGN IN'
-                          style={{position: 'relative', left: 3}}
-                          session={this.props.session}
-                          processForm={this.props.signIn}
-                          credentials={this.state}
-                          _onPress={() => this.props.signIn({
-                            email: this.state.email, password: this.state.password
-                          }).then(() => navigate('realsIndex'))}></CircleButton>
-          </View>
           <CircleButton title='SIGN IN'
                         style={{position: 'relative', left: 3}}
                         session={this.props.session}
