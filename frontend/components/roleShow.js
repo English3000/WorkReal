@@ -33,10 +33,7 @@ export default class roleShowPage extends Component {
   }
 
   render() {
-    const { work, reals, navigation, currentUser, updateRole } = this.props;
-    if (navigation.routes[navigation.index].params) {
-      let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
-
+    const { work, reals, navigation } = this.props;
     if (Object.keys(work.roles).length > 0) {
       let roleView = (currentUser.role_ids[0] === this.state.id ? <View style={styles.roleContainer}>
         <TextInput style={styles.currentRoleView} defaultValue={`Title: ${currentRole.title}`}
@@ -71,7 +68,7 @@ export default class roleShowPage extends Component {
             )}
           </View>)}
         </View>
-      );}
+      );
     } else {
       return null;
     }
