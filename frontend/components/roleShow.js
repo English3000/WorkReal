@@ -13,10 +13,12 @@ export default class roleShowPage extends Component {
     this.terminateRole = this.terminateRole.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
 
-    const { work, navigation } = this.props;
+    const { work, navigation, roleId } = this.props;
     console.log(navigation.routes[navigation.index].params);
     console.log("logging currentRole", work.roles[navigation.routes[navigation.index].params.roleId]);
-    if (navigation.routes[navigation.index].params) {
+    if (roleId) {
+      this.state = work.roles[roleId];
+    } else if (navigation.routes[navigation.index].params) {
       let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
       this.state = currentRole;
     }
@@ -30,18 +32,8 @@ export default class roleShowPage extends Component {
 
     this.setState({ fontLoaded: true });
 
-    const {navigation} = this.props;
-    if (navigation.routes[navigation.index].routeName === 'userShow') {
-      this.setState({ realsDropdown: 0 });
-    }
-  }
-
-  toggleDropdown() {
-    if (this.state.realsDropdown !== 0) {
-      this.state.realsDropdown = 0;
-    } else {
-      this.state.realsDropdown = '100%';
-    }
+    const {navigation, roleId} = this.props;
+    if (roleId) this.setState({ realsDropdown: 0 });
   }
 
   componentWillReceiveProps(newProps) {
@@ -50,6 +42,14 @@ export default class roleShowPage extends Component {
     if (navigation.routes[navigation.index].params) {
       let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
       this.setState(currentRole);
+    }
+  }
+
+  toggleDropdown() {
+    if (this.state.realsDropdown !== 0) {
+      this.state.realsDropdown = 0;
+    } else {
+      this.state.realsDropdown = '100%';
     }
   }
 
@@ -89,9 +89,8 @@ export default class roleShowPage extends Component {
       return (
         <View style={styles.showPageContainer}>
           <Text style={styles.sectionHeader}>Current Role:</Text>
-          <View style={styles.componentContainer}>
-            {roleView}
-          </View>
+          <View style={styles.componentContainer}>{roleView}</View>
+
           <Text style={styles.sectionHeader}>Projects:</Text>
           {this.state.project_ids.map(projectId =>
           <View style={{flex: 1, alignItems: 'center'}} key={`container-${projectId}`}>
