@@ -66,7 +66,7 @@ export default class SearchMap extends Component{
 
   render(){
 
-
+    
     return(
       <View style={styles.view}>
       <MapView style={styles.map}
@@ -86,9 +86,10 @@ export default class SearchMap extends Component{
                 />
 
                 {
-                  roles.map((role) => (
+                  roles.map((role,idx) => (
                     <MapView.Marker
                       title={role.title}
+                      key={idx}
                       description={role.description}
                       style={styles.marker_default}
                       coordinate={{
@@ -204,19 +205,3 @@ const styles = StyleSheet.create({
 //
 // </View>
 // );
-
-
-
-
-
-
-
-// <MapView.Marker
-//   title={roles[0].title}
-//   style={styles.marker_default}
-//   coordinate={{
-//     latitude: 37.790319,
-//     longitude: -122.390203
-//   }}
-//   pinColor={"red"}
-//   />

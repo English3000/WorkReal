@@ -13,10 +13,16 @@ import {Text} from 'react-native';
 
 
 export default StackNavigator({
-    home: {screen: SearchMapContainer},
-    //home: {screen: entryFormContainer},
+    // home: {screen: SearchMapContainer},
+    home: {screen: entryFormContainer,
+      navigationOptions: {
+        header: null
+      }
+    },
+
+    navBar: {screen: NavBarContainer},
     roleForm: {screen: roleFormContainer},
-    // searchMap: {screen: SearchMapContainer},
+    searchMap: {screen: SearchMapContainer},
     roleShow: {
       path: 'role/roleId',
       screen: roleShowContainer

@@ -24,11 +24,15 @@ export default class NavBar extends Component {
 
 
   render(){
-
+    console.log(this.props);
+  if (this.props.navigation) {
+    debugger;
     return(
+
       <View style={styles.view}>
         <View>
           <Button
+          style={styles.button}
           title="Home"
           />
 
@@ -37,6 +41,8 @@ export default class NavBar extends Component {
         <View>
 
           <Button
+          style={styles.button}
+          onPress={this.props.navigation.navigate('searchMap')}
           title="Map"
           />
 
@@ -46,6 +52,7 @@ export default class NavBar extends Component {
         <View>
 
           <Button
+          style={styles.button}
           title="Logout"
           />
 
@@ -57,6 +64,10 @@ export default class NavBar extends Component {
        </View>
 
     );
+  } else{
+    return null;
+  }
+
   }
 
 
@@ -91,6 +102,10 @@ const styles = StyleSheet.create({
     height: 10
 
 
+  },
+
+  button:{
+    backgroundColor: 'black'
   }
 
 })
