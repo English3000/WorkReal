@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text, TextInput, Button } from 'react-native';
-import ProjectIndexItem from './projectIndexItem';
+import ProjectContainer from './projectContainer';
 import RealContainer from './realContainer';
 
 export default class roleShowPage extends Component {
@@ -33,7 +33,11 @@ export default class roleShowPage extends Component {
   }
 
   render() {
-    const { work, reals, navigation } = this.props;
+    const { work, reals, navigation, currentUser,
+            updateRole, followRole, unfollowRole } = this.props;
+    // if (navigation.routes[navigation.index].params) {
+      let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
+
     if (Object.keys(work.roles).length > 0) {
       let roleView = (currentUser.role_ids[0] === this.state.id ? <View style={styles.roleContainer}>
         <TextInput style={styles.currentRoleView} defaultValue={`Title: ${currentRole.title}`}
@@ -59,16 +63,16 @@ export default class roleShowPage extends Component {
           <Text style={styles.sectionHeader}>Projects:</Text>
           {this.state.project_ids.map(projectId =>
           <View style={{flex: 1, alignItems: 'center'}} key={`container-${projectId}`}>
-            <ProjectIndexItem style={styles.componentContainer} key={`project-${projectId}`}
+            <ProjectContainer style={styles.componentContainer} key={`project-${projectId}`}
                               role={this.state} project={work.projects[projectId]} />
 
             {work.projects[projectId].real_ids.map(realId =>
               <RealContainer key={`real-${realId}`} project={work.projects[projectId]}
-                role={this.state} real={reals.by_id[realId]} />
+                role={this.state} real={reals.by_id[realId]} currentUser={currentUser} />
             )}
           </View>)}
         </View>
-      );
+      );//}
     } else {
       return null;
     }
