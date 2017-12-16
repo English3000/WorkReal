@@ -11,7 +11,7 @@ export default class SearchBox extends Component {
   constructor(props){
     super(props);
     this.state = ({
-      fontLoaded: true
+      query: ''
     })
   }
 
@@ -24,18 +24,17 @@ export default class SearchBox extends Component {
   // }
 
   render(){
-    if(this.state.fontLoaded !== true){
-      return;
-    } else{
-      return(
+    console.log(this.state);
+    return(
         <View style={styles.searchBox}>
   				<View style={styles.inputWrapper}>
-  					<Text style={styles.label}>PICK UP</Text>
+  					<Text style={styles.label}></Text>
   					<InputGroup>
   						<FontAwesome name="search" size={15} color="#FF5E3A"/>
   						<Input
   							style={styles.inputSearch}
-  							placeholder="Search Roles,Reals...."
+  							placeholder="Search Roles, Reals..."
+                onChangeText={(text) => this.setState({query: text})}
   						/>
   					</InputGroup>
   				</View>
@@ -45,10 +44,7 @@ export default class SearchBox extends Component {
 
     }
 
-    }
-
-
-}
+  }
 
 
 

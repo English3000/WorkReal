@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
     flexDirection: 'row',
-    backgroundColor: 'transparent',
+    // backgroundColor: 'transparent',
+    backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'space-between',
     height: '10%',
     marginTop: 10
@@ -79,6 +80,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 5,
     height: 10
+
 
   }
 
