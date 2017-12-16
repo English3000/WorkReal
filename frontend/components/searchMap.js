@@ -79,7 +79,7 @@ export default class SearchMap extends Component{
             }
 
             </MapView>
-
+            <SearchBox />
 
 
       </View>
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'purple',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row'
+    flexDirection: 'column'
   },
 
   map: {
