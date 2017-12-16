@@ -9,8 +9,9 @@ export default class roleShowPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { fontLoaded: false};
+    this.state = { fontLoaded: false, realsDropdown: '100%' };
     this.terminateRole = this.terminateRole.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
 
     const { work, navigation } = this.props;
     console.log(navigation.routes[navigation.index].params);
@@ -28,6 +29,19 @@ export default class roleShowPage extends Component {
     });
 
     this.setState({ fontLoaded: true });
+
+    const {navigation} = this.props;
+    if (navigation.routes[navigation.index].routeName === 'userShow') {
+      this.setState({ realsDropdown: 0 });
+    }
+  }
+
+  toggleDropdown() {
+    if (this.state.realsDropdown !== 0) {
+      this.state.realsDropdown = 0;
+    } else {
+      this.state.realsDropdown = '100%';
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -82,12 +96,13 @@ export default class roleShowPage extends Component {
           {this.state.project_ids.map(projectId =>
           <View style={{flex: 1, alignItems: 'center'}} key={`container-${projectId}`}>
             <ProjectContainer style={styles.componentContainer} key={`project-${projectId}`}
-                              role={this.state} project={work.projects[projectId]} />
+                              role={this.state} project={work.projects[projectId]}
+                              onPress={this.toggleDropdown} />
 
-            {work.projects[projectId].real_ids.map(realId =>
+            <View style={{height: this.state.realsDropdown}}>{work.projects[projectId].real_ids.map(realId =>
               <RealContainer key={`real-${realId}`} project={work.projects[projectId]}
                 role={this.state} real={reals.by_id[realId]} currentUser={currentUser} />
-            )}
+            )}</View>
           </View>)}
         </View>
       );//}

@@ -45,7 +45,7 @@ export default class RoleForm extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    debugger;
+    // debugger;
     return(
       <View style={styles.viewLayout}>
         <View style={[styles.viewLayout, {width: '100%', alignItems: 'center'}]}>
