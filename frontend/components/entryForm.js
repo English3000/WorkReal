@@ -7,6 +7,10 @@ import { TabNavigator } from 'react-navigation';
 
 const SESSION_TOKEN = 'SESSION_TOKEN';
 
+
+
+
+
 class CircleButton extends React.Component {
 
   constructor(props){
@@ -53,9 +57,13 @@ export default class EntryForm extends React.Component {
     // (this.getToken() === true) ? this.props.navigation.navigate(`roleForm`): null;
     if(this.props.session.currentUser !== null) {
       console.log("Hopefully not here");
-      AsyncStorage.getItem(SESSION_TOKEN).then((res) => console.log("HERE",res));
+      AsyncStorage.getItem(SESSION_TOKEN).then((res) => console.log(res));
     }
   }
+
+
+
+
 
   async storeToken(token){
     //token === currentUser.session_token
@@ -118,39 +126,70 @@ export default class EntryForm extends React.Component {
                          underlineColorAndroid='transparent'
                          onChangeText={ password => this.setState({ password }) }/>
             </View>
-          <CircleButton title='SIGN IN'
-                        style={{position: 'relative', left: 3}}
-                        session={this.props.session}
-                        processForm={this.props.signIn}
-                        credentials={this.state}
-                        _onPress={() => this.props.signIn({
-                          email: this.state.email, password: this.state.password
-                        })}></CircleButton>
-        </View>
-      </View> : null}
-    </View>);
-    //else
-    /* return (
-      TabNavigator({
-        Home: {
-          screen: EntryFormContainer,
-          // navigationOptions: { headerTitle: 'Home' }
-        },
-        Details: {
-          screen: EntryFormContainer
-        }
-      });
-    ) */
+            <CircleButton title='SIGN IN'
+                          style={{position: 'relative', left: 3}}
+                          session={this.props.session}
+                          processForm={this.props.signIn}
+                          credentials={this.state}
+                          _onPress={() => this.props.signIn({
+                            email: this.state.email, password: this.state.password
+                          })}></CircleButton>
+          </View>
+        </View> : null}
+      </View>
+    );
+
   }
 }
 
+  // render(){
+  //   return(
+  //      <View style={styles.view}>
+  //         <MapView style={styles.map}
+  //        initialRegion={{
+  //          latitude: 37.78825,
+  //          longitude: -122.4324,
+  //          latitudeDelta: 0.0922,
+  //          longitudeDelta: 0.0421,
+  //        }}>
+  //
+  //           <MapView.Marker
+  //             title="Here"
+  //             coordinate={{
+  //               latitude: 37.78825,
+  //               longitude: -122.4324
+  //             }} />
+  //
+  //
+  //        </MapView>
+  //
+  //
+  //
+  //      </View>
+  //   )
+  //
+  // }
+
+
+
 const styles = StyleSheet.create({
+  // view: {
+  //   flex: 1,
+  //   backgroundColor: 'black',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   flexDirection: 'row'
+  // },
+
   view: {
     flex: 1,
     backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row'
   },
+
+
   header: {
     fontSize: 50,
     fontFamily: 'Amaranth',
@@ -182,5 +221,21 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
     borderRadius: 100
+  },
+  map: {
+    flex: 1,
+    width: '100%',
+    height: '100%'
+
   }
+
 });
+
+
+// <MapView
+// initialRegion={{
+//  latitude: 37.78825,
+//  longitude: -122.4324,
+//  latitudeDelta: 0.0922,
+//  longitudeDelta: 0.0421,
+// }}/>
