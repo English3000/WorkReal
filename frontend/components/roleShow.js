@@ -1,21 +1,53 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Text } from 'react-native';
+import { View, ScrollView, StyleSheet, Text, TextInput, Button } from 'react-native';
 import ProjectIndexItem from './projectIndexItem';
 import RealContainer from './realContainer';
 
 export default class roleShowPage extends Component {
   constructor(props) {
     super(props);
+    this.terminateRole = this.terminateRole.bind(this);
+
+    const { work, navigation } = this.props;
+    console.log(navigation.routes[navigation.index].params);
+    console.log("logging currentRole", work.roles[navigation.routes[navigation.index].params.roleId]);
+    if (navigation.routes[navigation.index].params) {
+      let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
+      this.state = currentRole;
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { work, navigation } = newProps;
+    console.log(navigation.routes[navigation.index].params);
+    if (navigation.routes[navigation.index].params) {
+      let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
+      this.setState(currentRole);
+    }
+  }
+
+  terminateRole() { //
+    this.setState({end_date: new Date(Date.now())},
+      () => this.props.updateRole(this.state).then(() => this.props.navigation.navigate(`roleForm`))
+    );
   }
 
   render() {
     const { work, reals, navigation } = this.props;
     if (Object.keys(work.roles).length > 0) {
-      let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
-      let roleView = (<View style={styles.roleContainer}>
-          <Text style={styles.currentRoleView}>Title: {currentRole.title}</Text>
-          <Text style={styles.currentRoleView}>Location: {currentRole.location}</Text>
-          <Text style={styles.currentRoleView}>Started: {currentRole.start_date}</Text>
+      let roleView = (currentUser.role_ids[0] === this.state.id ? <View style={styles.roleContainer}>
+        <TextInput style={styles.currentRoleView} defaultValue={`Title: ${currentRole.title}`}
+          onChangeText={title => this.setState({title})}/>
+        <TextInput style={styles.currentRoleView} defaultValue={`Location: ${currentRole.location}`}
+          onChangeText={location => this.setState({location})}/>
+        <TextInput style={styles.currentRoleView} defaultValue={`Started: ${currentRole.start_date}`}
+          onDateChange={start_date => this.setState({start_date})}/>
+        <Button onPress={() => updateRole(this.state)} title='Update'/>
+        <Button onPress={this.terminateRole} title='Terminate'/>
+      </View> : <View style={styles.roleContainer}>
+        <Text style={styles.currentRoleView}>Title: {currentRole.title}</Text>
+        <Text style={styles.currentRoleView}>Location: {currentRole.location}</Text>
+        <Text style={styles.currentRoleView}>Started: {currentRole.start_date}</Text>
       </View>);
 
       return (
@@ -25,14 +57,14 @@ export default class roleShowPage extends Component {
             {roleView}
           </View>
           <Text style={styles.sectionHeader}>Projects:</Text>
-          {currentRole.project_ids.map(projectId =>
+          {this.state.project_ids.map(projectId =>
           <View style={{flex: 1, alignItems: 'center'}} key={`container-${projectId}`}>
             <ProjectIndexItem style={styles.componentContainer} key={`project-${projectId}`}
                               project={work.projects[projectId]} />
 
             {work.projects[projectId].real_ids.map(realId =>
               <RealContainer key={`real-${realId}`} project={work.projects[projectId]}
-                role={currentRole} real={reals.by_id[realId]} />
+                role={this.state} real={reals.by_id[realId]} />
             )}
           </View>)}
         </View>
