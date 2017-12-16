@@ -53,7 +53,7 @@ export default class roleShowPage extends Component {
     }
   }
 
-  terminateRole() {
+  terminateRole() { //add modal for role review pre-update
     this.setState({end_date: new Date(Date.now())},
       () => this.props.updateRole(this.state).then(() => this.props.navigation.navigate(`roleForm`))
     );
@@ -67,19 +67,22 @@ export default class roleShowPage extends Component {
 
     if (this.state.fontLoaded && Object.keys(work.roles).length > 0) {
       let roleView = (currentUser.role_ids[0] === this.state.id ? <View style={styles.roleContainer}>
-        <TextInput style={styles.currentRoleView} defaultValue={`Title: ${currentRole.title}`}
-          onChangeText={title => this.setState({title})}/>
-        <TextInput style={styles.currentRoleView} defaultValue={`Location: ${currentRole.location}`}
-          onChangeText={location => this.setState({location})}/>
-        <TextInput style={styles.currentRoleView} defaultValue={`Started: ${currentRole.start_date}`}
-          onDateChange={start_date => this.setState({start_date})}/>
+        <Text style={styles.currentRoleView}>Title: <TextInput
+          style={{color: 'white'}} defaultValue={`${currentRole.title}`}
+          onChangeText={title => this.setState({title})}/></Text>
+        <Text style={styles.currentRoleView}>Location: <TextInput
+          style={{color: 'white'}} defaultValue={`${currentRole.location}`}
+          onChangeText={location => this.setState({location})}/></Text>
+        <Text style={styles.currentRoleView}>Started: <TextInput
+          style={{color: 'white'}} defaultValue={`${currentRole.start_date}`}
+          onDateChange={start_date => this.setState({start_date})}/></Text>
         <Button onPress={() => updateRole(this.state)} title='Update'/>
         <Button onPress={this.terminateRole} title='Terminate'/>
       </View> : <View style={styles.roleContainer}>
         <Text style={styles.currentRoleView}>Title: {currentRole.title}
           {currentUser.follow_ids.include(this.state.id) ?
             <FontAwesome onPress={() => unfollowRole(currentUser.id, this.state.id)}>
-              {Icons.star}</FontAwesome> : <FontAwesome onPress={() => followRole(this.state.id)}>
+              {Icons.star}</FontAwesome> : <FontAwesome style={{color: 'white'}} onPress={() => followRole(this.state.id)}>
           {Icons.star}</FontAwesome>}
         </Text>
         <Text style={styles.currentRoleView}>Location: {currentRole.location}</Text>
@@ -96,11 +99,11 @@ export default class roleShowPage extends Component {
           <View style={{flex: 1, alignItems: 'center'}} key={`container-${projectId}`}>
             <ProjectContainer style={styles.componentContainer} key={`project-${projectId}`}
                               role={this.state} project={work.projects[projectId]}
-                              onPress={this.toggleDropdown} />
+                              currentUser={currentUser} onPress={this.toggleDropdown} />
 
             <View style={{height: this.state.realsDropdown}}>{work.projects[projectId].real_ids.map(realId =>
               <RealContainer key={`real-${realId}`} project={work.projects[projectId]}
-                role={this.state} real={reals.by_id[realId]} currentUser={currentUser} />
+                role={this.state} real={reals.by_id[realId]} />
             )}</View>
           </View>)}
         </View>
