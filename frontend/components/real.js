@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react';[]
 import { View } from 'react-native';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
 

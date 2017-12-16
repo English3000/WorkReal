@@ -83,7 +83,7 @@ export default class EntryForm extends React.Component {
             }
 
     } else if (!this.props.session.currentUser) { //currentUser is null
-      Alert.alert('', `${newProps.errors.data.join('.\n\n')}.`);
+      Alert.alert('', `${newProps.errors.join('.\n\n')}.`);
     }
   }
 

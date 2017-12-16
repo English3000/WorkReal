@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RealsIndex from './realsIndex';
-import { getAllReals } from '../actions/real_actions';
+import { getAllReals, createReal } from '../actions/real_actions';
 
 const mapStateToProps = ({ reals, roles, projects }) => ({
-  reals, roles, projects
+  reals, roles
 });
 
 const mapDispatchToProps = dispatch => ({
   getAllReals: () => dispatch(getAllReals()),
+  createReal: real => dispatch(createReal(real))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RealsIndex);
