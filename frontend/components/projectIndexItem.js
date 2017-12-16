@@ -9,15 +9,17 @@ export default class ProjectIndexItem extends Component {
   }
 
   render() {
-    const { project } = this.props;
-    return(<View style={styles.projectContainer}>
-      <Text>
+    const { project, role } = this.props;
+    return (project.role_ids[0] === role.id ? <View style={styles.projectContainer}>
+      <Text> {/* Text => TextInput */}
         <Text style={styles.projectView}>Project: {project.project}</Text>
         <Text style={styles.projectView}>Location: {project.location}</Text>
         <Text style={styles.projectView}>Started: {project.start_date}</Text>
-      </Text>
-    </View>);
-
+      </Text></View> : <View style={styles.projectContainer}><Text>
+        <Text style={styles.projectView}>Project: {project.project}</Text>
+        <Text style={styles.projectView}>Location: {project.location}</Text>
+        <Text style={styles.projectView}>Started: {project.start_date}</Text>
+      </Text></View>);
   }
 }
 
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'white',
     padding: 10,
-    width: '100%',
+    width: '80%',
     margin: 10
   },
   projectView: {

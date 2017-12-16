@@ -26,7 +26,7 @@ export default class roleShowPage extends Component {
     }
   }
 
-  terminateRole() { //
+  terminateRole() {
     this.setState({end_date: new Date(Date.now())},
       () => this.props.updateRole(this.state).then(() => this.props.navigation.navigate(`roleForm`))
     );
@@ -63,7 +63,7 @@ export default class roleShowPage extends Component {
           {this.state.project_ids.map(projectId =>
           <View style={{flex: 1, alignItems: 'center'}} key={`container-${projectId}`}>
             <ProjectIndexItem style={styles.componentContainer} key={`project-${projectId}`}
-                              project={work.projects[projectId]} />
+                              role={this.state} project={work.projects[projectId]} />
 
             {work.projects[projectId].real_ids.map(realId =>
               <RealContainer key={`real-${realId}`} project={work.projects[projectId]}

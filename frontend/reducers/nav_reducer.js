@@ -7,9 +7,7 @@ const _initialState = () => (
     )
 );
 
-const navReducer = (state = _initialState(), action) => {
-    const nextState = MyStackNavigator.router.getStateForAction(action, state);
-    return nextState || state;
+export default (state = _initialState(), action) => {
+  const nextState = MyStackNavigator.router.getStateForAction(action, state);
+  return nextState || state;
 };
-
-export default navReducer;
