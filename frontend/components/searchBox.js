@@ -1,17 +1,26 @@
 import React, {Component} from 'react';
-import {View,Text,TextInput} from 'react-native';
-import Icon from "react-native-vector-icons";
+import {Text,TextInput} from 'react-native';
+import { View, InputGroup, Input } from "native-base";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { Dimensions } from "react-native";
+
+var width = Dimensions.get("window").width;
 
 export default class SearchBox extends Component {
   render(){
 
     return(
-      <View>
-        <TextInput
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-        placeholder="Location">
-        </TextInput>
-
+      <View style={styles.searchBox}>
+				<View style={styles.inputWrapper}>
+					<Text style={styles.label}>PICK UP</Text>
+					<InputGroup>
+						<Icon name="search" size={15} color="#FF5E3A"/>
+						<Input
+							style={styles.inputSearch}
+							placeholder="Search Roles,Reals...."
+						/>
+					</InputGroup>
+				</View>
       </View>
 
     );
@@ -20,3 +29,40 @@ export default class SearchBox extends Component {
 
 
 }
+
+
+
+const styles = {
+    searchBox:{
+        top:0,
+        position:"absolute",
+        width:width
+    },
+    inputWrapper:{
+        marginLeft:15,
+        marginRight:10,
+        marginTop:10,
+        marginBottom:0,
+        backgroundColor:"#fff",
+        opacity:0.9,
+        borderRadius:7
+    },
+    secondInputWrapper:{
+        marginLeft:15,
+        marginRight:10,
+        marginTop:0,
+        backgroundColor:"#fff",
+        opacity:0.9,
+        borderRadius:7
+    },
+    inputSearch:{
+        fontSize:14
+    },
+    label:{
+        fontSize:10,
+        fontStyle: "italic",
+        marginLeft:10,
+        marginTop:10,
+        marginBottom:0
+    }
+};
