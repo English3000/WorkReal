@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text } from 'react-native';
 import MapView from 'react-native-maps';
+import SearchBox from './searchBox';
 
 export default class SearchMap extends Component{
   constructor(props){
@@ -25,9 +26,9 @@ export default class SearchMap extends Component{
 
 
   componentDidMount(){
-    navigator.geolocation.getCurrentPosition( (position) => (
+    navigator.geolocation.getCurrentPosition( (position) => {
 
-        this.setState({
+        return(this.setState({
           region: {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
@@ -36,51 +37,54 @@ export default class SearchMap extends Component{
           }
 
         })
+      );
 
-      ));
+      });
 
     }
 
 
   render(){
-    debugger;
+
+
     return(
-    <View style={styles.view}>
-    <MapView style={styles.map}
-          initialRegion={this.state.region}
-          onLayout={this.onMapLayout}>
+      <View style={styles.view}>
+      <MapView style={styles.map}
+            initialRegion={this.state.region}
+            onLayout={this.onMapLayout}>
 
-          {this.state.mapLoaded &&
-            <MapView.Marker
-              title="Software Developer"
-              style={styles.marker_default}
-              coordinate={{
-                latitude: this.state.region.latitude,
-                longitude: this.state.region.longitude
-              }}
-              onPress={() => (
+            {this.state.mapLoaded &&
+              <MapView.Marker
+                title="Software Developer"
+                style={styles.marker_default}
+                coordinate={{
+                  latitude: this.state.region.latitude,
+                  longitude: this.state.region.longitude
+                }}
+                pinColor={"green"}
+                onPress={() => (
 
-                // this.setState({
-                //   region: {
-                //     latitudeDelta: 60,
-                //     longitudeDelta: 30,
-                //     latitude: this.state.region.latitude,
-                //     longitude: this.state.region.longitude
-                //   }
-                // })
-                console.log(this)
+                  // this.setState({
+                  //   region: {
+                  //     latitudeDelta: 60,
+                  //     longitudeDelta: 30,
+                  //     latitude: this.state.region.latitude,
+                  //     longitude: this.state.region.longitude
+                  //   }
+                  // })
+
+                  console.log("mapview")
+
+                )} />
+            }
+
+            </MapView>
 
 
-              )} />
-          }
+
+      </View>
 
 
-
-
-
-         </MapView>
-
-    </View>
     );
   }
 
@@ -94,7 +98,7 @@ export default class SearchMap extends Component{
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    backgroundColor: 'yellow',
+    backgroundColor: 'purple',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row'
@@ -127,50 +131,40 @@ const styles = StyleSheet.create({
 });
 
 
-// <MapView.Marker
-//   title="Here"
-//   coordinate={{
-//     latitude: 37.78815,
-//     longitude: -123.4324
-//   }} />
+// <View style={styles.view}>
+// <MapView style={styles.map}
+//       initialRegion={this.state.region}
+//       onLayout={this.onMapLayout}>
 //
-//   <MapView.Marker
-//     title="Here"
-//     coordinate={{
-//       latitude: 37.78815,
-//       longitude: -123.4324
-//     }} />
-//
-//     <MapView.Marker
-//       title="Here"
-//       coordinate={{
-//         latitude: 37.7885,
-//         longitude: -120.4324
-//       }} />
-
-
-
-// return(
-//    <View style={styles.view}>
-//       <MapView style={styles.map}
-//      initialRegion={{
-//        latitude: 37.78825,
-//        longitude: -122.4324,
-//        latitudeDelta: 0.0922,
-//        longitudeDelta: 0.0421,
-//      }}>
-//
+//       {this.state.mapLoaded &&
 //         <MapView.Marker
-//           title="Here"
+//           title="Software Developer"
+//           style={styles.marker_default}
 //           coordinate={{
-//             latitude: 37.78825,
-//             longitude: -122.4324
-//           }} />
+//             latitude: this.state.region.latitude,
+//             longitude: this.state.region.longitude
+//           }}
+//           onPress={() => (
+//
+//             // this.setState({
+//             //   region: {
+//             //     latitudeDelta: 60,
+//             //     longitudeDelta: 30,
+//             //     latitude: this.state.region.latitude,
+//             //     longitude: this.state.region.longitude
+//             //   }
+//             // })
+//
+//             console.log("mapview")
+//
+//           )} />
+//       }
+//
+//
+//
 //
 //
 //      </MapView>
 //
-//
-//
-//    </View>
-// )
+// </View>
+// );

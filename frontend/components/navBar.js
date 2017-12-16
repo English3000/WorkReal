@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Text,TextInput } from 'react-native';
-// import SearchMapContainer from './searchMapContainer';
+import { View, ScrollView, StyleSheet, Text,TextInput, Button } from 'react-native';
+import SearchMapContainer from './searchMapContainer';
+
+
 // import SearchBar from 'react-native-material-design-searchbar';
 
 
@@ -16,20 +18,32 @@ export default class NavBar extends Component {
   handlePress(e,query){
       e.preventDefault();
       this.setState({query: e.target.value });
+
   }
 
 
 
   render(){
-    console.log(this.state.query);
+
     return(
       <View style={styles.view}>
-        <TextInput
-        placeholder='Search by roles, reals, location... '
-        style={styles.navInputs}
-        underlineColorAndroid={'transparent'}
-        onChangeText={(text) => this.setState({ query: text })}
-         />
+        <View>
+          <Button
+          title="Home"
+          />
+
+        </View>
+
+        <View>
+
+          <Button
+          title="Logout"
+          />
+
+        </View>
+
+
+
 
        </View>
 
@@ -44,18 +58,15 @@ export default class NavBar extends Component {
 // onChangeText={(text) => this.setState({ query: text })}
 const styles = StyleSheet.create({
   view: {
-    flex: 1,
+    // flex: 1,
     // backgroundColor: 'yellow',
     alignItems: 'center',
     // justifyContent: 'center',
-    flexDirection: 'row'
-  },
-
-  map: {
-    flex: 1,
-    width: '100%',
-    height: '100%'
-
+    flexDirection: 'row',
+    backgroundColor: 'black',
+    justifyContent: 'space-between',
+    height: '10%',
+    marginTop: 10
   },
 
   navInputs: {
@@ -66,7 +77,18 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderRadius: 5,
     color: 'white',
-    marginTop: 10
+    marginTop: 5,
+    height: 10
+
   }
 
 })
+
+
+
+// <TextInput
+// placeholder='Search by roles, reals, location... '
+// style={styles.navInputs}
+// underlineColorAndroid={'transparent'}
+// onChangeText={(text) => this.setState({ query: text })}
+//  />
