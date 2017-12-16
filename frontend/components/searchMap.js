@@ -3,6 +3,9 @@ import { View, ScrollView, StyleSheet, Text } from 'react-native';
 import MapView from 'react-native-maps';
 import SearchBox from './searchBox';
 
+const roles = [{title: 'Solutions Engineer', latitude: 37.790319 , longitude: -122.390203}]
+
+
 export default class SearchMap extends Component{
   constructor(props){
     super(props);
@@ -53,7 +56,7 @@ export default class SearchMap extends Component{
             initialRegion={this.state.region}
             onLayout={this.onMapLayout}>
 
-            {this.state.mapLoaded &&
+
               <MapView.Marker
                 title="Software Developer"
                 style={styles.marker_default}
@@ -62,21 +65,35 @@ export default class SearchMap extends Component{
                   longitude: this.state.region.longitude
                 }}
                 pinColor={"green"}
-                onPress={() => (
+                />
 
-                  // this.setState({
-                  //   region: {
-                  //     latitudeDelta: 60,
-                  //     longitudeDelta: 30,
-                  //     latitude: this.state.region.latitude,
-                  //     longitude: this.state.region.longitude
-                  //   }
-                  // })
+                {
+                  roles.map((role) => (
+                    <MapView.Marker
+                      title={role.title}
+                      style={styles.marker_default}
+                      coordinate={{
+                        latitude: role.latitude,
+                        longitude: role.longitude
+                      }}
+                      pinColor={"red"}
+                      />
 
-                  console.log("mapview")
 
-                )} />
-            }
+
+                ))
+
+
+                }
+
+
+
+
+
+
+
+
+
 
             </MapView>
             <SearchBox />
@@ -168,3 +185,19 @@ const styles = StyleSheet.create({
 //
 // </View>
 // );
+
+
+
+
+
+
+
+// <MapView.Marker
+//   title={roles[0].title}
+//   style={styles.marker_default}
+//   coordinate={{
+//     latitude: 37.790319,
+//     longitude: -122.390203
+//   }}
+//   pinColor={"red"}
+//   />

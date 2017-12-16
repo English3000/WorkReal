@@ -33,7 +33,7 @@ export default class SearchBox extends Component {
   						<FontAwesome name="search" size={15} color="#FF5E3A"/>
   						<Input
   							style={styles.inputSearch}
-  							placeholder="Search Roles, Reals..."
+  							placeholder="Search Roles, Reals, Industry, ..."
                 onChangeText={(text) => this.setState({query: text})}
   						/>
   					</InputGroup>
