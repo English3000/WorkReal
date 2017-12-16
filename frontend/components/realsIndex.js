@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import RealFormContainer from 'realFormContainer';
+import RealFormContainer from './realFormContainer';
 import RealContainer from './realContainer';
 
 export default class RealsIndex extends React.Component {
@@ -12,9 +12,13 @@ export default class RealsIndex extends React.Component {
 
   }
 
+  componentDidMount() {
+    this.props.getAllReals();
+  }
+
   render() {
     const {reals, roles, projects} = this.props;
-
+    debugger;
     return (<View>
       <RealFormContainer/>
       {Object.keys(reals).length > 0 && reals.all_ids.length > 0 ? reals.all_ids.map(id => {

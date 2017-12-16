@@ -97,14 +97,24 @@ export default class EntryForm extends React.Component {
   componentWillReceiveProps(newProps){
     // console.log(AsyncStorage.getItem('session_token'))
     //if currentUser changed
+
     if (newProps.session.currentUser !== this.props.session.currentUser) {
       //When user first logs in store their session_token in AsyncStorage
       // And then redirect them to roleForm
+
+      var created = new Date(newProps.session.currentUser.created_at);
+      var current = new Date();
+      
             this.storeToken(newProps.session.currentUser.session_token);
-            this.props.navigation.navigate(`roleForm`);
+
+            if (current - created < 60000) {
+              newProps.navigation.navigate('roleForm');
+            } else {
+              newProps.navigation.navigate('realsIndex');
+            }
 
     } else if (!this.props.session.currentUser) { //currentUser is null
-      Alert.alert('', `${newProps.errors.join('.\n\n')}.`);
+      Alert.alert('', `${newProps.errors.data.join('.\n\n')}.`);
     }
   }
 
@@ -147,7 +157,7 @@ export default class EntryForm extends React.Component {
                           credentials={this.state}
                           _onPress={() => this.props.signIn({
                             email: this.state.email, password: this.state.password
-                          })}></CircleButton>
+                          }).then(() => navigate('realsIndex'))}></CircleButton>
           </View>
         </View> : null}
       </View>

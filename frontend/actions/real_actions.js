@@ -16,10 +16,15 @@ export const removeReal = real => ({type: REMOVE_REAL, realId: real.id});
 export const receiveTruth = details => {type: TRUTH, details};
 export const removeTruth = details => {type: UNTRUTH, details};
 
-export const getAllReals = () => async (dispatch) => {
-  // dispatch(pageLoading());
-  return dispatch( receiveReals(await Api.getAllReals().data) );
-};
+// export const getAllReals = () => async (dispatch) => {
+//   // dispatch(pageLoading());
+//   return dispatch( receiveReals(await Api.getAllReals().data) );
+// };
+
+export const getAllReals = () => dispatch => Api.getAllReals().then(
+  reals => dispatch(receiveReals(reals.data)),
+  err => dispatch(receiveErrors(err.response.data))
+);
 // Search query also launches filtered GET request
 export const createReal = real => dispatch => Api.createReal(real).then(
   newReal => dispatch(receiveReal(newReal.data)),

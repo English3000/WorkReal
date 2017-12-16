@@ -1,6 +1,8 @@
 class Api::RealsController < ApplicationController
   def index # a search would trigger a new GET request
     get_reals
+    p @reals
+    render :index
   end
 
   def destroy
@@ -36,7 +38,7 @@ class Api::RealsController < ApplicationController
     if params[:role_id]
       @reals = Real.where(role_id: params[:role_id]).order(updated_at: :desc)
     # elsif #search query
-      #
+
     else
       @reals = Real.all # sort by current user location
     end

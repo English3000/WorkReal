@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     width: '100%',
     margin: 10
   },
-  projectText: {
+  projectView: {
     color: 'white'
   },
   realContainer: {
