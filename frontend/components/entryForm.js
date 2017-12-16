@@ -8,6 +8,7 @@ import { TabNavigator } from 'react-navigation';
 const SESSION_TOKEN = 'SESSION_TOKEN';
 
 class CircleButton extends React.Component {
+
   constructor(props){
     super(props);
     this.handlePress = this.handlePress.bind(this);
