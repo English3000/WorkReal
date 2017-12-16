@@ -1,4 +1,4 @@
-json.extract! @user, :id, :email, :session_token
+json.extract! @user, :id, :email, :session_token, :created_at
 
 json.role_ids do
   json.array! @user.role_ids
