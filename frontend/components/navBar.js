@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
     flexDirection: 'row',
-    backgroundColor: 'black',
+    backgroundColor: 'transparent',
     justifyContent: 'space-between',
     height: '10%',
     marginTop: 10
