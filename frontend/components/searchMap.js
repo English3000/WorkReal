@@ -3,7 +3,24 @@ import { View, ScrollView, StyleSheet, Text } from 'react-native';
 import MapView from 'react-native-maps';
 import SearchBox from './searchBox';
 
-const roles = [{title: 'Solutions Engineer', latitude: 37.790319 , longitude: -122.390203}]
+const roles = [
+  {title: 'Solutions Engineer', description: 'Fixing bugs all day. Sucks.', latitude: 37.790319 , longitude: -122.390203},
+  {title: 'Barista', description: 'Seeing Customers happy makes my day', latitude: 37.791393, longitude: -122.392242},
+  {title: 'Chef', description: 'Wow, I just got a $100 tip !!!',   latitude: 37.798434, longitude: -122.404512 },
+  {title: 'Software Engineer', description: 'My program works in O(N^2) time. What do??', latitude: 37.802471, longitude: -122.405835},
+  {title: 'Doctor', description: 'Booo another 24 hour shift :( ',latitude: 37.767230, longitude: -122.391271},
+  {title: 'Research Doctor', description: 'I love Research Medicine', latitude: 37.767391, longitude: -122.392228},
+  {title: 'Assembly Member', description: 'Should I vote to repeal Net Neutrality??', latitude: 37.779300, longitude: -122.419409},
+  {title: 'Chamber Member', description: 'You are a corporate shill', latitude: 37.779682, longitude: -122.419711},
+  {title: 'Supervisor District X', description: 'Those campaigns aint goanna pay for themselves',latitude: 37.779667, longitude: -122.419008},
+
+  {title: 'U.S. Army Staff Sgt', description: 'Hooooooooah', latitude: 37.775695, longitude: -122.417957},
+  {title: 'Toll Collector', latitude:37.789366, longitude: -122.387338},
+  {title: 'Fisherman', description: 'Clam Chowder', latitude: 37.810930, longitude: -122.410592},
+  {title: 'Academic Professor', description: '3+3-1 = 4. Quick Maths', latitude: 37.722943, longitude: -122.477656},
+  {title: 'Muni Driver', description: 'California has the worst Drivers', latitude: 37.792817, longitude: -122.396959}
+
+]
 
 
 export default class SearchMap extends Component{
@@ -59,6 +76,7 @@ export default class SearchMap extends Component{
 
               <MapView.Marker
                 title="Software Developer"
+                description="I hate Coding"
                 style={styles.marker_default}
                 coordinate={{
                   latitude: this.state.region.latitude,
@@ -71,6 +89,7 @@ export default class SearchMap extends Component{
                   roles.map((role) => (
                     <MapView.Marker
                       title={role.title}
+                      description={role.description}
                       style={styles.marker_default}
                       coordinate={{
                         latitude: role.latitude,

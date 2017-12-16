@@ -37,6 +37,15 @@ export default class NavBar extends Component {
         <View>
 
           <Button
+          title="Map"
+          />
+
+        </View>
+
+
+        <View>
+
+          <Button
           title="Logout"
           />
 
