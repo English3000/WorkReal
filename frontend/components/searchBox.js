@@ -24,7 +24,7 @@ export default class SearchBox extends Component {
   // }
 
   render(){
-    console.log(this.state);
+    
     return(
         <View style={styles.searchBox}>
   				<View style={styles.inputWrapper}>
