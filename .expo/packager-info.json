@@ -1,5 +1,8 @@
 {
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 83767
+  "packagerPort": 19002,
+  "packagerPid": 15675,
+  "expoServerNgrokUrl": "https://jg-3h5.jacwutang.workreal.exp.direct",
+  "packagerNgrokUrl": "https://packager.jg-3h5.jacwutang.workreal.exp.direct",
+  "ngrokPid": 15691
 }

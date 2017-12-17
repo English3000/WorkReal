@@ -1,6 +1,7 @@
 import React from 'react';[]
 import { View, Text, StyleSheet } from 'react-native';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
+import { Font } from 'expo';
 
 export default class Real extends React.Component {
   constructor(props) {
