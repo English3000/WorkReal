@@ -13,9 +13,10 @@ export default class roleShowPage extends Component {
     this.terminateRole = this.terminateRole.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
 
-    const { work, navigation, roleId } = this.props;
-    console.log(navigation.routes[navigation.index].params);
-    console.log("logging currentRole", work.roles[navigation.routes[navigation.index].params.roleId]);
+    const { work, navigation} = this.props;
+    const roleId= Object.values(this.props.work.roles).id
+    // console.log(navigation.routes[navigation.index].params);
+    // console.log("logging currentRole", work.roles[navigation.routes[navigation.index].params.roleId]);
     if (roleId) {
       this.state = work.roles[roleId];
     } else if (navigation.routes[navigation.index].params) {
@@ -32,13 +33,14 @@ export default class roleShowPage extends Component {
 
     this.setState({ fontLoaded: true });
 
-    const {navigation, roleId} = this.props;
+    const {navigation} = this.props;
+    const roleId= Object.values(this.props.work.roles).id
     if (roleId) this.setState({ realsDropdown: 0 });
   }
 
   componentWillReceiveProps(newProps) {
     const { work, navigation } = newProps;
-    console.log(navigation.routes[navigation.index].params);
+
     if (navigation.routes[navigation.index].params) {
       let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
       this.setState(currentRole);

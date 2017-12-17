@@ -15,7 +15,7 @@ class RealIndexItem extends Component {
 
   render(){
     const { real, createReal } = this.props;
-    console.log(real);
+    // console.log(real);
     if (real.body) {
       return(
         <View style={styles.realContainer}>
