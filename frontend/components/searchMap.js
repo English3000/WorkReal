@@ -134,7 +134,7 @@ export default class SearchMap extends Component{
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    backgroundColor: 'purple',
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column'

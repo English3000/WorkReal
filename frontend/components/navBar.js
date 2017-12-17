@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
   },
   buttons:{
     backgroundColor: 'black',
-    color: 'white',
     borderWidth: 1,
     borderColor: 'white',
     padding: 5,
