@@ -11,7 +11,6 @@ export default class ProjectForm extends React.Component {
   }
 
   render() {
-    // console.log(this.state);
     return (
       <View style={styles.viewLayout}>
         <View style={[styles.viewLayout, {width: '100%', alignItems: 'center'}]}>

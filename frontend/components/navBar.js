@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Text,TextInput, Button } from 'react-native';
+import { View, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import SearchMapContainer from './searchMapContainer';
 
 
@@ -29,29 +29,27 @@ export default class NavBar extends Component {
     return(
       <View style={styles.view}>
         <View>
-          <Button
-          style={styles.button}
-          title="Home"
-          onPress={() => navigate('realsIndex')}/>
+          <TouchableOpacity
+            style={styles.buttons}
+            onPress={() => navigate('realsIndex')}>
+              <Text style={{fontSize: 20, color: 'white'}}>Home</Text>
+          </TouchableOpacity>
         </View>
 
         <View>
-
-          <Button
-          style={styles.button}
-          onPress={() => navigate('searchMap')}
-          title="Map"
-          />
-
+          <TouchableOpacity
+            style={styles.buttons}
+            onPress={() => navigate('searchMap')}>
+              <Text style={{fontSize: 20, color: 'white'}}>Map</Text>
+          </TouchableOpacity>
         </View>
+
         <View>
-
-          <Button
-          style={styles.button}
-          title="Logout"
-          onPress={() => navigate('home')}
-          />
-
+          <TouchableOpacity
+            style={styles.buttons}
+            onPress={() => navigate('home')}>
+              <Text style={{fontSize: 20, color: 'white'}}>Sign Out</Text>
+          </TouchableOpacity>
         </View>
        </View>
 
@@ -76,10 +74,11 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     flexDirection: 'row',
     // backgroundColor: 'transparent',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'black',
     justifyContent: 'space-between',
     height: '10%',
-    marginTop: 10
+    marginTop: 10,
+    padding: 20
   },
 
   navInputs: {
@@ -95,12 +94,15 @@ const styles = StyleSheet.create({
 
 
   },
-
-  button:{
-    backgroundColor: 'black'
+  buttons:{
+    backgroundColor: 'black',
+    color: 'white',
+    borderWidth: 1,
+    borderColor: 'white',
+    padding: 5,
+    borderRadius: 5
   }
-
-})
+});
 
 
 
