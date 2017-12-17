@@ -9,8 +9,7 @@ import realContainer from './realContainer';
 import realFormContainer from './realFormContainer';
 import NavBarContainer from './navBarContainer';
 import SearchMapContainer from './searchMapContainer';
-
-import {Text} from 'react-native';
+import realsIndexContainer from './realsIndexContainer';
 
 
 export default StackNavigator({
@@ -55,17 +54,12 @@ export default StackNavigator({
 		},
 		// headerRight: (<SearchBarWrapperContainer/>),
 		// headerLeft: (<Text style={{color: '#383838', fontSize: 40, fontWeight: 'bold', flex: 1, marginLeft: 20, marginTop: -5}}>WorkReal</Text>)
-    header: (<NavBarContainer/>)
+    header: (navigation) => (
+      <NavBarContainer
+      navigation={navigation}/>
+    )
   }
 
-  }, {
-  navigationOptions: {
-    headerTintColor: 'white',
-		headerStyle: {
-			backgroundColor: 'black',
-			height: 80
-		},
-    // sign out doesnt work
+  }
 
-  },
-});
+);
