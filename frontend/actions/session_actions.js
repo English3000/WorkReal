@@ -15,6 +15,9 @@ export const signIn = credentials => dispatch => Api.signIn(credentials).then(
   user => dispatch(receiveCurrentUser(user.data)),
   err => dispatch(receiveErrors(err.response.data))
 );
-export const signOut = () => async (dispatch) => dispatch(
-  receiveCurrentUser(await Api.signOut())
+// export const signOut = () => async (dispatch) => dispatch(
+//   receiveCurrentUser(await Api.signOut())
+// );
+export const signOut = () => dispatch => (
+  Api.signOut().then(user => dispatch(receiveCurrentUser(null)))
 );

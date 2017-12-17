@@ -10,7 +10,7 @@ import realFormContainer from './realFormContainer';
 import NavBarContainer from './navBarContainer';
 import SearchMapContainer from './searchMapContainer';
 import realsIndexContainer from './realsIndexContainer';
-
+import userShowContainer from './userShowContainer';
 
 export default StackNavigator({
     // home: {screen: SearchMapContainer},
@@ -23,12 +23,13 @@ export default StackNavigator({
     navBar: {screen: NavBarContainer},
     roleForm: {screen: roleFormContainer},
     searchMap: {screen: SearchMapContainer},
+    userShow: {screen: userShowContainer},
     roleShow: {
       path: 'role/roleId',
       screen: roleShowContainer,
       navigationOptions: {
-        headerRight: (<Button style={{color: 'white'}} title='logout' onPress={() => signOut()}></Button>),
-        headerLeft: (<Text style={{color: 'white', fontSize: 40, fontWeight: 'bold', flex: 1, marginLeft: 20, marginTop: -5}}>WorkReal</Text>)
+        // headerRight: (<Button style={{color: 'white'}} title='logout' onPress={() => signOut()}></Button>),
+        // headerLeft: (<Text style={{color: 'white', fontSize: 40, fontWeight: 'bold', flex: 1, marginLeft: 20, marginTop: -5}}>WorkReal</Text>)
       }
     },
     realsIndex: {

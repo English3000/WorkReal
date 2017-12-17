@@ -40,7 +40,6 @@ export default class SearchMap extends Component{
 
   onMapLayout = () => {
     this.setState({mapLoaded: true});
-
   }
 
 
@@ -66,7 +65,7 @@ export default class SearchMap extends Component{
 
   render(){
 
-    
+
     return(
       <View style={styles.view}>
       <MapView style={styles.map}

@@ -7,59 +7,52 @@ import SearchMapContainer from './searchMapContainer';
 
 
 export default class NavBar extends Component {
-  constructor(props){
-    super(props);
-    this.state = ({
-      query: ''
-    });
-
-  }
-
-  handlePress(e,query){
-      e.preventDefault();
-      this.setState({query: e.target.value });
-
-  }
+  // constructor(props){
+  //   super(props);
+  //   this.state = ({
+  //     query: ''
+  //   });
+  //
+  // }
+  //
+  // handlePress(e,query){
+  //     e.preventDefault();
+  //     this.setState({query: e.target.value });
+  //
+  // }
 
 
 
   render(){
-    
+    const { navigate } = this.props.navigation;
   if (this.props.navigation) {
     return(
-
       <View style={styles.view}>
         <View>
           <Button
           style={styles.button}
           title="Home"
-          />
-
+          onPress={() => navigate('realsIndex')}/>
         </View>
 
         <View>
 
           <Button
           style={styles.button}
-          onPress={this.props.navigation.navigate('searchMap')}
+          onPress={() => navigate('searchMap')}
           title="Map"
           />
 
         </View>
-
-
         <View>
 
           <Button
           style={styles.button}
           title="Logout"
+          onPress={() => this.props.signOut.then(() => navigate('entryForm'))}
           />
 
         </View>
-
-
-
-
        </View>
 
     );
