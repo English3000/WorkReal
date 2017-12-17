@@ -49,7 +49,7 @@ export default class NavBar extends Component {
           <Button
           style={styles.button}
           title="Logout"
-          onPress={() => this.props.signOut.then(() => navigate('entryForm'))}
+          onPress={() => navigate('home')}
           />
 
         </View>
