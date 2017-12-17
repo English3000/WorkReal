@@ -24,7 +24,7 @@ export default class NavBar extends Component {
 
 
   render(){
-    console.log(this.props);
+    
   if (this.props.navigation) {
     return(
 
