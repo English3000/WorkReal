@@ -1,4 +1,4 @@
-[Live Demo](https://mikesalisbury.github.io/WorkReal/)
+[Live Demo](https://mikesalisbury.github.io/flex-project-demo/)
 # WorkReal 
 ![](https://puu.sh/yIwQ3/d57626707d.png)
 <hr/>
