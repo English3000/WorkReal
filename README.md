@@ -41,8 +41,6 @@ Google Maps API was used to display `Reals` near the user. User can additionally
 
 <hr/>
 
-<hr/>
-
 ## Features
 
 ### Roles and Projects
