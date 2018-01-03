@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import SearchMapContainer from './searchMapContainer';
-
+import { Font } from 'expo';
+import FontAwesome, { Icons } from 'react-native-fontawesome';
 
 // import SearchBar from 'react-native-material-design-searchbar';
 
 
 export default class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {fontLoaded: false};
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      'FontAwesome': require('../assets/fonts/FontAwesome.otf'),
+    });
+
+    this.setState({ fontLoaded: true });
+  }
+
   render() {
     const { navigate } = this.props.navigation;
     if (this.props.navigation) {
       return (<View style={styles.view}>
-          <View><TouchableOpacity style={styles.buttons}
-                                  onPress={() => navigate('realsIndex')}>
-                <Text style={{fontSize: 20, color: 'white'}}>Home</Text>
+          <View><TouchableOpacity onPress={() => navigate('realsIndex')}>
+              <FontAwesome style={{fontSize: 25, color: 'white'}}>{Icons.home}</FontAwesome>
           </TouchableOpacity></View>
 
-          <View><TouchableOpacity style={styles.buttons}
-                                  onPress={() => navigate('searchMap')}>
-                <Text style={{fontSize: 20, color: 'white'}}>Map</Text>
+          <View><TouchableOpacity onPress={() => navigate('searchMap')}>
+              <FontAwesome style={{fontSize: 25, color: 'white'}}>{Icons.map}</FontAwesome>
           </TouchableOpacity></View>
 
-          <View><TouchableOpacity style={styles.buttons}
-                                  onPress={() => navigate('home')}>
-                <Text style={{fontSize: 20, color: 'white'}}>Sign Out</Text>
+          <View><TouchableOpacity onPress={() => navigate('home')}>
+              <FontAwesome style={{fontSize: 25, color: 'white'}}>{Icons.signOut}</FontAwesome>
           </TouchableOpacity></View>
       </View>);
     } else { return null; }
