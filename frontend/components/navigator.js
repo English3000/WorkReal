@@ -21,7 +21,9 @@ export default StackNavigator({
     },
 
     navBar: {screen: NavBarContainer},
-    roleForm: {screen: roleFormContainer},
+    roleForm: {screen: roleFormContainer,
+      navigationOptions: {header: null}
+    },
     searchMap: {screen: SearchMapContainer},
     userShow: {screen: userShowContainer},
     roleShow: {

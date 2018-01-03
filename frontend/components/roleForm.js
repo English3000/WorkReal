@@ -28,11 +28,11 @@ export default class RoleForm extends Component {
   }
 
   keyboardWillShow() {
-    this.setState({ keyboardPadding: '30%' });
+    this.setState({ keyboardPadding: '15%' });
   }
 
   keyboardDidShow() {
-    this.setState({ keyboardPadding: '30%' });
+    this.setState({ keyboardPadding: '15%' });
   }
 
   keyboardWillHide() {
