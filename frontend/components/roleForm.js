@@ -71,20 +71,20 @@ export default class RoleForm extends Component {
             style={styles.formInputs}
             onChangeText={project => this.setState({project})}/>
           <DatePicker {...this.props}
-                  placeholder={this.state.start_date}
+                  placeholder='Start Date'
+                  date={this.state.start_date}
                   format='YYYY-MM-DD'
                   confirmBtnText="Confirm"
                   cancelBtnText="Cancel"
                   showIcon={false}
                   customStyles={{
                     dateInput:{borderWidth: 0},
-                    placeholderText: {color: 'white'},
-                    dateText: {color: 'lightgray'}
+                    dateText: {color: 'white'},
+                    placeholderText: {color: 'lightgray'}
                   }}
                   style={[styles.formInputs, {width: '50%'}]}
                   onDateChange={start_date => this.setState({start_date})} />
-          <TouchableOpacity
-            style={styles.button}
+          <TouchableOpacity style={styles.button}
             onPress={() => this.props.createRole({ user_id: this.props.currentUserId,
               title: this.state.title, industry: this.state.industry,
               location: this.state.location, start_date: this.state.start_date
