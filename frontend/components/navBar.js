@@ -7,78 +7,41 @@ import SearchMapContainer from './searchMapContainer';
 
 
 export default class NavBar extends Component {
-  // constructor(props){
-  //   super(props);
-  //   this.state = ({
-  //     query: ''
-  //   });
-  //
-  // }
-  //
-  // handlePress(e,query){
-  //     e.preventDefault();
-  //     this.setState({query: e.target.value });
-  //
-  // }
-
-
-
-  render(){
+  render() {
     const { navigate } = this.props.navigation;
-  if (this.props.navigation) {
-    return(
-      <View style={styles.view}>
-        <View>
-          <TouchableOpacity
-            style={styles.buttons}
-            onPress={() => navigate('realsIndex')}>
-              <Text style={{fontSize: 20, color: 'white'}}>Home</Text>
-          </TouchableOpacity>
-        </View>
+    if (this.props.navigation) {
+      return (<View style={styles.view}>
+          <View><TouchableOpacity style={styles.buttons}
+                                  onPress={() => navigate('realsIndex')}>
+                <Text style={{fontSize: 20, color: 'white'}}>Home</Text>
+          </TouchableOpacity></View>
 
-        <View>
-          <TouchableOpacity
-            style={styles.buttons}
-            onPress={() => navigate('searchMap')}>
-              <Text style={{fontSize: 20, color: 'white'}}>Map</Text>
-          </TouchableOpacity>
-        </View>
+          <View><TouchableOpacity style={styles.buttons}
+                                  onPress={() => navigate('searchMap')}>
+                <Text style={{fontSize: 20, color: 'white'}}>Map</Text>
+          </TouchableOpacity></View>
 
-        <View>
-          <TouchableOpacity
-            style={styles.buttons}
-            onPress={() => navigate('home')}>
-              <Text style={{fontSize: 20, color: 'white'}}>Sign Out</Text>
-          </TouchableOpacity>
-        </View>
-       </View>
-
-    );
-  } else{
-    return null;
+          <View><TouchableOpacity style={styles.buttons}
+                                  onPress={() => navigate('home')}>
+                <Text style={{fontSize: 20, color: 'white'}}>Sign Out</Text>
+          </TouchableOpacity></View>
+      </View>);
+    } else { return null; }
   }
-
-  }
-
-
-
-
 }
 
 // onChangeText={(text) => this.setState({ query: text })}
 const styles = StyleSheet.create({
   view: {
-    // flex: 1,
     // backgroundColor: 'yellow',
     alignItems: 'center',
-    // justifyContent: 'center',
     flexDirection: 'row',
-    // backgroundColor: 'transparent',
     backgroundColor: 'black',
     justifyContent: 'space-between',
     height: '10%',
-    marginTop: 10,
-    padding: 20
+    padding: 20,
+    paddingTop: 40,
+    paddingBottom: 15
   },
 
   navInputs: {
