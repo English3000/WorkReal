@@ -7,10 +7,6 @@ import { TabNavigator } from 'react-navigation';
 
 const SESSION_TOKEN = 'SESSION_TOKEN';
 
-
-
-
-
 class CircleButton extends React.Component {
 
   constructor(props){
@@ -41,6 +37,7 @@ export default class EntryForm extends React.Component {
     super(props);
     this.state = {
       fontLoaded: false,
+      // signedIn: false,
       email: '',
       password: ''
     };
@@ -55,41 +52,37 @@ export default class EntryForm extends React.Component {
     this.setState({ fontLoaded: true });
 
     // (this.getToken() === true) ? this.props.navigation.navigate(`roleForm`): null;
-    if(this.props.session.currentUser !== null) {
-
+    // if(this.props.session.currentUser !== null) {
+      // this.setState({signedIn: true});
       // AsyncStorage.getItem(SESSION_TOKEN);
       //.then((res) => console.log(res));
-    }
+    // }
   }
-
-
-
-
 
   async storeToken(token){
     //token === currentUser.session_token
-    await AsyncStorage.setItem(SESSION_TOKEN, token).then(
-      () => AsyncStorage.getItem(SESSION_TOKEN)/*.then(
-        res => Alert.alert("HERE",res))*/)
+    await AsyncStorage.setItem(SESSION_TOKEN, token)
+      .then(() => AsyncStorage.getItem(SESSION_TOKEN))
   }
 
   componentWillReceiveProps(newProps){
     //if currentUser changed
+    // const {navigation} = newProps;
+    console.log('Entry Form New Props', newProps);
+    // const signed_in = await AsyncStorage.getItem(SESSION_TOKEN);
 
-    if (newProps.session.currentUser !== this.props.session.currentUser) {
+    if (newProps.session.currentUser !== this.props.session.currentUser /*&& !this.state.signed_in*/
+    /*newProps.navigation.state.routeName === 'home'*/) {
       //When user first logs in store their session_token in AsyncStorage
       // And then redirect them to roleForm
 
       var created = new Date(newProps.session.currentUser.created_at);
       var current = new Date();
 
-            this.storeToken(newProps.session.currentUser.session_token);
+      this.storeToken(newProps.session.currentUser.session_token);
 
-            if (current - created < 60000) {
-              newProps.navigation.navigate('roleForm');
-            } else {
-              newProps.navigation.navigate('realsIndex');
-            }
+      if (current - created < 60000) { newProps.navigation.navigate('roleForm'); }
+      else { newProps.navigation.navigate('realsIndex'); }
 
     } else if (!this.props.session.currentUser) { //currentUser is null
       Alert.alert('', `${newProps.errors.join('.\n\n')}.`);
@@ -99,49 +92,44 @@ export default class EntryForm extends React.Component {
   //should institute 2-factor authentication
   render() {
     const { navigate } = this.props.navigation;
-    return (
-
-      <View style={styles.view}>
-
-        {this.state.fontLoaded ? <View style={styles.upper}>
-          <Text style={[styles.text, styles.header]}>
-            <Image source={require('../assets/images/logo.png')} style={{width: 187.5, height: 93.75}}/>
-          &nbsp;WorkReal</Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <CircleButton title='SIGN UP'
-                          style={{position: 'relative', right: 3}}
-                          session={this.props.session}
-                          processForm={this.props.signUp}
-                          credentials={ this.state }
-                          _onPress={() => this.props.signUp({
-                            email: this.state.email, password: this.state.password
-                          }).then(() => navigate('roleForm'))}></CircleButton>
-            <View>
-              <TextInput style={[styles.text, styles.input]}
-                         placeholder='email'
-                         value={this.state.email}
-                         underlineColorAndroid='transparent' type={'email-address'}
-                         onChangeText={ email => this.setState({ email }) }/>
-              <TextInput style={[styles.text, styles.input, styles.lastInput]}
-                         placeholder='password' secureTextEntry={true}
-                         underlineColorAndroid='transparent'
-                         onChangeText={ password => this.setState({ password }) }/>
-            </View>
-            <CircleButton title='SIGN IN'
-                          style={{position: 'relative', left: 3}}
-                          session={this.props.session}
-                          processForm={this.props.signIn}
-                          credentials={this.state}
-                          _onPress={() => this.props.signIn({
-                            email: this.state.email, password: this.state.password
-                          })}></CircleButton>
+    return (<View style={styles.view}>
+      {this.state.fontLoaded ? <View style={styles.upper}>
+        <Text style={[styles.text, styles.header]}>
+          <Image source={require('../assets/images/logo.png')} style={{width: 187.5, height: 93.75}}/>
+        &nbsp;WorkReal</Text>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <CircleButton title='SIGN UP'
+                        style={{position: 'relative', right: 3}}
+                        session={this.props.session}
+                        processForm={this.props.signUp}
+                        credentials={ this.state }
+                        _onPress={() => this.props.signUp({
+                          email: this.state.email, password: this.state.password
+                        }).then(() => navigate('roleForm'))}></CircleButton>
+          <View>
+            <TextInput style={[styles.text, styles.input]}
+                       placeholder='email'
+                       value={this.state.email}
+                       underlineColorAndroid='transparent' type={'email-address'}
+                       onChangeText={ email => this.setState({ email }) }/>
+            <TextInput style={[styles.text, styles.input, styles.lastInput]}
+                       placeholder='password' secureTextEntry={true}
+                       underlineColorAndroid='transparent'
+                       onChangeText={ password => this.setState({ password }) }/>
           </View>
-        </View> : null}
-      </View>
-    );
-
+          <CircleButton title='SIGN IN'
+                        style={{position: 'relative', left: 3}}
+                        session={this.props.session}
+                        processForm={this.props.signIn}
+                        credentials={this.state}
+                        _onPress={() => this.props.signIn({
+                          email: this.state.email, password: this.state.password
+                        })}></CircleButton>
+        </View>
+      </View> : null}
+    </View>);
   }
-}
+} // CircleButton _onPress never reaches .then b/c they aren't using my code for it!!!
 
   // render(){
   //   return(
@@ -160,28 +148,13 @@ export default class EntryForm extends React.Component {
   //               latitude: 37.78825,
   //               longitude: -122.4324
   //             }} />
-  //
-  //
   //        </MapView>
-  //
-  //
-  //
   //      </View>
   //   )
   //
   // }
 
-
-
 const styles = StyleSheet.create({
-  // view: {
-  //   flex: 1,
-  //   backgroundColor: 'black',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   flexDirection: 'row'
-  // },
-
   view: {
     flex: 1,
     backgroundColor: 'black',
@@ -189,8 +162,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row'
   },
-
-
   header: {
     fontSize: 50,
     fontFamily: 'Amaranth',
@@ -227,11 +198,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%'
-
   }
-
 });
-
 
 // <MapView
 // initialRegion={{

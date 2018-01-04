@@ -5,11 +5,6 @@ import configureStore from './store';
 import {createRole, fetchRoles} from './actions/role_actions';
 import AppContainer from './components/appContainer';
 
-
-
-
-
-
 export default class App extends React.Component {
 
   render() {

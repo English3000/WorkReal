@@ -41,6 +41,7 @@ export default class roleShowPage extends Component {
   componentWillReceiveProps(newProps) {
     const { work, navigation } = newProps;
 
+    console.log('Role Show New Props', newProps);
     if (navigation.routes[navigation.index].params) {
       let currentRole = work.roles[navigation.routes[navigation.index].params.roleId];
       this.setState(currentRole);
