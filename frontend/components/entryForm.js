@@ -8,20 +8,20 @@ import { TabNavigator } from 'react-navigation';
 const SESSION_TOKEN = 'SESSION_TOKEN';
 
 class CircleButton extends React.Component {
-
   constructor(props){
     super(props);
     this.handlePress = this.handlePress.bind(this);
   }
 
   handlePress(){
-    const{session, processForm, credentials} = this.props;
+    console.log(this.props);
+    const {session, processForm, credentials, navigate, to} = this.props;
     //sign in/sign up the user and then access the state/store for updated currentUser and session_token
-    processForm({ email: credentials.email, password: credentials.password })
+    processForm({ email: credentials.email, password: credentials.password }).then(to => navigate(to));
   }
 
   render() {
-    const {title, style, _onPress} = this.props;
+    const {title, style} = this.props;
 
     return (<TouchableOpacity style={style} onPress={this.handlePress}>
               <Text style={{ height: 85, width: 85, fontWeight: 'bold',
@@ -103,6 +103,7 @@ export default class EntryForm extends React.Component {
                         session={this.props.session}
                         processForm={this.props.signUp}
                         credentials={ this.state }
+                        navigate={navigate} to={'roleForm'}
                         _onPress={() => this.props.signUp({
                           email: this.state.email, password: this.state.password
                         }).then(() => navigate('roleForm'))}></CircleButton>
@@ -122,6 +123,7 @@ export default class EntryForm extends React.Component {
                         session={this.props.session}
                         processForm={this.props.signIn}
                         credentials={this.state}
+                        navigate={navigate} to={'realsIndex'}
                         _onPress={() => this.props.signIn({
                           email: this.state.email, password: this.state.password
                         })}></CircleButton>
