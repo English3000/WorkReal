@@ -17,7 +17,11 @@ class CircleButton extends React.Component {
     console.log(this.props);
     const {session, processForm, credentials, navigate, to} = this.props;
     //sign in/sign up the user and then access the state/store for updated currentUser and session_token
-    processForm({ email: credentials.email, password: credentials.password }).then(to => navigate(to));
+    processForm({ email: credentials.email, password: credentials.password })
+      .then(response => { if (response instanceof Array) {
+        Alert.alert('', `${response.join('.\n\n')}.`);
+      } else { navigate(to) }
+    });
   }
 
   render() {
@@ -59,35 +63,35 @@ export default class EntryForm extends React.Component {
     // }
   }
 
-  async storeToken(token){
-    //token === currentUser.session_token
-    await AsyncStorage.setItem(SESSION_TOKEN, token)
-      .then(() => AsyncStorage.getItem(SESSION_TOKEN))
-  }
+  // async storeToken(token){
+  //   //token === currentUser.session_token
+  //   await AsyncStorage.setItem(SESSION_TOKEN, token)
+  //     .then(() => AsyncStorage.getItem(SESSION_TOKEN))
+  // }
 
-  componentWillReceiveProps(newProps){
-    //if currentUser changed
-    // const {navigation} = newProps;
-    console.log('Entry Form New Props', newProps);
-    // const signed_in = await AsyncStorage.getItem(SESSION_TOKEN);
-
-    if (newProps.session.currentUser !== this.props.session.currentUser /*&& !this.state.signed_in*/
-    /*newProps.navigation.state.routeName === 'home'*/) {
-      //When user first logs in store their session_token in AsyncStorage
-      // And then redirect them to roleForm
-
-      var created = new Date(newProps.session.currentUser.created_at);
-      var current = new Date();
-
-      this.storeToken(newProps.session.currentUser.session_token);
-
-      if (current - created < 60000) { newProps.navigation.navigate('roleForm'); }
-      else { newProps.navigation.navigate('realsIndex'); }
-
-    } else if (!this.props.session.currentUser) { //currentUser is null
-      Alert.alert('', `${newProps.errors.join('.\n\n')}.`);
-    }
-  }
+  // componentWillReceiveProps(newProps){
+  //   //if currentUser changed
+  //   // const {navigation} = newProps;
+  //   console.log('Entry Form New Props', newProps);
+  //   // const signed_in = await AsyncStorage.getItem(SESSION_TOKEN);
+  //
+  //   if (newProps.session.currentUser !== this.props.session.currentUser /*&& !this.state.signed_in*/
+  //   /*newProps.navigation.state.routeName === 'home'*/) {
+  //     //When user first logs in store their session_token in AsyncStorage
+  //     // And then redirect them to roleForm
+  //
+  //     var created = new Date(newProps.session.currentUser.created_at);
+  //     var current = new Date();
+  //
+  //     this.storeToken(newProps.session.currentUser.session_token);
+  //
+  //     if (current - created < 60000) { newProps.navigation.navigate('roleForm'); }
+  //     else { newProps.navigation.navigate('realsIndex'); }
+  //
+  //   } else if (!this.props.session.currentUser) { //currentUser is null
+  //     Alert.alert('', `${newProps.errors.join('.\n\n')}.`);
+  //   }
+  // }
 
   //should institute 2-factor authentication
   render() {

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button, Keyboard } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button,
+         Keyboard, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 
 export default class RoleForm extends Component {
@@ -75,15 +76,21 @@ export default class RoleForm extends Component {
           onPress={() => this.props.createRole({ user_id: this.props.currentUserId,
             title: this.state.title, industry: this.state.industry,
             location: this.state.location, start_date: this.state.start_date
-          })}>
+          }).then(response => {
+          if (response instanceof Array) {
+            Alert.alert('', `${response.join('.\n\n')}.`);
+          } else { this.props.createProject({ role_id: this.props.currentUserId.role_ids[0],
+            project: this.state.project, location: this.state.location,
+            start_date: this.state.start_date
+          }).then( () => navigate('realsIndex') ); }
+        })}>
           <Text style={{fontSize: 20}}>Confirm</Text>
         </TouchableOpacity>
       </View>
       <View style={{height: this.state.keyboardPadding}}></View>
     </View>);
   }
-} // submission goes to home, then roleForm again;
-// issue is entryForm condition is met every time
+} // could leave current project unfilled & would still redirect
 
 const styles = StyleSheet.create({
   viewLayout: {

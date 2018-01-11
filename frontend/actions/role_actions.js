@@ -26,7 +26,9 @@ export const fetchRoles = () => dispatch => Api.fetchRoles().then(
 export const createRole = role => dispatch => Api.createRole(role).then(
   role => { dispatch(receiveRole(role.data));
     return role.data;
-  }, err => dispatch(receiveErrors(err.response.data))
+  }, err => { dispatch(receiveErrors(err.response.data))
+    return err.response.data;
+  }
 );
 //needs to update role w/o overwriting assoc'd data (past projects & reals)
 //risk of currentRole's location falling out of sync w/ currentProject's
